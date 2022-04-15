@@ -7,7 +7,7 @@
 
 // Module to keep secrets local.
 require('dotenv').config({override: true});
-const {USERNAME, AUTHCODE, ENVIRONMENT, INTERVAL} = process.env;
+const {ID, AUTHCODE, ENVIRONMENT, INTERVAL} = process.env;
 const protocol = process.env[`${ENVIRONMENT}PROTOCOL`];
 const hostname = process.env[`${ENVIRONMENT}HOSTNAME`];
 const port = process.env[`${ENVIRONMENT}PORT`];
@@ -24,7 +24,7 @@ let working = false;
 // Sends a request to the Aorta server and returns the response data.
 const makeAortaRequest = async (what, specs = {}) => {
   const content = {
-    userName: USERNAME,
+    id: USERNAME,
     authCode: AUTHCODE,
     what
   };
@@ -72,11 +72,11 @@ const claimOrder = async () => {
   if (Array.isArray(orders)) {
     if (orders.length) {
       // Ask Aorta to make the first order a job assigned to this tester.
-      const orderName = orders[0].id;
+      const orderID = orders[0].id;
       return {
         response: await makeAortaRequest('claimOrder', {
-          orderName,
-          testerName: USERNAME
+          orderID,
+          id: ID
         })
       };
     }
