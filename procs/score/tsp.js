@@ -1,5 +1,5 @@
 /*
-  © 2024 CVS Health and/or one of its affiliates. All rights reserved.
+  © 2025 CVS Health and/or one of its affiliates. All rights reserved.
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -21,35 +21,57 @@
 */
 
 /*
-  tsp45
-  Testilo score proc 45
+  tsp
+  Testilo score proc
 
   Computes target score data and adds them to a Testaro report.
 */
 
 // IMPORTS
 
-const {issues} = require('./tic45');
+const {issues} = require('./tic');
 
-// CONSTANTS
+// MISCELLANEOUS CONSTANTS
 
 // ID of this proc.
-const scoreProcID = 'tsp45';
-// Latency weight (how much each second of excess latency adds to the score).
-const latencyWeight = 1;
-// Normal latency (6 visits, with 1.5 second per visit).
-const normalLatency = 9;
-// Prevention weights (how much each prevention adds to the score).
-const preventionWeight = 300;
-const testaroRulePreventionWeight = 30;
-// Maximum instance count addition weight (divisor of max).
-const maxWeight = 30;
-// Issue count weight.
+const scoreProcID = 'tsp';
+
+// WEIGHT CONSTANTS
+
+// How much is added to the page score by each component.
+
+// 1. Issue
+// Each issue.
 const issueCountWeight = 10;
-// Other weights.
+/*
+  Expander of instance counts for issues with inherently limited instance counts. Divide this by
+  the maximum possible instance count and add the quotient to 1, then multiply the sum by the actual
+  instance count, i.e. the largest rule-quality-weighted instance count among the tools with any
+  instances of the issue.
+*/
+const maxWeight = 30;
+
+// 3. Tool
+/*
+  Severity: amount added to each raw tool score by each violation of a rule with ordinal severity 0
+  through 3.
+*/
 const severityWeights = [1, 2, 3, 4];
+// Final: multiplier of the raw tool score to obtain the final tool score.
 const toolWeight = 0.1;
+
+// 4. Element
+// Multiplier of the count of elements with at least 1 rule violation.
 const elementWeight = 2;
+
+// 5. Prevention
+// Each tool prevention by the page.
+const preventionWeight = 300;
+// Each prevention of a Testaro rule test by the page.
+const testaroRulePreventionWeight = 30;
+
+// 6. Log
+// Multipliers of log values to obtain the log score.
 const logWeights = {
   logCount: 0.1,
   logSize: 0.002,
@@ -58,7 +80,16 @@ const logWeights = {
   prohibitedCount: 3,
   visitRejectionCount: 2
 };
-// Initialize a table of tool rules.
+
+// 7. Latency
+// Normal latency (11 visits [1 per tool], with 2 seconds per visit).
+const normalLatency = 22;
+// Total latency exceeding normal, in seconds.
+const latencyWeight = 2;
+
+// RULE CONSTANTS
+
+// Initialize a table of issue-classified tool rules.
 const issueIndex = {};
 // Initialize an array of variably named tool rules.
 const issueMatcher = [];
@@ -68,10 +99,8 @@ Object.keys(issues).forEach(issueName => {
   Object.keys(issues[issueName].tools).forEach(toolName => {
     // For each of those rules:
     Object.keys(issues[issueName].tools[toolName]).forEach(ruleID => {
+      issueIndex[toolName] ??= {};
       // Add it to the table of tool rules.
-      if (! issueIndex[toolName]) {
-        issueIndex[toolName] = {};
-      }
       issueIndex[toolName][ruleID] = issueName;
       // If it is variably named:
       if (issues[issueName].tools[toolName][ruleID].variable) {
@@ -89,9 +118,9 @@ exports.scorer = report => {
   // If there are any acts in the report:
   const {acts} = report;
   if (Array.isArray(acts) && acts.length) {
-    // If any of them are test acts:
     const testActs = acts.filter(act => act.type === 'test');
     const testTools = new Set(testActs.map(act => act.which));
+    // If any of them are test acts:
     if (testActs.length) {
       // Initialize the score data.
       const score = {
@@ -163,9 +192,10 @@ exports.scorer = report => {
           );
           // For each instance of the tool:
           standardResult.instances.forEach(instance => {
-            const {count, ordinalSeverity, pathID, ruleID, what} = instance;
-            // If the rule ID is not in the table of tool rules:
+            const {ordinalSeverity, pathID, ruleID, what} = instance;
+            const count = instance.count || 1;
             let canonicalRuleID = ruleID;
+            // If the rule ID is not in the table of issue-classified tool rules:
             if (! issueIndex[which][ruleID]) {
               // Convert it to the variably named tool rule that it matches, if any.
               canonicalRuleID = issueMatcher.find(pattern => {
@@ -201,7 +231,7 @@ exports.scorer = report => {
                 if (! details.issue[issueName].instanceCounts[which]) {
                   details.issue[issueName].instanceCounts[which] = 0;
                 }
-                details.issue[issueName].instanceCounts[which] += count || 1;
+                details.issue[issueName].instanceCounts[which] += count;
                 if (! details.issue[issueName].tools[which][canonicalRuleID]) {
                   const ruleData = issues[issueName].tools[which][canonicalRuleID];
                   details.issue[issueName].tools[which][canonicalRuleID] = {
@@ -373,7 +403,7 @@ exports.scorer = report => {
       + summary.prevention
       + summary.log
       + summary.latency;
-      // Add the score to the report or replace the existing score of the report.
+      // Add a, or replace the, score property of the report.
       report.score = score;
     }
     // Otherwise, i.e. if none of them is a test act:
