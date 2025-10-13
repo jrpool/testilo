@@ -996,13 +996,15 @@ When a user invokes `issues` in this example, the `call` module:
 
 ## Origin
 
-Work on the functionalities of Testaro and Testilo began in 2017. It was named [Autotest](https://github.com/jrpool/autotest) in early 2021 and then partitioned into the more single-purpose packages Testaro and Testilo in January 2022.
+Work on the functionalities of Testaro and Testilo began in 2017. It was named “Autotest” in early 2021 and then partitioned into the more single-purpose packages Testaro and Testilo in January 2022.
 
-On 5 May 2024 ownership of the Testilo repository was transfered from the personal account of contributor Jonathan Pool to the organization account `cvs-health` of CVS Health. The MIT license of the repository did not change.
+On 5 May 2024 ownership of the Testilo repository was transfered from the personal account of contributor Jonathan Pool to the organization account `cvs-health` of CVS Health. The MIT license of the [repository](https://github.com/cvs-health/testilo) did not change, but the copyright holder changed to CVS Health.
+
+Maintenance of the repository owned by CVS Health came to an end on 30 September 2025. The current repository was forked from the `cvs-health` repository in October 2025 and then unlinked from the fork network.
 
 ## Contributing
 
-As of 5 May 2024, upon the transfer of the repository ownership to CVS Health, contributors of code to Testilo are required to execute the [CVS Health OSS Project Contributor License Agreement](https://forms.office.com/r/SS09Tn1j6L) for Testilo before any pull request will be approved and merged.
+From 5 May 2024 through 30 September 2025, contributors of code to Testilo executed the [CVS Health OSS Project Contributor License Agreement](https://forms.office.com/r/SS09Tn1j6L) for Testilo before any pull request was approved and merged.
 
 ## Etymology
 
@@ -1010,6 +1012,7 @@ As of 5 May 2024, upon the transfer of the repository ownership to CVS Health, c
 
 /*
   © 2024 CVS Health and/or one of its affiliates. All rights reserved.
+  © 2025 Jonathan Robert Pool. All rights reserved.
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
