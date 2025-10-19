@@ -31,9 +31,9 @@
 // ########## FUNCTIONS
 
 // Digests the scored reports and returns them, digested.
-exports.digest = async (digester, report) => {
+exports.digest = async (digester, report, query = {}) => {
   // Create a digest.
-  const digest = await digester(report);
+  const digest = await digester(report, query);
   console.log(`Report ${report.id} digested`);
   // Return the digest.
   return digest;
