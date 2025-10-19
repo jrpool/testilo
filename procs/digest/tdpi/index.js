@@ -33,10 +33,10 @@ const populateQuery = async (report, query) => {
   Object.keys(issue).forEach(issueID => {
     issueData.push([issueID, Object.keys(issue[issueID].tools).map(toolID => tools[toolID])]);
   });
-  issueData.sort((a, b) => a[1].length - b[1].length);
+  issueData.sort((a, b) => b[1].length - a[1].length);
   const dataLines = [];
   issueData.forEach(issueDatum => {
-    dataLines.push(`<h3>Issue: ${issues[issueDatum[0]]}</h3>`);
+    dataLines.push(`<h3>Issue: ${issueDatum[0]}</h3>`);
     dataLines.push(`<p>Reported by: ${issueDatum[1].join(', ')}</p>`);
   });
   query.data = dataLines.join(outerJoiner);
