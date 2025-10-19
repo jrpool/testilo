@@ -31,7 +31,7 @@ const populateQuery = async (report, query) => {
   const {issue} = details;
   const issueData = [];
   Object.keys(issue).forEach(issueID => {
-    issueData.push([issueID, Object.keys(issue[issueID].tools).map(toolID => tools[toolID])]);
+    issueData.push([issue[issueID].summary, Object.keys(issue[issueID].tools).map(toolID => tools[toolID])]);
   });
   issueData.sort((a, b) => b[1].length - a[1].length);
   const dataLines = [];
