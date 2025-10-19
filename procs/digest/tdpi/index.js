@@ -14,7 +14,7 @@ const {issues} = require('../../score/tic');
 // Module to process files.
 const fs = require('fs/promises');
 // Utility module.
-const {getNowDate, getNowDateSlash} = require('../../util');
+const {tools} = require('../../util');
 
 // CONSTANTS
 
@@ -31,7 +31,7 @@ const populateQuery = async (report, query) => {
   const {issue} = details;
   const issueData = [];
   Object.keys(issue).forEach(issueID => {
-    issueData.push([issueID, issue[issueID].tools]);
+    issueData.push([issueID, Object.keys(issue[issueID].tools).map(toolID => tools[toolID])]);
   });
   issueData.sort((a, b) => a[1].length - b[1].length);
   const dataLines = [];
