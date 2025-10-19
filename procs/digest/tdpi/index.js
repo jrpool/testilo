@@ -36,7 +36,7 @@ const populateQuery = async (report, query) => {
   issueData.sort((a, b) => b[1].length - a[1].length);
   const dataLines = [];
   issueData.forEach(issueDatum => {
-    dataLines.push(`<h3>Issue: ${issueDatum[0]}</h3>`);
+    dataLines.push(`<h3>${issueDatum[0]}</h3>`);
     dataLines.push(`<p>Reported by: ${issueDatum[1].join(', ')}</p>`);
   });
   query.data = dataLines.join(outerJoiner);
