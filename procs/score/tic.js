@@ -4806,6 +4806,21 @@ exports.issues = {
       }
     }
   },
+  infoNeedsColor: {
+    summary: 'color the only classifier?',
+    why: 'Categories are indistinguishable',
+    wcag: '1.4.1',
+    weight: 1,
+    tools: {
+      ibm: {
+        style_color_misuse: {
+          variable: false,
+          quality: 1,
+          what: 'Color may be the only classifier'
+        }
+      }
+    }
+  },
   colorNamedRisk: {
     summary: 'color perception required?',
     why: 'Content is impossible to perceive under some conditions',
