@@ -918,6 +918,13 @@ exports.issues = {
     wcag: '1.1.1',
     weight: 4,
     tools: {
+      htmlcs: {
+        'AAA.4_1_2.H91.Svg.Name': {
+          variable: false,
+          quality: 1,
+          what: 'Element is svg but has no accessible name'
+        }
+      },
       wax: {
         'Add alternative text to <svg> elements with an img, graphics-document, or graphics-symbol role.': {
           variable: false,
@@ -1761,6 +1768,13 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Mousing-up functionality may not be available by keyboard'
+        }
+      },
+      ibm: {
+        aria_keyboard_handler_exists: {
+          variable: false,
+          quality: 1,
+          what: 'Interactive WAI_ARIA UI components must provide keyboard access'
         }
       },
       qualWeb: {
@@ -3220,6 +3234,13 @@ exports.issues = {
           quality: 1,
           what: 'Paragraph text has an absolute font size'
         }
+      },
+      ibm: {
+        style_viewport_resizable: {
+          variable: false,
+          quality: 1,
+          what: 'Font size is specified in viewport units, preventing text resizing'
+        }
       }
     }
   },
@@ -3769,6 +3790,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Tabbable element has a non-widget role'
+        },
+        widget_tabbable_single: {
+          variable: false,
+          quality: 1,
+          what: 'Components with a widget role must have no more than one tabbable element'
         },
         Rpt_Aria_ContentinfoWithNoMain_Implicit: {
           variable: false,
@@ -4836,6 +4862,21 @@ exports.issues = {
       }
     }
   },
+  sensoryDependenceRisk: {
+    summary: 'instruction requires particular sense?',
+    why: 'Content is impossible to perceive under some conditions',
+    wcag: '1.4.1',
+    weight: 1,
+    tools: {
+      ibm: {
+        text_sensory_misuse: {
+          variable: false,
+          quality: 1,
+          what: 'Instructions should be meaningful without relying solely on shape, size, or location words'
+        }
+      }
+    }
+  },
   idEmpty: {
     summary: 'ID empty',
     why: 'Item behaves improperly',
@@ -5075,6 +5116,21 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Image has a title attribute value but no alt value'
+        }
+      }
+    }
+  },
+  mouseOnlyRisk: {
+    summary: 'hover functionality requires mouse?',
+    why: 'Hovering-produced functionality is denied to a keyboard-only user',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      wax: {
+        'Ensure the functionality provided by mousing over this element is available through the keyboard; for instance, using the focus event.': {
+          variable: false,
+          quality: 1,
+          what: 'Element may provide functionality via hovering but not keyboard'
         }
       }
     }
@@ -5435,6 +5491,21 @@ exports.issues = {
       }
     }
   },
+  headingMisuseRisk: {
+    summary: 'heading used for styling?',
+    why: 'User cannot understand the document structure',
+    wcag: '1.3.1',
+    weight: 2,
+    tools: {
+      ibm: {
+        heading_markup_misuse: {
+          variable: false,
+          quality: 1,
+          what: 'Heading elements must not be used for presentation'
+        }
+      }
+    }
+  },
   headingNone: {
     summary: 'headings missing',
     why: 'User cannot survey parts of the document',
@@ -5769,6 +5840,13 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Heading coding is not used but the element may be intended as a heading'
+        }
+      },
+      ibm: {
+        text_block_heading: {
+          variable: false,
+          quality: 1,
+          what: 'Heading text should use a heading element or role'
         }
       },
       wave: {
@@ -6876,6 +6954,21 @@ exports.issues = {
       }
     }
   },
+  inputLabelInvisibleRisk: {
+    summary: 'input label invisible?',
+    why: 'User cannot understand where to enter information',
+    wcag: '2.4.6',
+    weight: 1,
+    tools: {
+      ibm: {
+        input_label_visible: {
+          variable: false,
+          quality: 1,
+          what: 'input element label invisible?'
+        }
+      }
+    }
+  },
   titleAsLabel: {
     summary: 'control has title instead of label',
     why: 'User cannot get help on how to operate a form item',
@@ -7189,6 +7282,41 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Focused element displays a nonstandard or no focus indicator'
+        }
+      }
+    }
+  },
+  focusIndicationRisk: {
+    summary: 'focus indication poor',
+    why: 'Keyboard-only user cannot choose an item to operate',
+    wcag: '2.4.7',
+    weight: 1,
+    tools: {
+      ibm: {
+        element_tabbable_unobscured: {
+          variable: false,
+          quality: 1,
+          what: 'Tabbable element obscured by another element when focused?'
+        },
+        element_tabbable_visible: {
+          variable: false,
+          quality: 1,
+          what: 'Tabbable element invisible when focused?'
+        }
+      },
+    }
+  },
+  boxInvisibleRisk: {
+    summary: 'border or outline invisible?',
+    why: 'User cannot perceive the boundary of an item',
+    wcag: '2.5.8',
+    weight: 1,
+    tools: {
+      ibm: {
+        style_focus_visible: {
+          variable: false,
+          quality: 1,
+          what: 'CSS-specified border or outline invisible?'
         }
       }
     }
@@ -8155,6 +8283,21 @@ exports.issues = {
       }
     }
   },
+  formSurpriseRisk: {
+    summary: 'form interaction changes content?',
+    why: 'User experiences unexpected document change when using a form',
+    wcag: '3.2.5',
+    weight: 1,
+    tools: {
+      ibm: {
+        form_interaction_review: {
+          variable: false,
+          quality: 1,
+          what: 'User should be informed in advance when interacting with content changes context'
+        }
+      }
+    }
+  },
   labelClash: {
     summary: 'label types incompatible',
     why: 'User cannot get reliable help on the topics of form items',
@@ -9004,6 +9147,13 @@ exports.issues = {
           quality: 1,
           what: 'Fixed-position element may force bidirectional scrolling'
         }
+      },
+      wax: {
+        'This element has "position: fixed". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.': {
+          variable: false,
+          quality: 1,
+          what: 'Fixed-position element may require scrolling in two dimensions'
+        }
       }
     }
   },
@@ -9091,6 +9241,13 @@ exports.issues = {
           variable: false,
           quality: 0.5,
           what: 'First focusable element is not a link to the main content'
+        }
+      },
+      ibm: {
+        html_skipnav_exists: {
+          variable: false,
+          quality: 1,
+          what: 'Provide a way to bypass blocks of content repeated on multiple pages'
         }
       },
       qualWeb: {
@@ -9329,6 +9486,13 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'font element is obsolete'
+        }
+      },
+      ibm: {
+        frame_src_valid: {
+          variable: false,
+          quality: 1,
+          what: 'frame element is obsolete, and a frame with non-HTML content must be made accessible'
         }
       },
       nuVal: {
