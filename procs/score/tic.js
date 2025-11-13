@@ -1035,7 +1035,7 @@ exports.issues = {
         alt_color_convey_information: {
           variable: false,
           quality: 1,
-          what: 'Text alternative may fail to give information provided by colors'
+          what: 'Text alternative fails to give information provided by colors?'
         }
       },
       wave: {
@@ -1249,7 +1249,7 @@ exports.issues = {
         'AAA.1_1_1.H67.2': {
           variable: false,
           quality: 1,
-          what: 'Image marked as decorative may be informative'
+          what: 'Image marked as decorative is informative?'
         }
       }
     }
@@ -1717,7 +1717,7 @@ exports.issues = {
         link_button_space_key: {
           variable: false,
           quality: 1,
-          what: 'Element has a button role but may fail to be keyboard-operable'
+          what: 'Element has a button role but fails to be keyboard-operable?'
         }
       }
     }
@@ -1732,7 +1732,7 @@ exports.issues = {
         'AAA.2_1_2.F10': {
           variable: false,
           quality: 1,
-          what: 'Applet or plugin may fail to enable moving the focus away with the keyboard'
+          what: 'Applet or plugin fails to enable moving the focus away with the keyboard?'
         }
       }
     }
@@ -1747,27 +1747,27 @@ exports.issues = {
         'AAA.2_1_1.G90': {
           variable: false,
           quality: 1,
-          what: 'Event handler functionality may not be available by keyboard'
+          what: 'Event handler functionality is not available by keyboard?'
         },
         'AAA.2_1_1.SCR20.MouseOut': {
           variable: false,
           quality: 1,
-          what: 'Mousing-out functionality may not be available by keyboard'
+          what: 'Mousing-out functionality is not available by keyboard?'
         },
         'AAA.2_1_1.SCR20.MouseOver': {
           variable: false,
           quality: 1,
-          what: 'Mousing-over functionality may not be available by keyboard'
+          what: 'Mousing-over functionality is not available by keyboard?'
         },
         'AAA.2_1_1.SCR20.MouseDown': {
           variable: false,
           quality: 1,
-          what: 'Mousing-down functionality may not be available by keyboard'
+          what: 'Mousing-down functionality is not available by keyboard?'
         },
         'AAA.2_1_1.SCR20.MouseUp': {
           variable: false,
           quality: 1,
-          what: 'Mousing-up functionality may not be available by keyboard'
+          what: 'Mousing-up functionality is not available by keyboard?'
         }
       },
       ibm: {
@@ -1789,6 +1789,13 @@ exports.issues = {
           variable: false,
           quality: 0.5,
           what: 'Device-dependent event handler'
+        }
+      },
+      wax: {
+        'Ensure the functionality provided by an event handler for this element is available through the keyboard': {
+          variable: false,
+          quality: 1,
+          what: 'Event handler functionality is not available by keyboard?'
         }
       }
     }
@@ -1846,7 +1853,7 @@ exports.issues = {
         'AAA.1_3_1.H44.NotFormControl': {
           variable: false,
           quality: 1,
-          what: 'Referent of the for attribute of the label is not a form control, so may be wrong'
+          what: 'Referent of the for attribute of the label is not a form control, so is wrong?'
         }
       },
       ibm: {
@@ -1897,7 +1904,7 @@ exports.issues = {
         'Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)': {
           variable: false,
           quality: 1,
-          what: 'aria-label attribute may be misused'
+          what: 'aria-label attribute is misused?'
         }
       }
     }
@@ -2296,6 +2303,21 @@ exports.issues = {
       }
     }
   },
+  linkImageTextURL: {
+    summary: 'text alternative of link image a URL',
+    why: 'User cannot understand what a link points to',
+    wcag: '2.4.4',
+    weight: 3,
+    tools: {
+      ed11y: {
+        altURLLinked: {
+          variable: false,
+          quality: 1,
+          what: 'Text alternative of the link image is a URL'
+        }
+      }
+    }
+  },
   linkBrokenRisk: {
     summary: 'link incomplete',
     why: 'User may fail to reach a promised location',
@@ -2549,7 +2571,7 @@ exports.issues = {
         'identical-links-same-purpose': {
           variable: false,
           quality: 1,
-          what: 'Links with the same accessible name may serve dissimilar purposes'
+          what: 'Links with the same accessible name serve dissimilar purposes?'
         }
       }
     }
@@ -2608,7 +2630,7 @@ exports.issues = {
         'AAA.1_1_1.H2.EG4': {
           variable: false,
           quality: 1,
-          what: 'Adjacent links, one with text and the other with a textless image, may merit combination'
+          what: 'Adjacent links, one with text and the other with a textless image, merit combination?'
         }
       }
     }
@@ -2669,19 +2691,19 @@ exports.issues = {
         links_new_window_mark: {
           variable: false,
           quality: 1,
-          what: 'Indicator that the link opens a new window or tab may be missing'
+          what: 'Indicator that the link opens a new window or tab is missing?'
         }
       },
       htmlcs: {
         'WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3': {
           variable: false,
           quality: 1,
-          what: 'Link may open in a new window without notice'
+          what: 'Link opens in a new window without notice?'
         },
         'AAA.3_2_5.H83.3': {
           variable: false,
           quality: 1,
-          what: 'Link text may fail to indicate that the link will open in a new window'
+          what: 'Link text fails to indicate that the link will open in a new window?'
         }
       },
       testaro: {
@@ -2703,7 +2725,7 @@ exports.issues = {
         javascript_jumpmenu: {
           variable: false,
           quality: 1,
-          what: 'selection change may navigate to another page without notice'
+          what: 'Selection change navigates to another page without notice?'
         }
       }
     }
@@ -3413,7 +3435,7 @@ exports.issues = {
         'QW-ACT-R40': {
           variable: false,
           quality: 1,
-          what: 'Zoomed text node may be clipped by a CSS overflow declaration'
+          what: 'Zoomed text node is clipped by a CSS overflow declaration?'
         }
       }
     }
@@ -3790,6 +3812,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Tabbable element has a non-widget role'
+        },
+        widget_tabbable_exists: {
+          variable: false,
+          quality: 1,
+          what: 'Components with a widget role must have at least one tabbable element'
         },
         widget_tabbable_single: {
           variable: false,
@@ -4174,7 +4201,7 @@ exports.issues = {
         '^Element .+ is missing one or more of the following attributes: role.*$': {
           variable: true,
           quality: 1,
-          what: 'Element has no role attribute but may need one'
+          what: 'Element has no role attribute but needs one?'
         }
       }
     }
@@ -4765,62 +4792,62 @@ exports.issues = {
         'AAA.1_4_3_F24.F24.BGColour': {
           variable: false,
           quality: 1,
-          what: 'Inline background color may lack a complementary foreground color'
+          what: 'Inline background color lacks a complementary foreground color?'
         },
         'AAA.1_4_6.G18.BgImage': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and the background image may be less than 4.5:1'
+          what: 'Contrast between the text and the background image is less than 4.5:1?'
         },
         'AAA.1_4_3_F24.F24.FGColour': {
           variable: false,
           quality: 1,
-          what: 'Inline foreground color may lack a complementary background color'
+          what: 'Inline foreground color lacks a complementary background color?'
         },
         'AAA.1_4_3.G18.Abs': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the absolutely positioned text and its background may be inadequate'
+          what: 'Contrast between the absolutely positioned text and its background is inadequate?'
         },
         'AAA.1_4_6.G18.Abs': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the absolutely positioned text and its background may be less than 4.5:1'
+          what: 'Contrast between the absolutely positioned text and its background is less than 4.5:1?'
         },
         'AAA.1_4_3.G18.Alpha': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and its background may be less than 4.5:1, given the transparency'
+          what: 'Contrast between the text and its background is less than 4.5:1, given the transparency?'
         },
         'AAA.1_4_3.G145.Abs': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the absolutely positioned large text and its background may be less than 3:1'
+          what: 'Contrast between the absolutely positioned large text and its background is less than 3:1?'
         },
         'AAA.1_4_3.G145.Alpha': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and its background may be less than 3:1, given the transparency'
+          what: 'Contrast between the text and its background is less than 3:1, given the transparency?'
         },
         'AAA.1_4_3.G145.BgImage': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and its background image may be less than 3:1'
+          what: 'Contrast between the text and its background image is less than 3:1?'
         },
         'AAA.1_4_3.G18.BgImage': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and its background image may be less than 4.5:1'
+          what: 'Contrast between the text and its background image is less than 4.5:1?',
         },
         'AAA.1_4_6.G17.Abs': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the absolutely positioned text and its background may be less than 7:1'
+          what: 'Contrast between the absolutely positioned text and its background is less than 7:1?'
         },
         'AAA.1_4_6.G17.BgImage': {
           variable: false,
           quality: 1,
-          what: 'Contrast between the text and its background image may be less than 7:1'
+          what: 'Contrast between the text and its background image is less than 7:1?'
         }
       },
       qualWeb: {
@@ -4842,7 +4869,7 @@ exports.issues = {
         style_color_misuse: {
           variable: false,
           quality: 1,
-          what: 'Color may be the only classifier'
+          what: 'Color is the only classifier?'
         }
       }
     }
@@ -4857,7 +4884,7 @@ exports.issues = {
         'text-color-convey-information': {
           variable: false,
           quality: 1,
-          what: 'Text naming a color may require the ability to distinguish colors'
+          what: 'Text naming a color requires the ability to distinguish colors?'
         }
       }
     }
@@ -5130,7 +5157,7 @@ exports.issues = {
         'Ensure the functionality provided by mousing over this element is available through the keyboard; for instance, using the focus event.': {
           variable: false,
           quality: 1,
-          what: 'Element may provide functionality via hovering but not keyboard'
+          what: 'Element provides functionality via hovering but not keyboard?'
         }
       }
     }
@@ -5655,6 +5682,21 @@ exports.issues = {
       }
     }
   },
+  blockQuoteShort: {
+    summary: 'block quote abnormally short',
+    why: 'Content can be made easier to read',
+    wcag: '1.4.8',
+    weight: 1,
+    tools: {
+      ed11y: {
+        blockQuoteIsShort: {
+          variable: false,
+          quality: 1,
+          what: 'Block quote is shorter than 25 characters'
+        }
+      }
+    }
+  },
   justification: {
     summary: 'text fully justified',
     why: 'Text is difficult to read',
@@ -5825,21 +5867,21 @@ exports.issues = {
         'p-as-heading': {
           variable: false,
           quality: 1,
-          what: 'Styled p element may be misused as a heading'
+          what: 'Styled p element is misused as a heading?'
         }
       },
       ed11y: {
         textPossibleHeading: {
           variable: false,
           quality: 1,
-          what: 'Styled p element may be misused as a heading'
+          what: 'Styled p element is misused as a heading?'
         }
       },
       htmlcs: {
         'AAA.1_3_1.H42': {
           variable: false,
           quality: 1,
-          what: 'Heading coding is not used but the element may be intended as a heading'
+          what: 'Heading coding is not used but the element is intended as a heading?'
         }
       },
       ibm: {
@@ -5858,7 +5900,22 @@ exports.issues = {
       }
     }
   },
-  pseudoLinkRisk: {
+  pseudoLinkScriptRisk: {
+    summary: 'script used instead of link',
+    why: 'Link may misbehave',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      ibm: {
+        script_onclick_misuse: {
+          variable: false,
+          quality: 1,
+          what: 'Script is used to emulate a link'
+        }
+      }
+    }
+  },
+  pseudoLinkUnderlineRisk: {
     summary: 'underlining dubious',
     why: 'User may be misled into believing some text is a link',
     wcag: '1.3.1',
@@ -6001,21 +6058,21 @@ exports.issues = {
         textPossibleList: {
           variable: false,
           quality: 1,
-          what: 'List may be miscoded as a paragraph sequence'
+          what: 'List is miscoded as a paragraph sequence?'
         }
       },
       htmlcs: {
         'AAA.1_3_1.H48.1': {
           variable: false,
           quality: 1,
-          what: 'Content seems to simulate an unordered list without a ul'
+          what: 'Content simulates an unordered list without a ul?'
         }
       },
       wave: {
         list_possible: {
           variable: false,
           quality: 1,
-          what: 'List may fail to be coded as such'
+          what: 'List fails to be coded as such?'
         }
       }
     }
@@ -6030,7 +6087,7 @@ exports.issues = {
         'AAA.1_3_1.H48.2': {
           variable: false,
           quality: 1,
-          what: 'Ordered list may fail to be coded as such'
+          what: 'Ordered list fails to be coded as such?'
         }
       }
     }
@@ -6046,6 +6103,36 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Navigation links are not coded as a list'
+        }
+      }
+    }
+  },
+  pseudoQuoteRisk: {
+    summary: 'quotation miscoded?',
+    why: 'User may be unable to get help identifying a quotation',
+    wcag: '3.2.4',
+    weight: 1,
+    tools: {
+      ibm: {
+        text_quoted_correctly: {
+          variable: false,
+          quality: 1,
+          what: 'Text not marked with a q or blockquote element is a quotation?'
+        }
+      }
+    }
+  },
+  nonQuoteRisk: {
+    summary: 'nonquotation coded as block quote?',
+    why: 'User may misunderstand text as a quotation',
+    wcag: '3.2.4',
+    weight: 1,
+    tools: {
+      ibm: {
+        blockquote_cite_exists: {
+          variable: false,
+          quality: 1,
+          what: 'blockquote element is a nonquotation?'
         }
       }
     }
@@ -6121,7 +6208,7 @@ exports.issues = {
         'AAA.1_3_1.H85.2': {
           variable: false,
           quality: 1,
-          what: 'Selection list may contain groups of related options that are not grouped with optgroup'
+          what: 'Selection list contains groups of related options not grouped with optgroup?'
         }
       }
     }
@@ -6223,14 +6310,14 @@ exports.issues = {
         'AAA.1_3_1.H71.SameName': {
           variable: false,
           quality: 1,
-          what: 'Radio buttons or check boxes may require a group description via a fieldset element'
+          what: 'Radio buttons or check boxes require a fieldset element?'
         }
       },
       wax: {
         'If these radio buttons or check boxes require a further group-level description, they should be contained within a fieldset element.': {
           variable: false,
           quality: 1,
-          what: 'Radio buttons or check boxes may require a group description via a fieldset element'
+          what: 'Radio buttons or check boxes require a fieldset element?'
         }
       }
     }
@@ -8598,7 +8685,7 @@ exports.issues = {
         animationM: {
           variable: false,
           quality: 1,
-          what: 'Animation may fail to give user a pause, stop, or hide mechanism'
+          what: 'Animation fails to provide a pause, stop, or hide mechanism?'
         }
       },
       testaro: {
@@ -8962,7 +9049,7 @@ exports.issues = {
         audio_alternativeA: {
           variable: false,
           quality: 1,
-          what: 'Referenced description or another text alternative may be missing'
+          what: 'Referenced description or another text alternative is missing?'
         }
       }
     }
@@ -9035,21 +9122,28 @@ exports.issues = {
     wcag: '1.2.2',
     weight: 1,
     tools: {
+      ibm: {
+        caption_track_exists: {
+          variable: false,
+          quality: 1,
+          what: 'video element has no text alternative for any meaningful audio content?'
+        }
+      },
       wave: {
         html5_video_audio: {
           variable: false,
           quality: 1,
-          what: 'video or audio element may have no or incorrect captions, transcript, or audio description'
+          what: 'video or audio element has no or incorrect captions, transcript, or audio description?'
         },
         audio_video: {
           variable: false,
           quality: 1,
-          what: 'audio or video file or link may have no or incorrect captions, transcript, or audio description'
+          what: 'audio or video file or link has no or incorrect captions, transcript, or audio description?'
         },
         youtube_video: {
           variable: false,
           quality: 1,
-          what: 'YouTube video may have no or incorrect captions'
+          what: 'YouTube video has no or incorrect captions?'
         }
       }
     }
@@ -9145,14 +9239,14 @@ exports.issues = {
         'AAA.1_4_10.C32,C31,C33,C38,SCR34,G206': {
           variable: false,
           quality: 1,
-          what: 'Fixed-position element may force bidirectional scrolling'
+          what: 'Fixed-position element forces bidirectional scrolling?'
         }
       },
       wax: {
         'This element has "position: fixed". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.': {
           variable: false,
           quality: 1,
-          what: 'Fixed-position element may require scrolling in two dimensions'
+          what: 'Fixed-position element requires scrolling in two dimensions?'
         }
       }
     }
@@ -9285,6 +9379,13 @@ exports.issues = {
           quality: 1,
           what: 'Submit button not provided'
         }
+      },
+      wax: {
+        'This form does not contain a submit button, which creates issues for those who cannot submit the form using the keyboard. Submit buttons are INPUT elements with type attribute "submit" or "image", or BUTTON elements with type "submit" or omitted/invalid.': {
+          variable: false,
+          quality: 1,
+          what: 'Form has no ubmit button'
+        }
       }
     }
   },
@@ -9328,7 +9429,7 @@ exports.issues = {
         noscript: {
           variable: false,
           quality: 1,
-          what: 'noscript element may fail to contain an accessible equivalent or alternative'
+          what: 'noscript element fails to contain an accessible equivalent or alternative?'
         }
       }
     }
@@ -9366,7 +9467,7 @@ exports.issues = {
         'The inputmode attribute is not supported in all browsers. Please be sure to test, and consider using a polyfill.': {
           variable: false,
           quality: 1,
-          what: 'inputmode attribute may be unsupported by some browsers'
+          what: 'inputmode attribute is unsupported by some browsers'
         }
       }
     }
