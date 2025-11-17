@@ -4583,8 +4583,13 @@ exports.issues = {
         }
       },
       wax: {
-        'This element contains a potentially faulty value in its autocomplete attribute: .': {
+        'Ensure the autocomplete attribute is correct and suitable for the form field.': {
           variable: false,
+          quality: 1,
+          what: 'autocomplete attribute may be incorrect or unsuitable for the form field'
+        },
+        '^This element contains a potentially faulty value in its autocomplete attribute: .+$': {
+          variable: true,
           quality: 1,
           what: 'Element contains a potentially faulty value in its autocomplete attribute'
         }
