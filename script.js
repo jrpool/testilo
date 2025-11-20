@@ -157,7 +157,7 @@ exports.script = (id, what, deviceID, options = {}) => {
         id: deviceID,
         windowOptions: {}
       },
-      browserID: 'webkit',
+      browserID: 'chromium',
       timeLimit: Math.round(50 + 30 * Object.keys(toolsRulesData).length),
       creationTimeStamp: '',
       executionTimeStamp: '',

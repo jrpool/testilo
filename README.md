@@ -208,10 +208,10 @@ Here is a script:
       deviceScaleFactor: 2,
       isMobile: true,
       hasTouch: true,
-      defaultBrowserType: 'webkit'
+      defaultBrowserType: 'chromium'
     }
   },
-  browserID: 'webkit',
+  browserID: 'chromium',
   timeLimit: 80,
   creationTimeStamp: ''
   executionTimeStamp: '',
@@ -281,7 +281,7 @@ In its simplest form, `script()` requires 3 string arguments:
 1. A description of the script
 1. A device ID
 
-Called in this way, `script()` produces a script that tells Testaro to perform the tests for all of the evaluation rules defined by all of the tools integrated by Testaro. In this case, the script launches a new Webkit browser before performing the tests of each tool.
+Called in this way, `script()` produces a script that tells Testaro to perform the tests for all of the evaluation rules defined by all of the tools integrated by Testaro. In this case, the script launches a new Chromium browser before performing the tests of each tool.
 
 #### With options
 
@@ -371,7 +371,7 @@ When the `script` module creates a script for you, it does not ask you for all o
 - `standard`: `'only'`
 - `observe`: `false`
 - `device.windowOptions.reduce-motion`: `'no-preference'`
-- `browserID`: `'webkit'`
+- `browserID`: `'chromium'`
 - `lowMotion`: `false`
 - `timeLimit`: 50 plus 30 per tool
 - `sources.id`: script ID
@@ -385,7 +385,7 @@ When the `script` module creates a script for you, it does not ask you for all o
 
 The `device.windowOptions` object has, in addition to `reducedMotion`, other properties shown in the above script example. The `script` module will set them according to the specified device. If you specify `'default'` as the device ID, the only property will be `reducedMotion`.
 
-The `webkit` browser type is selected because the other browser types corrupt some tests. The `ibm` test is performed on the existing page content because some targets cause HTTP2 protocol errors when the `ibm` tool tries to visit them.
+The `chromium` browser type is selected because in the latest testing it is more robust than the other browser types. The `ibm` test is performed on both the existing page content and a newly visited target, because under some conditions one of these may fail or they may deliver different results.
 
 After you invoke `script`, you can edit the script that it creates to revise any of these options.
 
