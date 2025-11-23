@@ -8821,6 +8821,13 @@ exports.issues = {
           what: 'Element forces a page reload'
         }
       },
+      axe: {
+        'meta-refresh': {
+          variable: false,
+          quality: 1,
+          what: 'Delayed refresh under 20 hours is used'
+        }
+      },
       qualWeb: {
         'QW-ACT-R4': {
           variable: false,
