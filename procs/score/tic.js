@@ -208,6 +208,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Multiple landmarks with the same parent region are not distinguished from one another [invalid on invisible elements]'
+        },
+        style_background_decorative: {
+          variable: false,
+          quality: 1,
+          what: 'CSS background image may be informative [speculative]'
         }
       },
       nuVal: {
