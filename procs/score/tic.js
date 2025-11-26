@@ -6073,6 +6073,13 @@ exports.issues = {
           what: 'Content simulates an unordered list without a ul?'
         }
       },
+      ibm: {
+        list_markup_review: {
+          variable: false,
+          quality: 1,
+          what: 'List not using proper HTML elements?'
+        }
+      },
       wave: {
         list_possible: {
           variable: false,
