@@ -1899,6 +1899,21 @@ exports.issues = {
       }
     }
   },
+  nonLabelableRole: {
+    summary: 'aria-label on non-labelable role',
+    why: 'User is misinformed about an item',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      nuVal: {
+        'The aria-label attribute must not be specified on any div element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a non-labelable role has an aria-label attribute'
+        }
+      }
+    }
+  },
   ariaLabelWrongRisk: {
     summary: 'dubious aria-label',
     why: 'User may fail to get help understanding an item in a form',
