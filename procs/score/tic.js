@@ -1419,7 +1419,7 @@ exports.issues = {
         html_lang_valid: {
           variable: false,
           quality: 1,
-          what: 'lang attribute of the html element does not include a valid primary language'
+          what: 'lang attribute of the html element includes no valid primary language'
         }
       },
       qualWeb: {
@@ -1460,7 +1460,7 @@ exports.issues = {
         element_lang_valid: {
           variable: false,
           quality: 1,
-          what: 'Element lang attribute does not include a valid primary language'
+          what: 'Element lang attribute includes no valid primary language'
         }
       },
       nuVal: {
@@ -3032,14 +3032,14 @@ exports.issues = {
         r68: {
           variable: false,
           quality: 1,
-          what: 'Element does not own an element required by its semantic role'
+          what: 'Element owns no element required by its semantic role'
         }
       },
       axe: {
         'aria-required-children': {
           variable: false,
           quality: 1,
-          what: 'ARIA role does not contain a required child'
+          what: 'ARIA role contains no required child'
         }
       },
       nuVal: {
@@ -3060,12 +3060,12 @@ exports.issues = {
         'Certain ARIA roles must contain particular children': {
           variable: false,
           quality: 1,
-          what: 'ARIA role does not contain a required child'
+          what: 'ARIA role contains no required child'
         },
         'Ensure elements with ARIA roles contain required child roles.': {
           variable: false,
           quality: 1,
-          what: 'Element does not contain a child required by its ARIA role'
+          what: 'Element contains no child required by its ARIA role'
         }
       }
     }
@@ -3959,7 +3959,7 @@ exports.issues = {
         '^Element .+ does not need a role attribute.*$': {
           variable: true,
           quality: 1,
-          what: 'Element does not need a role attribute'
+          what: 'Element needs no role attribute'
         },
         'The searchbox role is unnecessary for an input element that has no list attribute and whose type is search.': {
           variable: false,
@@ -4250,7 +4250,7 @@ exports.issues = {
         aria_attribute_required: {
           variable: false,
           quality: 1,
-          what: 'Element does not have an ARIA attribute required by its role'
+          what: 'Element does not have all ARIA attributes required by its role'
         }
       },
       nuVal: {
@@ -4271,7 +4271,7 @@ exports.issues = {
         'Include required ARIA attributes for elements with ARIA roles.': {
           variable: false,
           quality: 1,
-          what: 'Element does not have an ARIA attribute required by the role of the element'
+          what: 'Element does not have all ARIA attributes required its role'
         }
       }
     }
@@ -6882,7 +6882,7 @@ exports.issues = {
         table_row_and_column_headersH: {
           variable: false,
           quality: 1,
-          what: 'Element does not contain a thead element'
+          what: 'Element contains no thead element'
         }
       }
     }
@@ -6897,7 +6897,7 @@ exports.issues = {
         table_row_and_column_headersB: {
           variable: false,
           quality: 1,
-          what: 'Element does not contain a tbody element'
+          what: 'Element contains no tbody element'
         }
       }
     }
