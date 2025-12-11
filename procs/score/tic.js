@@ -8103,31 +8103,16 @@ exports.issues = {
     }
   },
   focusableOperable: {
-    summary: 'focusable element inoperable',
-    why: 'Inoperability of an item violates a user expectation',
+    summary: 'element focusability and operability conflict',
+    why: 'Keyboard-only user cannot operate an item',
     wcag: '2.1.1',
-    weight: 2,
+    weight: 3,
     tools: {
       testaro: {
-        focOp: {
+        focAndOp: {
           variable: false,
           quality: 1,
-          what: 'Tab-focusable element is inoperable'
-        }
-      }
-    }
-  },
-  operableFocusable: {
-    summary: 'operable element not focusable',
-    why: 'Keyboard-only user cannot navigate properly to an operable item',
-    wcag: '2.1.1',
-    weight: 4,
-    tools: {
-      testaro: {
-        opFoc: {
-          variable: false,
-          quality: 1,
-          what: 'Operable element is not Tab-focusable'
+          what: 'Tab-focusable element is not operable or vice versa'
         }
       }
     }
