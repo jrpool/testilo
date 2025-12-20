@@ -3497,15 +3497,15 @@ exports.issues = {
   },
   titleBad: {
     summary: 'title attribute invalid',
-    why: 'User cannot hover to get help explaining an item',
+    why: 'User gets too little, too much, or repeated help explaining an item',
     wcag: '1.3.1',
-    weight: 4,
+    weight: 1,
     tools: {
       testaro: {
         titledEl: {
           variable: false,
           quality: 1,
-          what: 'title attribute belongs to an inappropriate element'
+          what: 'title attribute is likely ineffective on its element type'
         }
       }
     }
