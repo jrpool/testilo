@@ -7168,7 +7168,7 @@ exports.issues = {
         targetSmall: {
           variable: false,
           quality: 1,
-          what: 'Button, input, or non-inline link is smaller than 44 px wide and high'
+          what: 'Label, button, input, or link has substandard distance from another'
         }
       }
     }
@@ -7184,13 +7184,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Target size is substandard'
-        }
-      },
-      testaro: {
-        targetTiny: {
-          variable: false,
-          quality: 1,
-          what: 'Button, input, or non-inline link is smaller than 24 px wide and high'
         }
       }
     }
