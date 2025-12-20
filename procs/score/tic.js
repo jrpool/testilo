@@ -5207,13 +5207,6 @@ exports.issues = {
           what: 'Link text content is equal to the title attribute'
         }
       },
-      testaro: {
-        linkTitle: {
-          variable: false,
-          quality: 1,
-          what: 'Link title value is also contained in the link text'
-        }
-      },
       wave: {
         title_redundant: {
           variable: false,
