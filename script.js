@@ -114,7 +114,7 @@ exports.script = (id, what, deviceID, options = {}) => {
               Object.keys(toolData).forEach(ruleID => {
                 // Add the rule to the data on tools and rules.
                 let rulePrefix = '';
-                if (issueToolID === 'nuVal') {
+                if (['nuVal', 'nuVnu'].includes(issueToolID)) {
                   rulePrefix = toolData[ruleID].variable ? '~' : '=';
                 }
                 const fullRuleID = `${rulePrefix}${ruleID}`;

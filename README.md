@@ -511,7 +511,7 @@ The built-in scoring functions are named `scorer()` and are exported by files wh
 
 Those functions make use of `issues` objects defined in files whose names begin with `tic`. An `issues` object defines an issue classification: a body of data about rules of tools and the tool-agnostic issues that those rules are deemed to belong to.
 
-The properties of an `issues` object are issue objects: objects containing data about issues. Here is an example from `tic40.js`:
+The properties of an `issues` object are issue objects: objects containing data about issues. Here is an example from `tic.js`:
 
 ```javascript
 multipleLabelees: {
