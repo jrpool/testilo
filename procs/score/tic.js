@@ -237,6 +237,28 @@ exports.issues = {
           what: 'Void element has a useless trailing slash. [invalid]'
         }
       },
+      nuVnu: {
+        'Element head is missing a required instance of child element title.': {
+          variable: false,
+          quality: 1,
+          what: 'head element has no child title element [invalid]'
+        },
+        'Element img is missing required attribute src.': {
+          variable: false,
+          quality: 1,
+          what: 'img element has no src attribute [invalid]'
+        },
+        'Element mediaelementwrapper not allowed as child of element div in this context. (Suppressing further errors from this subtree.)': {
+          variable: false,
+          quality: 0,
+          what: 'Element contains a prohibited mediaelementwrapper element [invalid]'
+        },
+        'Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.': {
+          variable: false,
+          quality: 1,
+          what: 'Void element has a useless trailing slash. [invalid]'
+        }
+      },
       qualWeb: {
         'QW-ACT-R10': {
           variable: false,
@@ -421,6 +443,13 @@ exports.issues = {
           what: 'Source code of the element contains 2 or more of the same attribute'
         }
       },
+      nuVnu: {
+        '^Duplicate attribute.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Source code of the element contains 2 or more of the same attribute'
+        }
+      },
       testaro: {
         dupAtt: {
           variable: false,
@@ -482,6 +511,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^Duplicate ID .+$|^The first occurrence of ID .* was here.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Duplicate id'
+        }
+      },
+      nuVnu: {
         '^Duplicate ID .+$|^The first occurrence of ID .* was here.*$': {
           variable: true,
           quality: 1,
@@ -696,6 +732,13 @@ exports.issues = {
           quality: 1,
           what: 'Element has both placeholder and aria-placeholder attributes'
         }
+      },
+      nuVnu: {
+        'The aria-placeholder attribute must not be specified on elements that have a placeholder attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has both placeholder and aria-placeholder attributes'
+        }
       }
     }
   },
@@ -868,6 +911,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'An img element must have an alt attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.': {
+          variable: false,
+          quality: 1,
+          what: 'img element has no alt attribute'
+        }
+      },
+      nuVnu: {
         'An img element must have an alt attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.': {
           variable: false,
           quality: 1,
@@ -1064,6 +1114,13 @@ exports.issues = {
           quality: 1,
           what: 'src attribute is empty'
         }
+      },
+      nuVnu: {
+        '^Bad value  for attribute src on element .+: Must be non-empty.*$': {
+          variable: true,
+          quality: 1,
+          what: 'src attribute is empty'
+        }
       }
     }
   },
@@ -1074,6 +1131,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        '^CSS: border-.+ negative values are not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS border includes a negative-valued property'
+        }
+      },
+      nuVnu: {
         '^CSS: border-.+ negative values are not allowed.*$': {
           variable: true,
           quality: 1,
@@ -1094,6 +1158,13 @@ exports.issues = {
           quality: 1,
           what: 'CSS flex value is negative'
         }
+      },
+      nuVnu: {
+        '^CSS: flex: .+ negative values are not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS flex value is negative'
+        }
       }
     }
   },
@@ -1109,6 +1180,13 @@ exports.issues = {
           quality: 1,
           what: 'One of the CSS padding values is negative'
         }
+      },
+      nuVnu: {
+        '^CSS: padding[-a-z]*: .+ negative values are not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'One of the CSS padding values is negative'
+        }
       }
     }
   },
@@ -1119,6 +1197,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        '^CSS: gap: .+ negative values are not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS gap value is negative'
+        }
+      },
+      nuVnu: {
         '^CSS: gap: .+ negative values are not allowed.*$': {
           variable: true,
           quality: 1,
@@ -1149,6 +1234,23 @@ exports.issues = {
           quality: 1,
           what: 'CSS background URL is invalid'
         }
+      },
+      nuVnu: {
+        '^CSS: background: .+ is not a color value.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS background color is misdefined'
+        },
+        '^CSS: background: The .+ argument to the .+ function should be .+, not .+$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS background function has an invalid argument'
+        },
+        '^CSS: _background: url.+ is an incorrect URL.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS background URL is invalid'
+        }
       }
     }
   },
@@ -1159,6 +1261,18 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        '^CSS: background-image: .+ is not a background-image value.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS background image is misdefined'
+        },
+        '^CSS: background-image: url.+ is an incorrect URL.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS background image is misdefined'
+        }
+      },
+      nuVnu: {
         '^CSS: background-image: .+ is not a background-image value.*$': {
           variable: true,
           quality: 1,
@@ -1284,6 +1398,13 @@ exports.issues = {
           what: 'img element with alt="" has a role attribute'
         }
       },
+      nuVnu: {
+        'An img element which has an alt attribute whose value is the empty string must not have a role attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'img element with alt="" has a role attribute'
+        }
+      },
       qualWeb: {
         'QW-ACT-R48': {
           variable: false,
@@ -1341,6 +1462,18 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Consider adding a lang attribute to the html start tag to declare the language of this document.': {
+          variable: false,
+          quality: 1,
+          what: 'html start tag has no lang attribute to declare the language of the page'
+        },
+        '^This document appears to be written in .+ Consider .+ing lang=.+$': {
+          variable: true,
+          quality: 1,
+          what: 'html start tag has no lang attribute to declare the language of the page'
+        }
+      },
+      nuVnu: {
         'Consider adding a lang attribute to the html start tag to declare the language of this document.': {
           variable: false,
           quality: 1,
@@ -1464,6 +1597,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'When the attribute xml:lang in no namespace is specified, the element must also have the attribute lang present with the same value.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has no lang attrbute matching its xml:lang attribute'
+        }
+      },
+      nuVnu: {
         'When the attribute xml:lang in no namespace is specified, the element must also have the attribute lang present with the same value.': {
           variable: false,
           quality: 1,
@@ -1875,6 +2015,13 @@ exports.issues = {
           what: 'for attribute of the label element does not reference a non-hidden form control'
         }
       },
+      nuVnu: {
+        'The value of the for attribute of the label element must be the ID of a non-hidden form control.': {
+          variable: false,
+          quality: 1,
+          what: 'for attribute of the label element does not reference a non-hidden form control'
+        }
+      },
       wax: {
         'This label\'s "for" attribute contains an ID for an element that is not a form control. Ensure that you have entered the correct ID for the intended element.': {
           variable: false,
@@ -1896,6 +2043,13 @@ exports.issues = {
           quality: 1,
           what: 'label element has a labelable descendant whose ID differs from the for attribute of the label'
         }
+      },
+      nuVnu: {
+        '^Any .+ descendant of a label element with a for attribute must have an ID value that matches that for attribute.*$': {
+          variable: true,
+          quality: 1,
+          what: 'label element has a labelable descendant whose ID differs from the for attribute of the label'
+        }
       }
     }
   },
@@ -1911,6 +2065,13 @@ exports.issues = {
           quality: 1,
           what: 'Element with a non-labelable role has an aria-label attribute'
         }
+      },
+      nuVnu: {
+        'The aria-label attribute must not be specified on any div element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a non-labelable role has an aria-label attribute'
+        }
       }
     }
   },
@@ -1921,6 +2082,13 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        'Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)': {
+          variable: false,
+          quality: 1,
+          what: 'aria-label attribute is misused?'
+        }
+      },
+      nuVnu: {
         'Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)': {
           variable: false,
           quality: 1,
@@ -1943,6 +2111,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Attribute aria-activedescendant value should either refer to a descendant element, or should be accompanied by attribute aria-owns.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has no aria-owns attribute but its aria-activedescendant attribute references a non-descendant'
+        }
+      },
+      nuVnu: {
         'Attribute aria-activedescendant value should either refer to a descendant element, or should be accompanied by attribute aria-owns.': {
           variable: false,
           quality: 1,
@@ -1975,6 +2150,18 @@ exports.issues = {
           quality: 1,
           what: 'aria-owns attribute references an element not in the document'
         }
+      },
+      nuVnu: {
+        'The aria-controls attribute must point to an element in the same document.': {
+          variable: false,
+          quality: 1,
+          what: 'aria-controls attribute references an element not in the document'
+        },
+        'The aria-owns attribute must point to an element in the same document.': {
+          variable: false,
+          quality: 1,
+          what: 'aria-owns attribute references an element not in the document'
+        }
       }
     }
   },
@@ -1992,6 +2179,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'The aria-describedby attribute must point to an element in the same document.': {
+          variable: false,
+          quality: 1,
+          what: 'aria-describedby attribute references an element not in the document'
+        }
+      },
+      nuVnu: {
         'The aria-describedby attribute must point to an element in the same document.': {
           variable: false,
           quality: 1,
@@ -2082,6 +2276,18 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Any input descendant of a label element with a for attribute must have an ID value that matches that for attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'input id differs from the value of the for attribute of the enclosing label element'
+        },
+        'The aria-labelledby attribute must point to an element in the same document.': {
+          variable: false,
+          quality: 1,
+          what: 'aria-labelledby attribute references an element not in the document'
+        }
+      },
+      nuVnu: {
         'Any input descendant of a label element with a for attribute must have an ID value that matches that for attribute.': {
           variable: false,
           quality: 1,
@@ -2385,6 +2591,18 @@ exports.issues = {
           what: 'Element has an empty href attribute'
         }
       },
+      nuVnu: {
+        'Bad value  for attribute href on element link: Must be non-empty.': {
+          variable: false,
+          quality: 1,
+          what: 'link element has an empty href attribute'
+        },
+        'Attribute href without an explicit value seen. The attribute may be dropped by IE7.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an empty href attribute'
+        }
+      },
       wax: {
         'Link element is missing a non-empty href attribute pointing to the resource being linked.': {
           variable: false,
@@ -2401,6 +2619,13 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
+        'A link element must have an href or imagesrcset attribute, or both.': {
+          variable: false,
+          quality: 1,
+          what: 'link element has neither an href nor an imagesrcset attribute'
+        }
+      },
+      nuVnu: {
         'A link element must have an href or imagesrcset attribute, or both.': {
           variable: false,
           quality: 1,
@@ -2450,6 +2675,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Element a is missing required attribute href.': {
+          variable: false,
+          quality: 1,
+          what: 'a element has no href attribute'
+        }
+      },
+      nuVnu: {
         'Element a is missing required attribute href.': {
           variable: false,
           quality: 1,
@@ -2792,6 +3024,28 @@ exports.issues = {
           quality: 1,
           what: 'Element is select and has no child option element, but its attributes require one'
         }
+      },
+      nuVnu: {
+        'The document role is not allowed for element select without a multiple attribute and without a size attribute whose value is greater than 1.': {
+          variable: false,
+          quality: 1,
+          what: 'select element is not multiple or has no size greater than 1 but has a document role'
+        },
+        'The first child option element of a select element with a required attribute, and without a multiple attribute, and without a size attribute whose value is greater than 1, must have either an empty value attribute, or must have no text content. Consider either adding a placeholder option label, or adding a size attribute with a value equal to the number of option elements.': {
+          variable: false,
+          quality: 1,
+          what: 'option element has a nonempty value'
+        },
+        'The select element cannot have more than one selected option descendant unless the multiple attribute is specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is select and has no multiple attribute, but has more than 1 selected option'
+        },
+        'A select element with a required attribute, and without a multiple attribute, and without a size attribute whose value is greater than 1, must have a child option element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is select and has no child option element, but its attributes require one'
+        }
       }
     }
   },
@@ -2802,6 +3056,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'Attribute alt not allowed on element button at this point.': {
+          variable: false,
+          quality: 1,
+          what: 'button element has an alt attribute'
+        }
+      },
+      nuVnu: {
         'Attribute alt not allowed on element button at this point.': {
           variable: false,
           quality: 1,
@@ -2888,6 +3149,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Element input with attribute type whose value is button must have non-empty attribute value.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type=button has no nonempty value attribute'
+        }
+      },
+      nuVnu: {
         'Element input with attribute type whose value is button must have non-empty attribute value.': {
           variable: false,
           quality: 1,
@@ -3001,6 +3269,13 @@ exports.issues = {
           what: 'Element has no required container or owner'
         }
       },
+      nuVnu: {
+        '^An element with role=.+ must be contained in, or owned by, an element with role=.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has no required container or owner'
+        }
+      },
       qualWeb: {
         'QW-ACT-R33': {
           variable: false,
@@ -3043,6 +3318,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^Element .+ is missing a required instance of child element .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is missing a required child'
+        }
+      },
+      nuVnu: {
         '^Element .+ is missing a required instance of child element .+$': {
           variable: true,
           quality: 1,
@@ -3243,6 +3525,13 @@ exports.issues = {
           what: 'viewport value prevents users from resizing the document'
         }
       },
+      nuVnu: {
+        'Consider avoiding viewport values that prevent users from resizing documents.': {
+          variable: false,
+          quality: 1,
+          what: 'viewport value prevents users from resizing the document'
+        }
+      },
       qualWeb: {
         'QW-ACT-R14': {
           variable: false,
@@ -3427,6 +3716,13 @@ exports.issues = {
           quality: 1,
           what: 'Text line height is negative'
         }
+      },
+      nuVnu: {
+        '^CSS: line-height: .* negative values are not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Text line height is negative'
+        }
       }
     }
   },
@@ -3492,6 +3788,13 @@ exports.issues = {
           quality: 1,
           what: 'Element does not exist in HTML'
         }
+      },
+      nuVnu: {
+        '^Saw a start tag [a-z]+.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element does not exist in HTML'
+        }
       }
     }
   },
@@ -3530,6 +3833,13 @@ exports.issues = {
           what: 'Element has a body ancestor but no itemprop or valid rel attribute'
         }
       },
+      nuVnu: {
+        'A link element must not appear as a descendant of a body element unless the link element has an itemprop attribute or has a rel attribute whose value contains dns-prefetch, modulepreload, pingback, preconnect, prefetch, preload, prerender, or stylesheet.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a body ancestor but no itemprop or valid rel attribute'
+        }
+      },
       wax: {
         'Link elements can only be located in the head section of the document.': {
           variable: false,
@@ -3558,6 +3868,23 @@ exports.issues = {
         }
       },
       nuVal: {
+        'A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload or the value prefetch.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an as attribute but no rel attribute with preload, modulepreload, or prefetch as its value'
+        },
+        'A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an as attribute but no rel attribute with preload or modulepreload as its value'
+        },
+        'A link element with a color attribute must have a rel attribute that contains the value mask-icon.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a color attribute but no rel attribute with mask-icon as its value'
+        }
+      },
+      nuVnu: {
         'A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload or the value prefetch.': {
           variable: false,
           quality: 1,
@@ -3635,6 +3962,53 @@ exports.issues = {
           quality: 1,
           what: 'Attribute of a meta element has an invalid value'
         }
+      },
+      nuVnu: {
+        '^Attribute .+ not allowed on element meta at this point.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute is not allowed on a meta element here'
+        },
+        '^Element meta is missing one or more of the following attributes: .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is missing a required attribute'
+        },
+        'A document must not include more than one meta element with its name attribute set to the value description.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with name="description" is not the only meta element with that name'
+        },
+        'A document must not include both a meta element with an http-equiv attribute whose value is content-type, and a meta element with a charset attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with http-equiv="content-type" is incompatible with the meta element with a charset attribute'
+        },
+        'A document must not include more than one meta element with a http-equiv attribute whose value is content-type.': {
+          variable: false,
+          quality: 1,
+          what: 'Page has more than 1 meta element with http-equiv="content-type"'
+        },
+        'A meta element with an http-equiv attribute whose value is X-UA-Compatible must have a content attribute with the value IE=edge.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with http-equiv="X-UA-Compatible" has no content="IE=edge"'
+        },
+        'A document must not include more than one meta element with a charset attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'More than 1 meta element has a charset attribute'
+        },
+        'A charset attribute on a meta element found after the first 1024 bytes.': {
+          variable: false,
+          quality: 1,
+          what: 'charset attribute on a meta element appears after 1024 bytes'
+        },
+        '^Bad value .+ for attribute .+ on element meta.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute of a meta element has an invalid value'
+        }
       }
     }
   },
@@ -3645,6 +4019,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'meta element between head and body.': {
+          variable: false,
+          quality: 1,
+          what: 'meta element is between the head and body elements'
+        }
+      },
+      nuVnu: {
         'meta element between head and body.': {
           variable: false,
           quality: 1,
@@ -3675,6 +4056,23 @@ exports.issues = {
           quality: 1,
           what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
         }
+      },
+      nuVnu: {
+        'Element script must not have attribute defer unless attribute src is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script and has a defer attribute but no src attribute'
+        },
+        'Element script should not have attribute fetchpriority unless attribute src is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script and has a fetchpriority attribute but no src attribute'
+        },
+        'A script element with a src attribute must not have a type attribute whose value is anything other than the empty string, a JavaScript MIME type, or module.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
+        }
       }
     }
   },
@@ -3690,6 +4088,13 @@ exports.issues = {
           quality: 1,
           what: 'Element has an itemid attribute without both an itemscope and an itemtype attribute'
         }
+      },
+      nuVnu: {
+        'The itemid attribute must not be specified on elements that do not have both an itemscope attribute and an itemtype attribute specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an itemid attribute without both an itemscope and an itemtype attribute'
+        }
       }
     }
   },
@@ -3700,6 +4105,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'The itemtype attribute must not be specified on elements that do not have an itemscope attribute specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an itemtype attribute without an itemscope attribute'
+        }
+      },
+      nuVnu: {
         'The itemtype attribute must not be specified on elements that do not have an itemscope attribute specified.': {
           variable: false,
           quality: 1,
@@ -3896,6 +4308,23 @@ exports.issues = {
           what: 'Invalid role'
         }
       },
+      nuVnu: {
+        'Bad value dialog for attribute role on element li.': {
+          variable: false,
+          quality: 1,
+          what: 'dialog role is not valid for an li element'
+        },
+        'An img element with no alt attribute must not have a role attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'img element has a role attribute but no alt attribute'
+        },
+        '^Discarding unrecognized token .+ from value of attribute role. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid role'
+        }
+      },
       qualWeb: {
         'QW-ACT-R20': {
           variable: false,
@@ -3934,6 +4363,18 @@ exports.issues = {
           quality: 1,
           what: 'Table cell has a role attribute'
         }
+      },
+      nuVnu: {
+        'A figure element with a figcaption descendant must not have a role attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'figure element has a figcaption descendant but has a role attribute'
+        },
+        '^The role attribute must not be used on a .+ element which has a table ancestor with no role attribute, or with a role attribute whose value is table, grid, or treegrid.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Table cell has a role attribute'
+        }
       }
     }
   },
@@ -3951,6 +4392,28 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^The .+ role is unnecessary for element .+$': {
+          variable: true,
+          quality: 1,
+          what: 'explicit role is redundant for its element'
+        },
+        '^Element .+ does not need a role attribute.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element needs no role attribute'
+        },
+        'The searchbox role is unnecessary for an input element that has no list attribute and whose type is search.': {
+          variable: false,
+          quality: 1,
+          what: 'explicit role is redundant for a search-type input element without a list attribute'
+        },
+        'The textbox role is unnecessary for an input element that has no list attribute and whose type is text.': {
+          variable: false,
+          quality: 1,
+          what: 'explicit role is redundant for a text-type input element without a list attribute'
+        }
+      },
+      nuVnu: {
         '^The .+ role is unnecessary for element .+$': {
           variable: true,
           quality: 1,
@@ -4098,6 +4561,73 @@ exports.issues = {
           what: 'Element with a srcset attribute with a width has no valid sizes attribute'
         }
       },
+      nuVnu: {
+        'The itemprop attribute was specified, but the element is not a property of any item.': {
+          variable: false,
+          quality: 1,
+          what: 'itemprop attribute is on an element that is not a property of an item'
+        },
+        'An aria-disabled attribute whose value is true should not be specified on an a element that has an href attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'a element has aria-disabled=true but has an href attribute'
+        },
+        '^Attribute .+ not allowed on element .+ at this point.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute not allowed on this element'
+        },
+        '^Attribute .+ not allowed here.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute not allowed here'
+        },
+        '^Attribute .+ is not serializable as XML 1[.]0.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute is invalidly nonserializable'
+        },
+        '^Attribute .+ is only allowed when .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute is invalid here'
+        },
+        'A document must not include more than one autofocus attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Page includes more than one autofocus attribute'
+        },
+        'A link element with a sizes attribute must have a rel attribute that contains the value icon or the value apple-touch-icon or the value apple-touch-icon-precomposed.': {
+          variable: false,
+          quality: 1,
+          what: 'link element has a sizes attribute but no icon-type rel attribute'
+        },
+        'An input element with a type attribute whose value is hidden must not have any aria-* attributes.': {
+          variable: false,
+          quality: 1,
+          what: 'hidden-type input element has an ARIA attribute'
+        },
+        'The sizes attribute may be specified only if the srcset attribute is also present.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a sizes attribute but no srcset attribute'
+        },
+        'The sizes attribute must only be specified if the srcset attribute is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a sizes attribute but no srcset attribute'
+        },
+        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be present.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a srcset attribute with a width has no sizes attribute'
+        },
+        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a srcset attribute with a width has no valid sizes attribute'
+        }
+      },
       wax: {
         'Elements must only use allowed ARIA attributes': {
           variable: false,
@@ -4126,6 +4656,33 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^Bad value .* for attribute .+ on element .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute on this element has an invalid value'
+        },
+        '^Bad value .+ for the attribute .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute has an invalid value'
+        },
+        '^Bad value  for attribute .+ on element .+: Must not be empty.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute has an invalidly empty value'
+        },
+        '^Bad value  for attribute (?:width|height) on element img: The empty string is not a valid non-negative integer.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute has an empty value'
+        },
+        'A script element with a defer attribute must not have a type attribute with the value module.': {
+          variable: false,
+          quality: 1,
+          what: 'script element with a defer attribute has type="module"'
+        }
+      },
+      nuVnu: {
         '^Bad value .* for attribute .+ on element .+$': {
           variable: true,
           quality: 1,
@@ -4193,6 +4750,33 @@ exports.issues = {
           quality: 1,
           what: 'Element is missing a required attribute'
         }
+      },
+      nuVnu: {
+        '^Element image is missing required attribute (?:height|width).*$': {
+          variable: true,
+          quality: 1,
+          what: 'image element has no height attribute or has no width attribute'
+        },
+        '^Element .+ is missing one or more of the following attributes: .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is missing a required attribute'
+        },
+        'A link element with a rel attribute that contains the value preload must have an as attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'link element with rel="preload" is missing an as attribute'
+        },
+        'A source element that has a following sibling source element or img element with a srcset attribute must have a media attribute and/or type attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'source or img element is missing a media or type attribute'
+        },
+        '^Element .+ is missing required attribute .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is missing a required attribute'
+        }
       }
     }
   },
@@ -4208,6 +4792,13 @@ exports.issues = {
           quality: 1,
           what: 'Element has no role attribute'
         }
+      },
+      nuVnu: {
+        '^Element .+ is missing required attribute role.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has no role attribute'
+        }
       }
     }
   },
@@ -4218,6 +4809,13 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        '^Element .+ is missing one or more of the following attributes: role.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has no role attribute but needs one?'
+        }
+      },
+      nuVnu: {
         '^Element .+ is missing one or more of the following attributes: role.*$': {
           variable: true,
           quality: 1,
@@ -4254,6 +4852,13 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^Element .+ is missing required attribute aria-.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is missing a required ARIA attribute'
+        }
+      },
+      nuVnu: {
         '^Element .+ is missing required attribute aria-.+$': {
           variable: true,
           quality: 1,
@@ -4410,6 +5015,53 @@ exports.issues = {
           what: 'input element with a button role and type="checkbox" has no aria-pressed="true"'
         }
       },
+      nuVnu: {
+        'The aria-hidden attribute must not be specified on the noscript element.': {
+          variable: false,
+          quality: 1,
+          what: 'noscript element has an aria-hidden attribute'
+        },
+        'The aria-checked attribute should not be used on an input element which has a type attribute whose value is radio.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type="radio" has an aria-checked attribute'
+        },
+        '^Bad value  for attribute .+ on element .+: Must be non-empty.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute value is empty'
+        },
+        '^Bad value  for attribute aria-hidden on element .+$': {
+          variable: true,
+          quality: 1,
+          what: 'aria-hidden attribute has an empty value'
+        },
+        'The form attribute must refer to a form element.': {
+          variable: false,
+          quality: 1,
+          what: 'form attribute does not reference a form element'
+        },
+        'The aria-checked attribute should not be used on an input element which has a type attribute whose value is checkbox.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type checkbox has an aria-checked attribute'
+        },
+        'The aria-checked attribute must not be used on an input element which has a type attribute whose value is checkbox.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type checkbox has an aria-checked attribute'
+        },
+        'An img element with no alt attribute must not have any aria-* attributes other than aria-hidden.': {
+          variable: false,
+          quality: 1,
+          what: 'img element has no alt attribute but has an ARIA attribute other than aria-hidden'
+        },
+        'An input element with a type attribute whose value is checkbox and with a role attribute whose value is button must have an aria-pressed attribute whose value is true.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with a button role and type="checkbox" has no aria-pressed="true"'
+        }
+      },
       qualWeb: {
         'QW-ACT-R25': {
           variable: false,
@@ -4455,6 +5107,18 @@ exports.issues = {
         }
       },
       nuVal: {
+        '^Attribute aria-.+ is unnecessary for elements that have attribute .+$': {
+          variable: true,
+          quality: 1,
+          what: 'ARIA attribute is redundant with the synonymous native attribute'
+        },
+        'The aria-valuemax attribute must not be used on an element which has a max attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has the max attribute but also the aria-valuemax attribute'
+        }
+      },
+      nuVnu: {
         '^Attribute aria-.+ is unnecessary for elements that have attribute .+$': {
           variable: true,
           quality: 1,
@@ -4547,6 +5211,18 @@ exports.issues = {
         }
       },
       nuVal: {
+        'Bad value  for attribute autocomplete on element input: Must not be empty.': {
+          variable: false,
+          quality: 1,
+          what: 'autocomplete attribute has an empty value'
+        },
+        'An input element with a type attribute whose value is hidden must not have an autocomplete attribute whose value is on or off.': {
+          variable: false,
+          quality: 1,
+          what: 'autocomplete attribute belongs to a hidden element but has an on or off value'
+        }
+      },
+      nuVnu: {
         'Bad value  for attribute autocomplete on element input: Must not be empty.': {
           variable: false,
           quality: 1,
@@ -4946,6 +5622,18 @@ exports.issues = {
           quality: 1,
           what: 'aria-owns attribute has an empty value'
         }
+      },
+      nuVnu: {
+        '^Bad value  for attribute .+ on element .+: An ID must not be the empty string.*$': {
+          variable: true,
+          quality: 1,
+          what: 'id attribute has an empty value'
+        },
+        '^Bad value  for attribute aria-owns on element .+: An IDREFS value must contain at least one non-whitespace character.*$': {
+          variable: true,
+          quality: 1,
+          what: 'aria-owns attribute has an empty value'
+        }
       }
     }
   },
@@ -4961,6 +5649,13 @@ exports.issues = {
           quality: 1,
           what: 'target attribute on an a element is empty'
         }
+      },
+      nuVnu: {
+        'Bad value  for attribute target on element a: Browsing context name must be at least one character long.': {
+          variable: false,
+          quality: 1,
+          what: 'target attribute on an a element is empty'
+        }
       }
     }
   },
@@ -4971,6 +5666,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'Heading cannot be a child of another heading.': {
+          variable: false,
+          quality: 1,
+          what: 'Heading is within a heading'
+        }
+      },
+      nuVnu: {
         'Heading cannot be a child of another heading.': {
           variable: false,
           quality: 1,
@@ -5034,6 +5736,13 @@ exports.issues = {
           what: 'Empty heading'
         }
       },
+      nuVnu: {
+        'Empty heading.': {
+          variable: false,
+          quality: 1,
+          what: 'Empty heading'
+        }
+      },
       qualWeb: {
         'QW-ACT-R35': {
           variable: false,
@@ -5084,6 +5793,13 @@ exports.issues = {
           quality: 1,
           what: 'type attribute is invalid'
         }
+      },
+      nuVnu: {
+        'The only allowed value for the type attribute for the style element is text/css (with no parameters). (But the attribute is not needed and should be omitted altogether.)': {
+          variable: false,
+          quality: 1,
+          what: 'type attribute is invalid'
+        }
       }
     }
   },
@@ -5094,6 +5810,18 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        'The type attribute is unnecessary for JavaScript resources.': {
+          variable: false,
+          quality: 1,
+          what: 'type attribute is unnecessary for a JavaScript resource'
+        },
+        'The type attribute for the style element is not needed and should be omitted.': {
+          variable: false,
+          quality: 1,
+          what: 'type attribute is unnecessary for a style element'
+        }
+      },
+      nuVnu: {
         'The type attribute is unnecessary for JavaScript resources.': {
           variable: false,
           quality: 1,
@@ -5248,6 +5976,13 @@ exports.issues = {
           what: 'Element has an empty title attribute'
         }
       },
+      nuVnu: {
+        'Element title must not be empty.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an empty title attribute'
+        }
+      },
       wax: {
         'This form control has a "title" attribute that is empty or contains only spaces. It will be ignored for labelling test purposes.': {
           variable: false,
@@ -5265,6 +6000,18 @@ exports.issues = {
     max: 1,
     tools: {
       nuVal: {
+        'Start tag seen without seeing a doctype first. Expected <!DOCTYPE html>.': {
+          variable: false,
+          quality: 1,
+          what: 'Page does not start with <!DOCTYPE html>'
+        },
+        'End of file seen without seeing a doctype first. Expected <!DOCTYPE html>.': {
+          variable: false,
+          quality: 1,
+          what: 'Page does not include <!DOCTYPE html>'
+        }
+      },
+      nuVnu: {
         'Start tag seen without seeing a doctype first. Expected <!DOCTYPE html>.': {
           variable: false,
           quality: 1,
@@ -5298,6 +6045,13 @@ exports.issues = {
           quality: 1,
           what: 'DOCTYPE is in an invalid location'
         }
+      },
+      nuVnu: {
+        'Stray doctype.': {
+          variable: false,
+          quality: 1,
+          what: 'DOCTYPE is in an invalid location'
+        }
       }
     }
   },
@@ -5309,6 +6063,13 @@ exports.issues = {
     max: 1,
     tools: {
       nuVal: {
+        'Almost standards mode doctype. Expected <!DOCTYPE html>.': {
+          variable: false,
+          quality: 1,
+          what: 'document type declaration differs from <!DOCTYPE html>'
+        }
+      },
+      nuVnu: {
         'Almost standards mode doctype. Expected <!DOCTYPE html>.': {
           variable: false,
           quality: 1,
@@ -5609,6 +6370,13 @@ exports.issues = {
           what: 'Page contains more than 1 h1 element'
         }
       },
+      nuVnu: {
+        'Consider using the h1 element as a top-level heading only (all h1 elements are treated as top-level headings by many screen readers and other tools).': {
+          variable: false,
+          quality: 1,
+          what: 'Page contains more than 1 h1 element'
+        }
+      },
       wave: {
         'h1_missing': {
           variable: false,
@@ -5662,6 +6430,13 @@ exports.issues = {
           quality: 1,
           what: 'article has no heading'
         }
+      },
+      nuVnu: {
+        'Article lacks heading. Consider using h2-h6 elements to add identifying headings to all articles.': {
+          variable: false,
+          quality: 1,
+          what: 'article has no heading'
+        }
       }
     }
   },
@@ -5672,6 +6447,18 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        'Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.': {
+          variable: false,
+          quality: 1,
+          what: 'section has no heading'
+        },
+        'Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed.': {
+          variable: false,
+          quality: 1,
+          what: 'section has no heading'
+        }
+      },
+      nuVnu: {
         'Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.': {
           variable: false,
           quality: 1,
@@ -5980,6 +6767,13 @@ exports.issues = {
           what: 'dl element has no child element'
         }
       },
+      nuVnu: {
+        'Element dl is missing a required child element.': {
+          variable: false,
+          quality: 1,
+          what: 'dl element has no child element'
+        }
+      },
       wax: {
         '<ul> and <ol> must only directly contain <li>, <script> or <template> elements': {
           variable: false,
@@ -6215,6 +7009,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'Element option without attribute label must not be empty.': {
+          variable: false,
+          quality: 1,
+          what: 'option element is empty but has no label attribute'
+        }
+      },
+      nuVnu: {
         'Element option without attribute label must not be empty.': {
           variable: false,
           quality: 1,
@@ -6516,6 +7317,23 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
+        '^A table row was .+ columns wide, which is less than the column count established by the first row.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Table row has a column count smaller than that of the first row'
+        },
+        '^A table row was .+ columns wide and exceeded the column count established by the first row.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Table row has a column count larger than that of the first row'
+        },
+        '^Table column [0-9]+ established by element td has no cells beginning in it.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is td but the prior cells in its table column do not exist'
+        }
+      },
+      nuVnu: {
         '^A table row was .+ columns wide, which is less than the column count established by the first row.*$': {
           variable: true,
           quality: 1,
@@ -6922,6 +7740,13 @@ exports.issues = {
           quality: 1,
           what: 'div element is inside a table element'
         }
+      },
+      nuVnu: {
+        'Start tag div seen in table.': {
+          variable: false,
+          quality: 1,
+          what: 'div element is inside a table element'
+        }
       }
     }
   },
@@ -6937,6 +7762,13 @@ exports.issues = {
           quality: 1,
           what: 'form element is inside a table element'
         }
+      },
+      nuVnu: {
+        'Start tag form seen in table.': {
+          variable: false,
+          quality: 1,
+          what: 'form element is inside a table element'
+        }
       }
     }
   },
@@ -6947,6 +7779,13 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        'Start tag input seen in table.': {
+          variable: false,
+          quality: 1,
+          what: 'input element is inside a table element'
+        }
+      },
+      nuVnu: {
         'Start tag input seen in table.': {
           variable: false,
           quality: 1,
@@ -7226,6 +8065,93 @@ exports.issues = {
         }
       },
       nuVal: {
+        'The element a must not appear as a descendant of an element with the attribute role=link.': {
+          variable: false,
+          quality: 1,
+          what: 'a element is a descendant of an element with a link role'
+        },
+        'The element a must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'a element is a descendant of an element with a button role'
+        },
+        'The element button must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'button element is a descendant of an a element'
+        },
+        'An element with the attribute role=button must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a button role is a descendant of an a element'
+        },
+        'The element button must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'button element is a descendant of an element with a button role'
+        },
+        'An element with the attribute role=button must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a button role is a descendant of an element with a button role'
+        },
+        'An element with the attribute role=button must not appear as a descendant of the button element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a button role is a descendant of a button element'
+        },
+        'The element label must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'label element is a descendant of an element with a button role'
+        },
+        'The element select must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'select element is a descendant of an element with a button role'
+        },
+        'An element with the attribute tabindex must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'descendant of an a element has a tabindex attribute'
+        },
+        'An element with the attribute tabindex must not appear as a descendant of an element with the attribute role=link.': {
+          variable: false,
+          quality: 1,
+          what: 'descendant of an element with a link role has a tabindex attribute'
+        },
+        'An element with the attribute tabindex must not appear as a descendant of the button element.': {
+          variable: false,
+          quality: 1,
+          what: 'descendant of a button element has a tabindex attribute'
+        },
+        'An element with the attribute tabindex must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'descendant of an element with a button role has a tabindex attribute'
+        },
+        'An element with the attribute role=menu must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a menu role is a descendant of an a element'
+        },
+        'An element with the attribute role=menuitem must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a menuitem role is a descendant of an a element'
+        },
+        'An element with the attribute role=option must not appear as a descendant of the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with an option role is a descendant of an a element'
+        },
+        'An element with the attribute role=menu must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a menu role is a descendant of an element with a button role'
+        }
+      },
+      nuVnu: {
         'The element a must not appear as a descendant of an element with the attribute role=link.': {
           variable: false,
           quality: 1,
@@ -7717,6 +8643,13 @@ exports.issues = {
           what: 'Page includes more than 1 visible main element'
         }
       },
+      nuVnu: {
+        'A document must not include more than one visible main element.': {
+          variable: false,
+          quality: 1,
+          what: 'Page includes more than 1 visible main element'
+        }
+      },
       wax: {
         'Include only one main landmark in the document.': {
           variable: false,
@@ -7910,6 +8843,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'Saw a form start tag, but there was already an active form element. Nested forms are not allowed. Ignoring the tag.': {
+          variable: false,
+          quality: 1,
+          what: 'form element nested within another form element'
+        }
+      },
+      nuVnu: {
         'Saw a form start tag, but there was already an active form element. Nested forms are not allowed. Ignoring the tag.': {
           variable: false,
           quality: 1,
@@ -8247,6 +9187,18 @@ exports.issues = {
           quality: 1,
           what: 'Element has multiple labelable descendants.'
         }
+      },
+      nuVnu: {
+        'The label element may contain at most one button, input, meter, output, progress, select, or textarea descendant.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has more than 1 labelable descendant.'
+        },
+        'label element with multiple labelable descendants.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has multiple labelable descendants.'
+        }
       }
     }
   },
@@ -8335,6 +9287,13 @@ exports.issues = {
     weight: 2,
     tools: {
       nuVal: {
+        '^Potentially bad value .+ for attribute sandbox on element iframe: Setting both allow-scripts and allow-same-origin is not recommended, because it effectively enables an embedded page to break out of all sandboxing.*$': {
+          variable: true,
+          quality: 1,
+          what: 'iframe element has a vulnerable sandbox value containing both allow-scripts and allow-same-origin'
+        }
+      },
+      nuVnu: {
         '^Potentially bad value .+ for attribute sandbox on element iframe: Setting both allow-scripts and allow-same-origin is not recommended, because it effectively enables an embedded page to break out of all sandboxing.*$': {
           variable: true,
           quality: 1,
@@ -8866,6 +9825,13 @@ exports.issues = {
           quality: 1,
           what: 'Element has an invalid parent'
         }
+      },
+      nuVnu: {
+        '^Element .+ not allowed as child of element .+ in this context.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has an invalid parent'
+        }
       }
     }
   },
@@ -8947,6 +9913,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        '^Bad value  for attribute tabindex on element .+: The empty string is not a valid integer.*$': {
+          variable: true,
+          quality: 1,
+          what: 'tabindex attribute has an empty value instead of an integer'
+        }
+      },
+      nuVnu: {
         '^Bad value  for attribute tabindex on element .+: The empty string is not a valid integer.*$': {
           variable: true,
           quality: 1,
@@ -9479,6 +10452,13 @@ exports.issues = {
           quality: 1,
           what: 'inputmode attribute is unsupported by some browsers'
         }
+      },
+      nuVnu: {
+        'The inputmode attribute is not supported in all browsers. Please be sure to test, and consider using a polyfill.': {
+          variable: false,
+          quality: 1,
+          what: 'inputmode attribute is unsupported by some browsers'
+        }
       }
     }
   },
@@ -9515,6 +10495,38 @@ exports.issues = {
         }
       },
       nuVal: {
+        'The border attribute is obsolete. Consider specifying img { border: 0; } in CSS instead.': {
+          variable: false,
+          quality: 1,
+          what: 'border element is obsolete'
+        },
+        '^The .+ attribute on the .+ element is obsolete.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute is obsolete on its element'
+        },
+        'The only allowed value for the charset attribute for the script element is utf-8. (But the attribute is not needed and should be omitted altogether.)': {
+          variable: false,
+          quality: 1,
+          what: 'charset attribute has a value other than utf-8 and is unnecessary'
+        },
+        'The only allowed value for the charset attribute for the meta element is utf-8.': {
+          variable: false,
+          quality: 1,
+          what: 'charset attribute has a value other than utf-8 and is unnecessary'
+        },
+        'The name attribute is obsolete. Consider putting an id attribute on the nearest container instead.': {
+          variable: false,
+          quality: 1,
+          what: 'name attribute is obsolete'
+        },
+        '^Potentially bad value .+ for attribute .+ on element .+: The language subtag .+ is deprecated.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute value is a deprecated language subtag'
+        }
+      },
+      nuVnu: {
         'The border attribute is obsolete. Consider specifying img { border: 0; } in CSS instead.': {
           variable: false,
           quality: 1,
@@ -9623,6 +10635,23 @@ exports.issues = {
           what: 'Language declaration in a meta element is obsolete'
         }
       },
+      nuVnu: {
+        'The center element is obsolete. Use CSS instead.': {
+          variable: false,
+          quality: 1,
+          what: 'center element is obsolete'
+        },
+        'The font element is obsolete. Use CSS instead.': {
+          variable: false,
+          quality: 1,
+          what: 'font element is obsolete'
+        },
+        'Using the meta element to specify the document-wide default language is obsolete. Consider specifying the language on the root element instead.': {
+          variable: false,
+          quality: 1,
+          what: 'Language declaration in a meta element is obsolete'
+        }
+      },
       qualWeb: {
         'QW-BP10': {
           variable: false,
@@ -9671,6 +10700,23 @@ exports.issues = {
           quality: 1,
           what: 'Media feature is deprecated'
         }
+      },
+      nuVnu: {
+        'Legacy doctype. Expected <!DOCTYPE html>.': {
+          variable: false,
+          quality: 1,
+          what: 'doctype is obsolete'
+        },
+        'Obsolete doctype. Expected <!DOCTYPE html>.': {
+          variable: false,
+          quality: 1,
+          what: 'DOCTYPE is obsolete instead of html'
+        },
+        '^CSS: Deprecated media feature .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Media feature is deprecated'
+        }
       }
     }
   },
@@ -9701,6 +10747,28 @@ exports.issues = {
           quality: 1,
           what: 'CSS @import at-rule is after an at-rule other than @charset or @import'
         }
+      },
+      nuVnu: {
+        '^CSS: Unrecognized at-rule @.+$': {
+          variable: true,
+          quality: 1,
+          what: 'At-rule not recognized by CSS'
+        },
+        'CSS: This profile has a very specific syntax for @charset: @charset followed by exactly one space, followed by the name of the encoding in quotes, followed immediately by a semicolon.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS @charset at-rule has an invalid format'
+        },
+        'CSS: The @charset rule may only occur at the start of the style sheet. Please check that there are no spaces before it.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS @charset at-rule is not at the start of its style sheet'
+        },
+        'CSS: @import are not allowed after any valid statement other than @charset and @import.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS @import at-rule is after an at-rule other than @charset or @import'
+        }
       }
     }
   },
@@ -9711,6 +10779,168 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
+        'CSS: z-index: This number should be an integer.': {
+          variable: false,
+          quality: 1,
+          what: 'z-index style property has a non-integer value'
+        },
+        '^CSS: .+: Character .+ is neither a decimal digit number.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Nonnumeric character in a numeric style property'
+        },
+        'CSS: Parse Error. Style sheets should not include HTML syntax.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS style sheet includes HTML syntax'
+        },
+        '^CSS: column-count: .+ is not valid, only values greater than 0 allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS column-count property has a nonpositive value'
+        },
+        'CSS: font-size: One operand must be a number.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS font-size property has no numeric operand'
+        },
+        '^CSS: font-weight: .+ is not valid, only values greater than or equal to 1.0 are allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS font-weight property has a value smaller than 1'
+        },
+        '^CSS: font-weight: .+ is not valid, only values lower than or equal to 1000.0 are allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS font-weight property has a value greater than 1000'
+        },
+        '^CSS: .+: Parse Error.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid CSS'
+        },
+        '^CSS: .+: .+ is not a valid color 3 or 6 hexadecimals numbers.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid hexadecimal color in CSS'
+        },
+        '^CSS: .+: .+ is not a .+ value.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid value in CSS'
+        },
+        '^CSS: .+: Property .+ doesn\'t exist.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid property in CSS'
+        },
+        '^CSS: .+: only 0 can be a length. You must put a unit after your number.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Length in CSS is nonzero but has no unit'
+        },
+        '^CSS: .*only 0 can be a unit. You must put a unit after your number.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Number in CSS is nonzero but has no unit'
+        },
+        'CSS: Parse Error.': {
+          variable: false,
+          quality: 1,
+          what: 'Invalid CSS'
+        },
+        '^CSS: .+: Too many values or values are not recognized.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid CSS value or too many values'
+        },
+        '^CSS: .+: Invalid type: .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid type of CSS value'
+        },
+        '^CSS: .+: The types are incompatible.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Incompatible types of CSS values'
+        },
+        '^CSS: .+: Unknown dimension.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Unknown CSS dimension'
+        },
+        '^CSS: .+: Character array is missing "e" notation exponential mark.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Character array has no exponent mark e'
+        },
+        '^CSS: .+:   is an incorrect operator.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Space is misused as a CSS operator'
+        },
+        '^CSS: .+: , is an incorrect operator.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Comma is misused as a CSS operator'
+        },
+        '^CSS: Unknown pseudo-element or pseudo-class :.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Unknown pseudo-element or pseudo-class'
+        },
+        '^CSS: unrecognized media .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Unrecognized media value'
+        },
+        '^CSS: .+ is not a :lang.+ value.*$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS pseudo-class :lang() has an invalid value'
+        },
+        '^CSS: .+: Missing a semicolon before the .+$': {
+          variable: true,
+          quality: 1,
+          what: 'semicolon missing in CSS'
+        },
+        '^CSS: perspective: .+ is not valid, only values greater than 0 allowed.*$': {
+          variable: true,
+          quality: 0.5,
+          what: 'CSS perspective property has a nonpositive value'
+        },
+        '^CSS: .+: Lexical error at line .+, column .+ Encountered: .+$': {
+          variable: true,
+          quality: 1,
+          what: 'CSS property has a value with a lexical error'
+        },
+        '^CSS: transition: .+ is not valid, only values lower than or equal to 1.0 are allowed.*$': {
+          variable: true,
+          quality: 0.5,
+          what: 'CSS transition property has a value greater than 1'
+        },
+        'CSS: -webkit-mask: too few values for the property linear-gradient.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS webkit-mask linear-gradient property has too few values'
+        },
+        'CSS: --solidHeaderNavigationColor: Cannot invoke "org.w3c.css.values.CssValue.getType()" because "val" is null.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS solidHeaderNavigationColor property is null'
+        },
+        'CSS: --gradientHeaderBackgroundColor: Cannot invoke "org.w3c.css.values.CssValue.getType()" because "val" is null.': {
+          variable: false,
+          quality: 1,
+          what: 'CSS gradientHeaderBackgroundColor property is null'
+        },
+        '^CSS: In CSS1, a class name could start with a digit .+, unless it was a dimension .+ In CSS2, such classes are parsed as unknown dimensions .+ To make .+ a valid class, CSS2 requires the first digit to be escaped: .+$': {
+          variable: true,
+          quality: 0.5,
+          what: 'CSS class name starts with an unescaped digit'
+        }
+      },
+      nuVnu: {
         'CSS: z-index: This number should be an integer.': {
           variable: false,
           quality: 1,
@@ -9931,6 +11161,58 @@ exports.issues = {
           quality: 1,
           what: 'End tag has an attribute'
         }
+      },
+      nuVnu: {
+        '^Stray start tag .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid start tag'
+        },
+        '^Stray end tag .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid closing tag'
+        },
+        '^End tag [a-z]+\.$': {
+          variable: true,
+          quality: 1,
+          what: 'Closing tag of an ineligible element'
+        },
+        '^Start tag .+ seen but an element of the same type was already open.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is invalidly a descendant of another such element'
+        },
+        '^End tag for .+ seen, but there were unclosed elements.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is closed while an element within it is unclosed'
+        },
+        '^End tag .+ seen, but there were open elements.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is closed while an element within it is unclosed'
+        },
+        '^End tag .+ implied, but there were open elements.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is implicitly closed while an element within it is unclosed'
+        },
+        '^Unclosed element .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is unclosed'
+        },
+        '^No .+ element in scope but a .+ end tag seen.*$': {
+          variable: true,
+          quality: 1,
+          what: 'End tag for an element that is not in scope'
+        },
+        'End tag had attributes.': {
+          variable: false,
+          quality: 1,
+          what: 'End tag has an attribute'
+        }
       }
     }
   },
@@ -9941,6 +11223,13 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
+        '^End tag .+ violates nesting rules.*$': {
+          variable: true,
+          quality: 1,
+          what: 'End tag violates nesting rules'
+        }
+      },
+      nuVnu: {
         '^End tag .+ violates nesting rules.*$': {
           variable: true,
           quality: 1,
@@ -10016,6 +11305,68 @@ exports.issues = {
           quality: 1,
           what: 'Numeric character entity represents a carriage return'
         }
+      },
+      nuVnu: {
+        '^Bad value [^`]+ Tab, new line or carriage return found.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute value contains an illegal spacing character'
+        },
+        '^Bad character . after <. Probable cause: Unescaped <. Try escaping it as &lt;.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Left angle bracket is followed by an invalid character'
+        },
+        '^Saw .+ when expecting an attribute name. Probable cause: (?:.+ missing|Missing .+) immediately before.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid character appears where an attribute name must appear'
+        },
+        '^Bad element name .*: Code point .* is not allowed*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element name contains an invalid character'
+        },
+        '^Bad value .* for attribute href on element .+: Illegal character in path segment: .+ is not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'href attribute path value contains an invalid character in a segment'
+        },
+        '^Bad value .* for attribute src on element .+: Illegal character in path segment: .+ is not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'src attribute path value contains an invalid character in a segment'
+        },
+        '^Bad value .* for attribute href on element .+: Illegal character in query: .+ is not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'href attribute query value contains an invalid character'
+        },
+        '^Bad value .* for attribute src on element .+: Illegal character in query: .+ is not allowed.*$': {
+          variable: true,
+          quality: 1,
+          what: 'src attribute query value contains an invalid character'
+        },
+        '^Bad value .+ for attribute src on element .+: Tab, new line or carriage return found.*$': {
+          variable: true,
+          quality: 1,
+          what: 'src attribute value contains a tab, newline, or return character'
+        },
+        'Non-space character inside noscript inside head.': {
+          variable: false,
+          quality: 1,
+          what: 'noscript element inside the head element has a nonspace text-node child'
+        },
+        '^.+ in an unquoted attribute value. Probable causes: Attributes running together or a URL query string in an unquoted attribute value.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute has a value containing invalid punctuation'
+        },
+        'A numeric character reference expanded to carriage return.': {
+          variable: false,
+          quality: 1,
+          what: 'Numeric character entity represents a carriage return'
+        }
       }
     }
   },
@@ -10026,6 +11377,13 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        'Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.)': {
+          variable: false,
+          quality: 1,
+          what: '& not escaped or used in an unterminated character reference'
+        }
+      },
+      nuVnu: {
         'Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.)': {
           variable: false,
           quality: 1,
@@ -10051,6 +11409,18 @@ exports.issues = {
           quality: 1,
           what: 'time element has text content that is not in the time-datetime format'
         }
+      },
+      nuVnu: {
+        '^The text content of element .+ was not in the required format: Expected .+ but found .+ instead.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has text content with invalid format'
+        },
+        'The text content of element time was not in the required format: The literal did not satisfy the time-datetime format.': {
+          variable: false,
+          quality: 1,
+          what: 'time element has text content that is not in the time-datetime format'
+        }
       }
     }
   },
@@ -10061,6 +11431,118 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
+        '^End tag .+ did not match the name of the current open element (.+).*$': {
+          variable: true,
+          quality: 1,
+          what: 'End tag clippath conflicts with the current open element.'
+        },
+        '^Self-closing syntax .+ used on a non-void HTML element.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Self-closing syntax used on a non-void element'
+        },
+        'No space between attributes.': {
+          variable: true,
+          quality: 1,
+          what: 'No space between attributes'
+        },
+        'Saw <?. Probable cause: Attempt to use an XML processing instruction in HTML. (XML processing instructions are not supported in HTML.)': {
+          variable: false,
+          quality: 1,
+          what: 'Left angle bracket is followed by a question mark'
+        },
+        '^The aria-hidden attribute must not be specified on the .+ element.*$': {
+          variable: true,
+          quality: 1,
+          what: 'aria-hidden attribute is invalid for its element'
+        },
+        'The aria-hidden attribute must not be specified on an input element whose type attribute has the value hidden.': {
+          variable: false,
+          quality: 1,
+          what: 'aria-hidden attribute is invalid for an input element with type="hidden"'
+        },
+        '^Bad start tag in .+$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid start tag'
+        },
+        'Saw <!-- within a comment. Probable cause: Nested comment (not allowed).': {
+          variable: false,
+          quality: 1,
+          what: 'Comment is nested within a comment'
+        },
+        'The document is not mappable to XML 1.0 due to two consecutive hyphens in a comment.': {
+          variable: false,
+          quality: 1,
+          what: 'Comment contains --'
+        },
+        'The document is not mappable to XML 1.0 due to a trailing hyphen in a comment.': {
+          variable: false,
+          quality: 1,
+          what: 'Comment ends with -'
+        },
+        'Bogus comment.': {
+          variable: false,
+          quality: 1,
+          what: 'Comment is missing a valid termination'
+        },
+        '^Element name .+ cannot be represented as XML 1[.]0.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid element name'
+        },
+        '^Quote . in attribute name[.] Probable cause: Matching quote missing somewhere earlier.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute name includes an apostrophe or double quotation mark'
+        },
+        'Element script must not have attribute async unless attribute src is also specified or unless attribute type is specified with value module.': {
+          variable: false,
+          quality: 1,
+          what: 'script element has an async attribute but has no src or value=module attribute'
+        },
+        '^Text not allowed in element .+ in this context.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element contains text, which is not allowed here'
+        },
+        '^The .+ element must not appear as a descendant of the .+ element.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has an invalid ancestor'
+        },
+        '^The element .+ must not appear as a descendant of the .+ element.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element has an invalid ancestor'
+        },
+        'Element script must not have attribute charset unless attribute src is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'script element has a charset attribute but no src attribute'
+        },
+        '^java.util.concurrent.TimeoutException: Idle timeout expired: .+ ms.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Idle timeout expired'
+        },
+        'style element between head and body.': {
+          variable: false,
+          quality: 1,
+          what: 'style element exists between the head and the body elements'
+        },
+        '^HTML start tag .+ in a foreign namespace context.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is invalid because its namespace is not HTML'
+        },
+        'A slash was not immediately followed by >.': {
+          variable: false,
+          quality: 1,
+          what: 'Element start tag contains a nonfinal slash'
+        }
+      },
+      nuVnu: {
         '^End tag .+ did not match the name of the current open element (.+).*$': {
           variable: true,
           quality: 1,
@@ -10201,6 +11683,13 @@ exports.issues = {
           quality: 1,
           what: 'Encoding declaration disagrees with the actual encoding of the page'
         }
+      },
+      nuVnu: {
+        '^Internal encoding declaration .+ disagrees with the actual encoding of the document.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Encoding declaration disagrees with the actual encoding of the page'
+        }
       }
     }
   },
@@ -10211,6 +11700,28 @@ exports.issues = {
     weight: 4,
     tools: {
       nuVal: {
+        '^Internal encoding declaration named an unsupported chararacter encoding .*$': {
+          variable: true,
+          quality: 1,
+          what: 'Encoding declaration names an unsupported character encoding'
+        },
+        'Text run is not in Unicode Normalization Form C.': {
+          variable: false,
+          quality: 1,
+          what: 'Text run is not in Unicode Normalization Form C'
+        },
+        '^The value of attribute .+ on element .+ from namespace .+ is not in Unicode Normalization Form C.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Value of attribute is not in Unicode Normalization Form C'
+        },
+        '^Forbidden code point U+.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Invalid Unicode code point'
+        }
+      },
+      nuVnu: {
         '^Internal encoding declaration named an unsupported chararacter encoding .*$': {
           variable: true,
           quality: 1,
@@ -10242,6 +11753,13 @@ exports.issues = {
     max: 1,
     tools: {
       nuVal: {
+        'Document uses the Unicode Private Use Area(s), which should not be used in publicly exchanged documents. (Charmod C073)': {
+          variable: false,
+          quality: 1,
+          what: 'Page includes a Unicode PUA character'
+        }
+      },
+      nuVnu: {
         'Document uses the Unicode Private Use Area(s), which should not be used in publicly exchanged documents. (Charmod C073)': {
           variable: false,
           quality: 1,
@@ -10289,6 +11807,23 @@ exports.issues = {
           quality: 1,
           what: 'Testing was interrupted by a fatal excess of the message count'
         }
+      },
+      nuVnu: {
+        'Cannot recover after last error. Any further errors will be ignored.': {
+          variable: false,
+          quality: 1,
+          what: 'Testing was interrupted by a fatal error'
+        },
+        'Oops. That was not supposed to happen. A bug manifested itself in the application internals. Unable to continue. Sorry. The admin was notified.': {
+          variable: false,
+          quality: 1,
+          what: 'Testing was interrupted by a fatal application-internal error'
+        },
+        'Too many messages.': {
+          variable: false,
+          quality: 1,
+          what: 'Testing was interrupted by a fatal excess of the message count'
+        }
       }
     }
   },
@@ -10314,6 +11849,13 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
+        'Unsupported SVG version specified. This validator only supports SVG 1.1. The recommended way to suppress this warning is to remove the version attribute altogether.': {
+          variable: false,
+          quality: 1,
+          what: 'SVG version specified is not 1.1 and so nuVal cannot validate it'
+        }
+      },
+      nuVnu: {
         'Unsupported SVG version specified. This validator only supports SVG 1.1. The recommended way to suppress this warning is to remove the version attribute altogether.': {
           variable: false,
           quality: 1,
