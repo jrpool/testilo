@@ -219,7 +219,13 @@ exports.script = (id, what, deviceID, options = {}) => {
       }
       else if (toolID === 'ibm') {
         toolAct.withItems = true;
-        toolAct.withNewContent = true;
+        toolAct.withNewContent = false;
+      }
+      else if (toolID === 'nuVal') {
+        toolAct.withSource = false;
+      }
+      else if (toolID === 'nuVnu') {
+        toolAct.withSource = false;
       }
       else if (toolID === 'qualWeb') {
         toolAct.withNewContent = false;
