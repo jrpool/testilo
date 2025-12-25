@@ -8641,6 +8641,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Page includes more than 1 visible main element'
+        },
+        'A document should not include more than one visible element with role=main.': {
+          variable: false,
+          quality: 1,
+          what: 'Page includes more than 1 visible element with a main role'
         }
       },
       nuVnu: {
@@ -8648,6 +8653,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Page includes more than 1 visible main element'
+        },
+        'A document should not include more than one visible element with role=main.': {
+          variable: false,
+          quality: 1,
+          what: 'Page includes more than 1 visible element with a main role'
         }
       },
       wax: {
