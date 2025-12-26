@@ -2060,15 +2060,15 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
-        'The aria-label attribute must not be specified on any div element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.': {
-          variable: false,
+        '^The aria-label attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
+          variable: true,
           quality: 1,
           what: 'Element with a non-labelable role has an aria-label attribute'
         }
       },
       nuVnu: {
-        'The aria-label attribute must not be specified on any div element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.': {
-          variable: false,
+        '^The aria-label attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
+          variable: true,
           quality: 1,
           what: 'Element with a non-labelable role has an aria-label attribute'
         }
@@ -3549,6 +3549,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element disables zooming or scaling'
+        },
+        'Interfering with a user agent\'s ability to zoom may be a failure of this Success Criterion.': {
+          variable: false,
+          quality: 1,
+          what: 'Element interferes with browser zooming'
         }
       }
     }
@@ -8075,6 +8080,11 @@ exports.issues = {
           quality: 1,
           what: 'a element is a descendant of an element with a button role'
         },
+        'The element a with the attribute href must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'a element with a destination is a descendant of an element with a button role'
+        },
         'The element button must not appear as a descendant of the a element.': {
           variable: false,
           quality: 1,
@@ -8161,6 +8171,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'a element is a descendant of an element with a button role'
+        },
+        'The element a with the attribute href must not appear as a descendant of an element with the attribute role=button.': {
+          variable: false,
+          quality: 1,
+          what: 'a element with a destination is a descendant of an element with a button role'
         },
         'The element button must not appear as a descendant of the a element.': {
           variable: false,
