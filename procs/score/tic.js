@@ -426,6 +426,31 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Link purpose may be undisclosed [speculative]'
+        },
+        'This checkboxinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
+          variable: false,
+          quality: 1,
+          what: 'checkbox input element has no accessible name [invalid]'
+        },
+        'This emailinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
+          variable: false,
+          quality: 1,
+          what: 'email input element has no accessible name [invalid]'
+        },
+        'This numberinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
+          variable: false,
+          quality: 1,
+          what: 'Element is an input of type number but has no accessible name [invalid]'
+        },
+        'This searchinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
+          variable: false,
+          quality: 1,
+          what: 'search input element has no accessible name [invalid]'
+        },
+        'This textinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
+          variable: false,
+          quality: 1,
+          what: 'text input element has no accessible name [invalid]'
         }
       }
     }
@@ -672,36 +697,6 @@ exports.issues = {
           quality: 1,
           what: 'Element with an input role has no accessible name'
         },
-        'This emailinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
-          variable: false,
-          quality: 1,
-          what: 'email input element has no accessible name'
-        },
-        'This searchinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
-          variable: false,
-          quality: 1,
-          what: 'search input element has no accessible name'
-        },
-        'This textinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
-          variable: false,
-          quality: 1,
-          what: 'text input element has no accessible name'
-        }
-      }
-    }
-  },
-  checkboxNoText: {
-    summary: 'checkbox input not named',
-    why: 'User cannot get help on whether to check a checkbox',
-    wcag: '4.1.2',
-    weight: 4,
-    tools: {
-      wax: {
-        'This checkboxinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
-          variable: false,
-          quality: 1,
-          what: 'checkbox input element has no accessible name'
-        }
       }
     }
   },
@@ -784,21 +779,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Image button has no alternative text'
-        }
-      }
-    }
-  },
-  numberInputNoText: {
-    summary: 'number input not named',
-    why: 'User cannot get help understanding what to enter into a number field',
-    wcag: '4.1.2',
-    weight: 4,
-    tools: {
-      wax: {
-        'This numberinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby , aria-description , aria-describedby .': {
-          variable: false,
-          quality: 1,
-          what: 'Element is an input of type number but has no accessible name'
         }
       }
     }
