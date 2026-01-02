@@ -51,7 +51,7 @@ const issueCountWeight = 10;
 */
 const maxWeight = 30;
 
-// 3. Tool
+// 2. Tool
 /*
   Severity: amount added to each raw tool score by each violation of a rule with ordinal severity 0
   through 3.
@@ -60,17 +60,17 @@ const severityWeights = [1, 2, 3, 4];
 // Final: multiplier of the raw tool score to obtain the final tool score.
 const toolWeight = 0.1;
 
-// 4. Element
+// 3. Element
 // Multiplier of the count of elements with at least 1 rule violation.
 const elementWeight = 2;
 
-// 5. Prevention
+// 4. Prevention
 // Each tool prevention by the page.
 const preventionWeight = 300;
 // Each prevention of a Testaro rule test by the page.
 const testaroRulePreventionWeight = 30;
 
-// 6. Log
+// 5. Log
 // Multipliers of log values to obtain the log score.
 const logWeights = {
   logCount: 0.1,
@@ -81,7 +81,7 @@ const logWeights = {
   visitRejectionCount: 2
 };
 
-// 7. Latency
+// 6. Latency
 // Normal latency (11 visits [1 per tool], with 2 seconds per visit).
 const normalLatency = 22;
 // Total latency exceeding normal, in seconds.
@@ -89,7 +89,7 @@ const latencyWeight = 2;
 
 // RULE CONSTANTS
 
-// Initialize a table of issue-classified tool rules.
+// Initialize a directory of issue-classified tool rules.
 const issueIndex = {};
 // Initialize an array of variably named tool rules.
 const issueMatcher = [];
@@ -100,7 +100,7 @@ Object.keys(issues).forEach(issueName => {
     // For each of those rules:
     Object.keys(issues[issueName].tools[toolName]).forEach(ruleID => {
       issueIndex[toolName] ??= {};
-      // Add it to the table of tool rules.
+      // Add it to the directory of tool rules.
       issueIndex[toolName][ruleID] = issueName;
       // If it is variably named:
       if (issues[issueName].tools[toolName][ruleID].variable) {
@@ -203,38 +203,35 @@ exports.scorer = report => {
                 return patternRE.test(ruleID);
               });
             }
-            // If the rule has an ID:
+            // If the instance rule has an ID:
             if (canonicalRuleID) {
               // Get the issue of the rule.
               const issueName = issueIndex[which][canonicalRuleID];
-              // If the rule ID belongs to a non-ignorable issue:
+              // If the issue is non-ignorable:
               if (issueName !== 'ignorable') {
-                // Add the instance to the issue details of the score data.
-                if (! details.issue[issueName]) {
-                  details.issue[issueName] = {
-                    summary: issues[issueName].summary,
-                    wcag: issues[issueName].wcag || '',
-                    score: 0,
-                    maxCount: 0,
-                    weight: issues[issueName].weight,
-                    countLimit: issues[issueName].max,
-                    instanceCounts: {},
-                    tools: {}
-                  };
-                  if (! details.issue[issueName].countLimit) {
-                    delete details.issue[issueName].countLimit;
-                  }
+                // Initialize the issue details if necessary.
+                details.issue[issueName] ??= {
+                  summary: issues[issueName].summary,
+                  wcag: issues[issueName].wcag || '',
+                  score: 0,
+                  maxCount: 0,
+                  weight: issues[issueName].weight,
+                  countLimit: issues[issueName].max,
+                  instanceCounts: {},
+                  elementXPaths: [],
+                  tools: {}
+                };
+                const issueDetails = details.issue[issueName];
+                if (! issueDetails.countLimit) {
+                  delete issueDetails.countLimit;
                 }
-                if (! details.issue[issueName].tools[which]) {
-                  details.issue[issueName].tools[which] = {};
-                }
-                if (! details.issue[issueName].instanceCounts[which]) {
-                  details.issue[issueName].instanceCounts[which] = 0;
-                }
-                details.issue[issueName].instanceCounts[which] += count;
-                if (! details.issue[issueName].tools[which][canonicalRuleID]) {
+                issueDetails.tools[which] ??= {};
+                issueDetails.instanceCounts[which] ??= 0;
+                // Add data from the instance to the issue details.
+                issueDetails.instanceCounts[which] += count;
+                if (! issueDetails.tools[which][canonicalRuleID]) {
                   const ruleData = issues[issueName].tools[which][canonicalRuleID];
-                  details.issue[issueName].tools[which][canonicalRuleID] = {
+                  issueDetails.tools[which][canonicalRuleID] = {
                     quality: ruleData.quality,
                     what: ruleData.what,
                     complaints: {
@@ -266,7 +263,7 @@ exports.scorer = report => {
                 issuePaths[issueName] ??= new Set();
                 // If the element has a path ID:
                 if (pathID) {
-                  // Ensure that it is in the issue-specific set of paths.
+                  // Ensure that it is in the issue-specific set of XPaths.
                   issuePaths[issueName].add(pathID);
                 }
               }
