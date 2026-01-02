@@ -1376,6 +1376,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element with alt="" has a role attribute'
+        },
+        'An img element with a role attribute must not have an alt attribute whose value is the empty string.': {
+          variable: false,
+          quality: 1,
+          what: 'img element with a role attribute has alt=""'
         }
       },
       nuVnu: {
@@ -1383,6 +1388,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element with alt="" has a role attribute'
+        },
+        'An img element with a role attribute must not have an alt attribute whose value is the empty string.': {
+          variable: false,
+          quality: 1,
+          what: 'img element with a role attribute has alt=""'
         }
       },
       qualWeb: {
@@ -4040,6 +4050,16 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have an async attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for an async attribute but has one'
         }
       },
       nuVnu: {
@@ -4057,6 +4077,38 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have an async attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for an async attribute but has one'
+        }
+      }
+    }
+  },
+  specRulesScriptBad: {
+    summary: 'speculation rules script element invalid',
+    why: 'Document navigation performs poorly',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      nuVal: {
+        'The href_matches property in a document rule must be a string.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but its href_matches value is not a string'
+        }
+      },
+      nuVnu: {
+        'The href_matches property in a document rule must be a string.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but its href_matches value is not a string'
         }
       }
     }
@@ -4515,35 +4567,10 @@ exports.issues = {
           quality: 1,
           what: 'Page includes more than one autofocus attribute'
         },
-        'A link element with a sizes attribute must have a rel attribute that contains the value icon or the value apple-touch-icon or the value apple-touch-icon-precomposed.': {
-          variable: false,
-          quality: 1,
-          what: 'link element has a sizes attribute but no icon-type rel attribute'
-        },
         'An input element with a type attribute whose value is hidden must not have any aria-* attributes.': {
           variable: false,
           quality: 1,
           what: 'hidden-type input element has an ARIA attribute'
-        },
-        'The sizes attribute may be specified only if the srcset attribute is also present.': {
-          variable: false,
-          quality: 1,
-          what: 'Element has a sizes attribute but no srcset attribute'
-        },
-        'The sizes attribute must only be specified if the srcset attribute is also specified.': {
-          variable: false,
-          quality: 1,
-          what: 'Element has a sizes attribute but no srcset attribute'
-        },
-        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be present.': {
-          variable: false,
-          quality: 1,
-          what: 'Element with a srcset attribute with a width has no sizes attribute'
-        },
-        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be specified.': {
-          variable: false,
-          quality: 1,
-          what: 'Element with a srcset attribute with a width has no valid sizes attribute'
         }
       },
       nuVnu: {
@@ -4582,15 +4609,37 @@ exports.issues = {
           quality: 1,
           what: 'Page includes more than one autofocus attribute'
         },
-        'A link element with a sizes attribute must have a rel attribute that contains the value icon or the value apple-touch-icon or the value apple-touch-icon-precomposed.': {
-          variable: false,
-          quality: 1,
-          what: 'link element has a sizes attribute but no icon-type rel attribute'
-        },
         'An input element with a type attribute whose value is hidden must not have any aria-* attributes.': {
           variable: false,
           quality: 1,
           what: 'hidden-type input element has an ARIA attribute'
+        }
+      },
+      wax: {
+        'Elements must only use allowed ARIA attributes': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an ARIA attribute that is not allowed'
+        },
+        'Ensure ARIA attributes used are permitted for the element\'s role.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has an ARIA attribute that is invalid for the role of the element'
+        }
+      }
+    }
+  },
+  sizesAttributeBad: {
+    summary: 'sizes attribute invalid',
+    why: 'Item behaves improperly',
+    wcag: '1.3.1',
+    weight: 4,
+    tools: {
+      nuVal: {
+        'A link element with a sizes attribute must have a rel attribute that contains the value icon or the value apple-touch-icon or the value apple-touch-icon-precomposed.': {
+          variable: false,
+          quality: 1,
+          what: 'link element has a sizes attribute but no icon-type rel attribute'
         },
         'The sizes attribute may be specified only if the srcset attribute is also present.': {
           variable: false,
@@ -4611,20 +4660,45 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element with a srcset attribute with a width has no valid sizes attribute'
-        }
-      },
-      wax: {
-        'Elements must only use allowed ARIA attributes': {
-          variable: false,
-          quality: 1,
-          what: 'Element has an ARIA attribute that is not allowed'
         },
-        'Ensure ARIA attributes used are permitted for the element\'s role.': {
+        'The sizes attribute value starting with auto is only valid for lazy-loaded images. Add loading=lazy to this element.': {
           variable: false,
           quality: 1,
-          what: 'Element has an ARIA attribute that is invalid for the role of the element'
+          what: 'Element with a sizes=auto… attribute has no loading=lazy attribute'
         }
       },
+      nuVnu: {
+        'A link element with a sizes attribute must have a rel attribute that contains the value icon or the value apple-touch-icon or the value apple-touch-icon-precomposed.': {
+          variable: false,
+          quality: 1,
+          what: 'link element has a sizes attribute but no icon-type rel attribute'
+        },
+        'The sizes attribute may be specified only if the srcset attribute is also present.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a sizes attribute but no srcset attribute'
+        },
+        'The sizes attribute must only be specified if the srcset attribute is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a sizes attribute but no srcset attribute'
+        },
+        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be present.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a srcset attribute with a width has no sizes attribute'
+        },
+        'When the srcset attribute has any image candidate string with a width descriptor, the sizes attribute must also be specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a srcset attribute with a width has no valid sizes attribute'
+        },
+        'The sizes attribute value starting with auto is only valid for lazy-loaded images. Add loading=lazy to this element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element with a sizes=auto… attribute has no loading=lazy attribute'
+        }
+      }
     }
   },
   attributeValueBad: {
@@ -4699,6 +4773,28 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Value of an ARIA attribute on the element is invalid'
+        }
+      }
+    }
+  },
+  attributeValueRisk: {
+    summary: 'attribute value bad?',
+    why: 'Item may behave improperly',
+    wcag: '4.1.2',
+    weight: 1,
+    tools: {
+      nuVal: {
+        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\?.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute value may be a typographical error'
+        }
+      },
+      nuVnu: {
+        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\?.*$': {
+          variable: true,
+          quality: 1,
+          what: 'Attribute value may be a typographical error'
         }
       }
     }
@@ -6353,10 +6449,20 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Page contains more than 1 h1 element'
+        },
+        'Consider using the h1 element as a top-level heading only — or else use the headingoffset attribute (otherwise, all h1 elements are treated as top-level headings by many screen readers and other tools).': {
+          variable: false,
+          quality: 1,
+          what: 'Page contains more than 1 h1 element'
         }
       },
       nuVnu: {
         'Consider using the h1 element as a top-level heading only (all h1 elements are treated as top-level headings by many screen readers and other tools).': {
+          variable: false,
+          quality: 1,
+          what: 'Page contains more than 1 h1 element'
+        },
+        'Consider using the h1 element as a top-level heading only — or else use the headingoffset attribute (otherwise, all h1 elements are treated as top-level headings by many screen readers and other tools).': {
           variable: false,
           quality: 1,
           what: 'Page contains more than 1 h1 element'
