@@ -209,6 +209,11 @@ exports.issues = {
           quality: 1,
           what: 'Multiple landmarks with the same parent region are not distinguished from one another [invalid on invisible elements]'
         },
+        html_lang_exists: {
+          variable: false,
+          quality: 1,
+          what: 'Page detected as HTML, but has no lang attribute [invalid]'
+        },
         style_background_decorative: {
           variable: false,
           quality: 1,
@@ -1442,13 +1447,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'html element has no lang or xml:lang attribute'
-        }
-      },
-      ibm: {
-        html_lang_exists: {
-          variable: false,
-          quality: 1,
-          what: 'Page detected as HTML, but has no lang attribute'
         }
       },
       nuVal: {
