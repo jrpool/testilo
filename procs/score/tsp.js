@@ -218,7 +218,6 @@ exports.scorer = report => {
                   weight: issues[issueName].weight,
                   countLimit: issues[issueName].max,
                   instanceCounts: {},
-                  elementXPaths: [],
                   tools: {}
                 };
                 const issueDetails = details.issue[issueName];
