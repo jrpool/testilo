@@ -94,16 +94,16 @@ const issueIndex = {};
 // Initialize an array of variably named tool rules.
 const issueMatcher = [];
 // For each issue:
-Object.keys(issues).forEach(issueName => {
+Object.keys(issues).forEach(issueID => {
   // For each tool with rules belonging to that issue:
-  Object.keys(issues[issueName].tools).forEach(toolName => {
+  Object.keys(issues[issueID].tools).forEach(toolName => {
     // For each of those rules:
-    Object.keys(issues[issueName].tools[toolName]).forEach(ruleID => {
+    Object.keys(issues[issueID].tools[toolName]).forEach(ruleID => {
       issueIndex[toolName] ??= {};
       // Add it to the directory of tool rules.
-      issueIndex[toolName][ruleID] = issueName;
+      issueIndex[toolName][ruleID] = issueID;
       // If it is variably named:
-      if (issues[issueName].tools[toolName][ruleID].variable) {
+      if (issues[issueID].tools[toolName][ruleID].variable) {
         // Add it to the array of variably named tool rules.
         issueMatcher.push(ruleID);
       }
@@ -206,21 +206,21 @@ exports.scorer = report => {
             // If the instance rule has an ID:
             if (canonicalRuleID) {
               // Get the issue of the rule.
-              const issueName = issueIndex[which][canonicalRuleID];
+              const issueID = issueIndex[which][canonicalRuleID];
               // If the issue is non-ignorable:
-              if (issueName !== 'ignorable') {
+              if (issueID !== 'ignorable') {
                 // Initialize the issue details if necessary.
-                details.issue[issueName] ??= {
-                  summary: issues[issueName].summary,
-                  wcag: issues[issueName].wcag || '',
+                details.issue[issueID] ??= {
+                  summary: issues[issueID].summary,
+                  wcag: issues[issueID].wcag || '',
                   score: 0,
                   maxCount: 0,
-                  weight: issues[issueName].weight,
-                  countLimit: issues[issueName].max,
+                  weight: issues[issueID].weight,
+                  countLimit: issues[issueID].max,
                   instanceCounts: {},
                   tools: {}
                 };
-                const issueDetails = details.issue[issueName];
+                const issueDetails = details.issue[issueID];
                 if (! issueDetails.countLimit) {
                   delete issueDetails.countLimit;
                 }
@@ -229,7 +229,7 @@ exports.scorer = report => {
                 // Add data from the instance to the issue details.
                 issueDetails.instanceCounts[which] += count;
                 if (! issueDetails.tools[which][canonicalRuleID]) {
-                  const ruleData = issues[issueName].tools[which][canonicalRuleID];
+                  const ruleData = issues[issueID].tools[which][canonicalRuleID];
                   issueDetails.tools[which][canonicalRuleID] = {
                     quality: ruleData.quality,
                     what: ruleData.what,
@@ -240,30 +240,34 @@ exports.scorer = report => {
                   };
                 }
                 details
-                .issue[issueName]
+                .issue[issueID]
                 .tools[which][canonicalRuleID]
                 .complaints
                 .countTotal += count || 1;
                 if (
                   ! details
-                  .issue[issueName]
+                  .issue[issueID]
                   .tools[which][canonicalRuleID]
                   .complaints
                   .texts
                   .includes(what)
                 ) {
                   details
-                  .issue[issueName]
+                  .issue[issueID]
                   .tools[which][canonicalRuleID]
                   .complaints
                   .texts
                   .push(what);
                 }
-                issuePaths[issueName] ??= new Set();
+                issuePaths[issueID] ??= {};
                 // If the element has a path ID:
                 if (pathID) {
-                  // Ensure that it is in the issue-specific set of XPaths.
-                  issuePaths[issueName].add(pathID);
+                  issuePaths[issueID][pathID] ??= [];
+                  // If the tool is not yet listed as a reporter of the issue for the element:
+                  if (! issuePaths[issueID][pathID].includes(which)) {
+                    // Add the tool to the list.
+                    issuePaths[issueID][pathID].push(which);
+                  }
                 }
               }
             }
@@ -293,8 +297,8 @@ exports.scorer = report => {
         }
       });
       // For each non-ignorable issue with any complaints:
-      Object.keys(details.issue).forEach(issueName => {
-        const issueData = details.issue[issueName];
+      Object.keys(details.issue).forEach(issueID => {
+        const issueData = details.issue[issueID];
         // For each tool with any complaints for the issue:
         Object.keys(issueData.tools).forEach(toolID => {
           // Get the sum of the quality-weighted counts of its issue rules.
@@ -312,7 +316,7 @@ exports.scorer = report => {
         const maxAddition = issueData.countLimit ? maxWeight / issueData.countLimit : 0;
         issueData.score = Math.round(issueData.weight * issueData.maxCount * (1 + maxAddition));
         // For each tool that has any rule of the issue:
-        Object.keys(issues[issueName].tools).forEach(toolName => {
+        Object.keys(issues[issueID].tools).forEach(toolName => {
           // If the tool was in the job and has no instances of the issue:
           if (testTools.has(toolName) && ! issueData.instanceCounts[toolName]) {
             // Report its instance count as 0.
@@ -329,9 +333,26 @@ exports.scorer = report => {
         });
         return severityTotals;
       }, details.severity.total);
-      // Add the element details to the score.
+      const elementData = {};
+      // For each issue:
       Object.keys(issuePaths).forEach(issueID => {
-        details.element[issueID] = Array.from(issuePaths[issueID]);
+        // For each element reported as exhibiting it:
+        Object.keys(issuePaths[issueID]).forEach(pathID => {
+          elementData[issueID] ??= {};
+          const toolList = issuePaths[issueID][pathID].sort().join(' + ');
+          elementData[issueID] ??= {}
+          elementData[issueID][toolList] ??= [];
+          // Classify the element by the set of tools reporting it for the issue.
+          elementData[issueID][toolList].push(pathID);
+        });
+        // Sort the XPaths.
+        Object.keys(elementData).forEach(issueID => {
+          Object.keys(elementData[issueID]).forEach(toolList => {
+            elementData[issueID][toolList].sort();
+          });
+        });
+        // Add the element data to the score details.
+        details.element = elementData;
       });
       // Add the summary issue-count total to the score.
       summary.issueCount = Object.keys(details.issue).length * issueCountWeight;
