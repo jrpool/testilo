@@ -195,7 +195,7 @@ exports.scorer = report => {
             const {ordinalSeverity, pathID, ruleID, what} = instance;
             const count = instance.count || 1;
             let canonicalRuleID = ruleID;
-            // If the rule ID is not in the table of issue-classified tool rules:
+            // If the rule ID is issue-classified:
             if (! issueIndex[which][ruleID]) {
               // Convert it to the variably named tool rule that it matches, if any.
               canonicalRuleID = issueMatcher.find(pattern => {
@@ -203,7 +203,7 @@ exports.scorer = report => {
                 return patternRE.test(ruleID);
               });
             }
-            // If the instance rule has an ID:
+            // If the rule or a matching variably named rule is issue-classified:
             if (canonicalRuleID) {
               // Get the issue of the rule.
               const issueID = issueIndex[which][canonicalRuleID];
@@ -262,16 +262,13 @@ exports.scorer = report => {
                 issuePaths[issueID] ??= {};
                 // If the element has a path ID:
                 if (pathID) {
-                  issuePaths[issueID][pathID] ??= [];
-                  // If the tool is not yet listed as a reporter of the issue for the element:
-                  if (! issuePaths[issueID][pathID].includes(which)) {
-                    // Add the tool to the list.
-                    issuePaths[issueID][pathID].push(which);
-                  }
+                  issuePaths[issueID][pathID] ??= new Set();
+                  // Ensure that the tool is among the tools reporting the issue for the element.
+                  issuePaths[issueID][pathID].add(which);
                 }
               }
             }
-            // Otherwise, i.e. if the rule ID belongs to no issue:
+            // Otherwise, i.e. if the rule is not issue-classified:
             else {
               // Add the instance to the solo details of the score data.
               if (! details.solo[which]) {
@@ -284,7 +281,7 @@ exports.scorer = report => {
               // Report this.
               console.log(`ERROR: ${ruleID} of ${which} not found in issues`);
             }
-            // Ensure that the element, if path-identified, is in the set of elements.
+            // Ensure that the element XPath, if known, is in the set of XPaths.
             if (pathID) {
               pathIDs.add(pathID);
             }
@@ -296,10 +293,10 @@ exports.scorer = report => {
           details.prevention[which] = preventionWeight;
         }
       });
-      // For each non-ignorable issue with any complaints:
+      // For each non-ignorable issue with any instances:
       Object.keys(details.issue).forEach(issueID => {
         const issueData = details.issue[issueID];
-        // For each tool with any complaints for the issue:
+        // For each tool with any instances in the issue:
         Object.keys(issueData.tools).forEach(toolID => {
           // Get the sum of the quality-weighted counts of its issue rules.
           let weightedCount = 0;
@@ -315,7 +312,7 @@ exports.scorer = report => {
         // Get the score for the issue, including any addition for the instance count limit.
         const maxAddition = issueData.countLimit ? maxWeight / issueData.countLimit : 0;
         issueData.score = Math.round(issueData.weight * issueData.maxCount * (1 + maxAddition));
-        // For each tool that has any rule of the issue:
+        // For each tool that has any rule in the issue:
         Object.keys(issues[issueID].tools).forEach(toolName => {
           // If the tool was in the job and has no instances of the issue:
           if (testTools.has(toolName) && ! issueData.instanceCounts[toolName]) {
@@ -338,21 +335,36 @@ exports.scorer = report => {
       Object.keys(issuePaths).forEach(issueID => {
         // For each element reported as exhibiting it:
         Object.keys(issuePaths[issueID]).forEach(pathID => {
-          elementData[issueID] ??= {};
           const toolList = issuePaths[issueID][pathID].sort().join(' + ');
-          elementData[issueID] ??= {}
+          elementData[issueID] ??= {};
           elementData[issueID][toolList] ??= [];
           // Classify the element by the set of tools reporting it for the issue.
           elementData[issueID][toolList].push(pathID);
         });
-        // Sort the XPaths.
+        // Sort the XPaths reported by each tool list.
         Object.keys(elementData).forEach(issueID => {
           Object.keys(elementData[issueID]).forEach(toolList => {
             elementData[issueID][toolList].sort();
           });
         });
+        // Sort the tool lists by their tool counts and alphabetically.
+        const toolLists = Object.keys(elementData[issueID]);
+        toolLists.sort((a, b) => {
+          const aToolCount = a.replace(/[^+]/g, '').length;
+          const bToolCount = b.replace(/[^+]/g, '').length;
+          if (aToolCount === bToolCount) {
+          return a.localeCompare(b);
+          }
+          else {
+            return bToolCount - aToolCount;
+          };
+        });
         // Add the element data to the score details.
-        details.element = elementData;
+        details.element ??= {};
+        details.element[issueID] = {};
+        toolLists.forEach(toolList => {
+          details.element[issueID][toolList] = elementData[issueID][toolList];
+        });
       });
       // Add the summary issue-count total to the score.
       summary.issueCount = Object.keys(details.issue).length * issueCountWeight;
