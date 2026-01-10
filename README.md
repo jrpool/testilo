@@ -1,4 +1,5 @@
 # testilo
+
 Utilities for ensemble web accessibility testing
 
 ## Introduction
@@ -52,13 +53,14 @@ The use of these environment variables is explained below.
 
 ## Job preparation
 
-### Introduction
+### Job preparation introduction
 
 Testaro executes _jobs_. In a job, Testaro performs _acts_ (tests and other operations) on _targets_ (typically, web pages). The Testaro `README.md` file specifies the requirements for a job.
 
 You can create a job for Testaro directly, without using Testilo.
 
 Testilo can, however, make job preparation more efficient in these scenarios:
+
 - You want to perform a battery of tests on multiple targets.
 - You want to test targets only for particular issues, using whichever tools happen to have tests for those issues.
 
@@ -144,11 +146,11 @@ A batch is a JavaScript object. It can be converted to JSON and stored in a file
 
 If you have a target list, the `batch` module of Testilo can convert it to a simple batch. The batch will contain, for each target, only one act group, named `main`, containing no acts.
 
-#### Invocation
+#### Batch invocation
 
 There are two ways to use the `batch` module.
 
-##### By a module
+##### Batch invocation by a module
 
 A module can invoke `batch()` in this way:
 
@@ -169,7 +171,7 @@ The `batch()` function of the `batch` module generates a batch and returns it as
 
 The invoking module can further dispose of the batch as needed.
 
-##### By a user
+##### Batch invocation by a user
 
 A user can invoke `batch()` in this way:
 
@@ -251,6 +253,7 @@ Here is a script:
 ```
 
 A script has several properties that specify facts about the jobs to be created. They include:
+
 - `id`: an ID. A script can be converted from a JavaScript object to JSON and saved in a file in the `SPECDIR` directory, where it will be named by its ID (e.g., if the ID is `ts99`, the file name will be `ts99.json`). Each script needs an `id` with a unique value composed of alphanumeric ASCII characters.
 - `what`: a description of the script.
 - `strict`: `true` if Testaro is to abort jobs when a target redirects a request to a URL differing substantially from the one specified. If `false` Testaro is to allow redirection. All differences are considered substantial unless the URLs differ only in the presence and absence of a trailing slash.
@@ -274,18 +277,20 @@ As shown in this example, it is possible for any particular placeholder to overr
 
 You can use the `script()` function of the `script` module to simplify the creation of scripts.
 
-#### Without options
+#### Script creation without options
 
 In its simplest form, `script()` requires 3 string arguments:
+
 1. An ID for the script
 1. A description of the script
 1. A device ID
 
 Called in this way, `script()` produces a script that tells Testaro to perform the tests for all of the evaluation rules defined by all of the tools integrated by Testaro. In this case, the script launches a new Chromium browser before performing the tests of each tool.
 
-#### With options
+#### Script creation with options
 
 If you want a more focused script, you can add an additional option argument to `script()`. The option argument lets you restrict the rules to be tested for. You may choose between restrictions of two types:
+
 - Tools
 - Issues
 
@@ -318,11 +323,11 @@ If you specify issue options, the script will prescribe the tests for all evalua
 
 For example, one issue in the `tic43.js` file is `mainNot1`. Four rules are classified as belonging to that issue: rule `main_element_only_one` of the `aslint` tool and 3 more rules defined by 3 other tools. You can also create custom classifications and save them in a `score` subdirectory of the `FUNCTIONDIR` directory.
 
-#### Invocation
+#### Script invocation
 
 There are two ways to use the `script` module.
 
-##### By a module
+##### Script invocation by a module
 
 A module can invoke `script()` in one of these ways:
 
@@ -341,7 +346,7 @@ In this example, the script will have `'monthly'` as its ID, `'landmarks'` as it
 
 The invoking module can further modify and use the script (`scriptObj`) as needed.
 
-##### By a user
+##### Script invocation by a user
 
 A user can invoke `script()` by executing one of these statements in the Testilo project directory:
 
@@ -363,9 +368,10 @@ The `call` module will retrieve the named classification, if any.
 The `script` module will create a script.
 The `call` module will save the script as a JSON file in the `scripts` subdirectory of the `SPECDIR` directory, using the `id` value as the base of the file name.
 
-#### Properties
+#### Script properties
 
 When the `script` module creates a script for you, it does not ask you for all of the property values that the script may require. Instead, it chooses these default values:
+
 - `strict`: `false`
 - `isolate`: `true`
 - `standard`: `'only'`
@@ -393,11 +399,11 @@ After you invoke `script`, you can edit the script that it creates to revise any
 
 Testilo merges batches with scripts, producing Testaro jobs, by means of the `merge` module.
 
-#### Invocation
+#### Merge invocation
 
 There are two ways to use the `merge` module.
 
-##### By a module
+##### Merge invocation by a module
 
 A module can invoke `merge()` in this way:
 
@@ -413,7 +419,7 @@ The first two arguments are a script and a batch obtained from files or from pri
 
 The `merge()` function returns an array of jobs, one job per target in the batch. The invoking module can further dispose of the jobs as needed.
 
-##### By a user
+##### Merge invocation by a user
 
 A user can invoke `merge()` in this way:
 
@@ -426,6 +432,7 @@ node call merge scriptID batchID executionTimeStamp todoDir
 ```
 
 In this statement, replace:
+
 - `scriptID` with the ID (which is also the base of the file name) of the script.
 - `batchID` with the ID (which is also the base of the file name) of the batch.
 - `executionTimeStamp` with a time stamp in format `yymmddThhMM` representing the UTC date and time before which the jobs are not to be executed, or `''` if it is now.
@@ -435,9 +442,10 @@ The `call` module will retrieve the named script and batch from their respective
 The `merge` module will create an array of jobs.
 The `call` module will save the jobs as JSON files in the `todo` or `pending` subdirectory of the `JOBDIR` directory.
 
-#### Output
+#### Merge output
 
 A Testaro job produced by `merge` will be identical to the script from which it was derived (see the example above), except that:
+
 - The `id` property of the job will be revised to uniquely identify the job.
 - The originally empty properties will be populated, as in this example:
 
@@ -458,19 +466,21 @@ A Testaro job produced by `merge` will be identical to the script from which it 
     …
     ```
 
-#### Validation
+#### Merge validation
 
 To test the `merge` module, in the project directory you can execute the statement `node validation/merge/validate`. If `merge` is valid, all logging statements will begin with “Success” and none will begin with “ERROR”.
 
 ## Report enhancement
 
-### Introduction
+### Report enhancement introduction
 
 Testaro executes jobs and produces reports of test results. A report is identical to a job (see the example above), except that:
+
 - The acts contain additional data recorded by Testaro to describe the results of the performance of the acts. Acts of type `test` have additional data describing test results (successes, failures, and details).
 - Testaro also adds a `jobData` property, describing information not specific to any particular act.
 
 Thus, a report produced by Testaro contains these properties:
+
 - `id`
 - `what`
 - `strict`
@@ -485,6 +495,7 @@ Thus, a report produced by Testaro contains these properties:
 - `jobData`
 
 Testilo can enhance such a report by:
+
 - adding scores
 - creating digests
 - creating difgests
@@ -498,6 +509,7 @@ Testilo can enhance such a report by:
 The `score` module of Testilo performs computations on test results and adds a `score` property to a report.
 
 The `score()` function of the `score` module takes two arguments:
+
 - a scoring function
 - a report object
 
@@ -553,15 +565,11 @@ The `quality` property is usually 1, but if the test of the rule is known to be 
 
 Some issue objects (such as `flash` in `tic40.js`) have a `max` property, equal to the maximum possible count of instances. That property allows a scorer to ascribe a greater weight to an instance of that issue.
 
-##### Output
-
-A scorer adds a `score` property to the report that it scores.
-
-#### Invocation
+#### Score invocation
 
 There are two ways to invoke the `score` module.
 
-##### By a module
+##### Score invocation by a module
 
 A module can invoke `score()` in this way:
 
@@ -578,7 +586,7 @@ The second argument to `score()` is a report object. It may have been read from 
 
 The invoking module can further dispose of the scored report as needed.
 
-##### By a user
+##### Score invocation by a user
 
 A user can invoke `score()` in this way:
 
@@ -588,12 +596,87 @@ node call score tsp99 240922
 ```
 
 When a user invokes `score()` in this example, the `call` module:
+
 - gets the scoring module `tsp99` from its JSON file `tsp99.json` in the `score` subdirectory of the `FUNCTIONDIR` directory.
 - gets all reports, or if the third argument to `call()` exists the reports whose file names begin with `'240922'`, from the `raw` subdirectory of the `REPORTDIR` directory.
 - adds score data to each report.
 - writes each scored report in JSON format to the `scored` subdirectory of the `REPORTDIR` directory.
 
-#### Validation
+#### Scorer output
+
+The `score` module uses a `scorer` function to add a `score` property to a report.
+
+The `scorer` function takes the report as its only argument and modifies it in place.
+
+The `scorer` function in `procs/score/tsp.js` produces a `score` property with this structure:
+
+```javascript
+{
+  scoreProcID: 'abcde',
+  weights: {
+    severities: [1, 2, 3, 4],
+    tool: 0.1,
+    element: 2,
+    log: {
+      logCount: 0.1,
+      logSize: 0.002,
+      errorLogCount: 0.2,
+      errorLogSize: 0.004,
+      prohibitedCount: 3,
+      visitRejectionCount: 2
+    },
+    latency: 2,
+    prevention: 300,
+    testaroRulePrevention: 30,
+    maxInstanceCount: 30
+  },
+  normalLatency: 22,
+  summary: {
+    total: 0,
+    issueCount: 0,
+    issue: 0,
+    solo: 0,
+    tool: 0,
+    element: 0,
+    prevention: 0,
+    log: 0,
+    latency: 0
+  },
+  details: {
+    severity: {
+      total: [0, 0, 0, 0],
+      byTool: {
+        toolA: [0, 0, 0, 0],
+        toolB: [0, 0, 0, 0],
+        testaro: [0, 0, 0, 0]
+      }
+    },
+    prevention: {
+      toolB: 300,
+      testaro: 90
+    },
+    issue: {
+      issueA: {
+        summary: 'Summary of issue A',
+        wcag: 'WCAG 1.1.1',
+        score: 0,
+        maxCount: 0,
+        weight: 4,
+        countLimit: 30,
+        instanceCounts: {},
+        tools: {}
+      }
+    },
+    solo: {},
+    tool: {},
+    element: {}
+  }
+};
+```
+
+This can be found in `testilo/procs/score/tsp99.js`.
+
+#### Score validation
 
 To test the `score` module, in the project directory you can execute the statement `node validation/score/validate`. If `score` is valid, all logging statements will begin with “Success” and none will begin with “ERROR”.
 
@@ -606,6 +689,7 @@ Any scored report is based on a set of tests of a set of tools. Suppose you want
 A typical use case is your desire to examine results for only one or only some of the tools that were used for a report. All the needed information is in the report, so it is not necessary to create, perform, and await a new job and report. You want a new report whose standard results and score data are what a new job would have produced.
 
 The `rescore()` function of the `rescore` module takes four arguments:
+
 - a scoring function
 - a report object
 - a restriction type (`'tools'` or `'issues'`)
@@ -614,6 +698,7 @@ The `rescore()` function of the `rescore` module takes four arguments:
 Then the `rescore()` function copies the report, removes the no-longer-relevant acts, removes the no-longer-relevant instances from and revises the totals of the `standardResult` properties, replaces the `score` property with a new one, and returns the revised report.
 
 The new report is not identical to the report that a new job would have produced, because:
+
 - Any original (non-standardized) results and data that survive in the new report are not revised.
 - Any scores arising from causes other than test results, such as latency or browser warnings, are not revised.
 - The `score` property object now includes a `rescore` property that identifies the original report ID (in case it is later changed), the date and time of the rescoring, the restriction type, and an array of the tool or issue IDs included by the restriction.
@@ -647,6 +732,7 @@ node call rescore tsp99 240922 tools axe nuVal
 ```
 
 When a user invokes `rescore()` in this example, the `call` module:
+
 - gets the scoring module `tsp99` from its JSON file `tsp99.json` in the `score` subdirectory of the `FUNCTIONDIR` directory.
 - gets all reports, or if the third argument to `call()` is nonempty the reports whose file names begin with `'240922'`, from the `scored` subdirectory of the `REPORTDIR` directory.
 - defines an ID suffix.
@@ -655,17 +741,18 @@ When a user invokes `rescore()` in this example, the `call` module:
 - appends the ID suffix to the ID of each report.
 - writes each rescored report in JSON format to the `scored` subdirectory of the `REPORTDIR` directory.
 
-#### Validation
+#### Rescore validation
 
 To test the `rescore` module, in the project directory you can execute the statement `node validation/rescore/validate`. If `rescore` is valid, all logging statements will begin with “Success” and none will begin with “ERROR”.
 
 ### Digesting
 
-#### Introduction
+#### Digesting introduction
 
 Reports from Testaro are JavaScript objects. When represented as JSON, they are human-readable, but not human-friendly. They are basically designed for machine tractability. This is equally true for reports that have been scored by Testilo. But Testilo can _digest_ a scored report, converting it to a human-oriented HTML document, or _digest_.
 
 The `digest` module digests a scored report. Its `digest()` function takes two arguments:
+
 - a digester (a digesting function)
 - a scored report object
 
@@ -673,11 +760,11 @@ The digester populates an HTML digest template. A copy of the template, with its
 
 The included templates format placeholders with leading and trailing underscore pairs (such as `__issueCount__`).
 
-#### Invocation
+#### Digest invocation
 
 There are two ways to use the `digest` module.
 
-##### By a module
+##### Digest invocation by a module
 
 A module can invoke `digest()` in this way:
 
@@ -696,7 +783,7 @@ The second argument to `digest()` is a scored report object. It may have been re
 
 The `digest()` function returns a promise resolved with a digest. The invoking module can further dispose of the digest as needed.
 
-##### By a user
+##### Digest invocation by a user
 
 A user can invoke `digest()` in this way:
 
@@ -706,6 +793,7 @@ node call digest tdp99 241105
 ```
 
 When a user invokes `digest()` in this example, the `call` module:
+
 - gets the template and the digesting module from subdirectory `tdp99` in the `digest` subdirectory of the `FUNCTIONDIR` directory.
 - gets all reports, or if the third argument to `call()` exists all reports whose file names begin with `'241105'`, from the `scored` subdirectory of the `REPORTDIR` directory.
 - digests each report.
@@ -718,7 +806,7 @@ The digests created by `digest()` are HTML files, and they expect a `style.css` 
 
 ### Difgesting
 
-#### Introduction
+#### Difgesting introduction
 
 A _difgest_ is a digest that compares two reports. They can be reports of different targets, or reports of the same target from two different times or under two different conditions.
 
@@ -732,11 +820,11 @@ The `difgest` module difgests two scored reports. Its `difgest()` function takes
 
 The difgest template and module operate like the digest ones.
 
-#### Invocation
+#### Difgest invocation
 
 There are two ways to use the `difgest` module.
 
-##### By a module
+##### Difgest invocation by a module
 
 A module can invoke `difgest()` in this way:
 
@@ -756,7 +844,7 @@ The difgest will include links to the two digests, which, in turn, contain links
 
 `difgest()` returns a difgest. The invoking module can further dispose of the difgest as needed.
 
-##### By a user
+##### Difgest invocation by a user
 
 A user can invoke `difgest()` in this way:
 
@@ -765,6 +853,7 @@ node call difgest tfp99 20141215T1200-x7-3 20141215T1200-x7-4
 ```
 
 When a user invokes `difgest` in this example, the `call` module:
+
 - gets the template and the difgesting module from subdirectory `tfp99` in the `difgest` subdirectory of the `FUNCTIONDIR` directory.
 - gets reports `20141215T1200-x7-3` and `20141215T1200-x7-4` from the `scored` subdirectory of the `REPORTDIR` directory.
 - writes the difgested report to the `difgested` subdirectory of the `REPORTDIR` directory.
@@ -773,7 +862,7 @@ Difgests include links to the digests of the two reports. The destinations of th
 
 Difgests expect a `style.css` file to exist in their directory, as digests do.
 
-#### Validation
+#### Difgest validation
 
 To test the `digest` module, in the project directory you can execute the statement `node validation/digest/validate`. If `digest` is valid, all logging statements will begin with “Success” and none will begin with “ERROR”.
 
@@ -783,11 +872,11 @@ The `summarize` module of Testilo can summarize a scored report. The summary is 
 
 Report summaries make some operations more efficient by allowing other modules to get needed data from summaries instead of from reports. The size of a summary tends to be about 0.01% of the size of a report.
 
-#### Invocation
+#### Summarization invocation
 
 The `summarize` module summarizes one report when invoked by a module, but the `call` module invoked by a user can call `summarize` multiple times to summarize multiple reports and combine those summaries into a file.
 
-##### By a module
+##### Summarization invocation by a module
 
 A module can invoke `summarize()` in this way:
 
@@ -800,7 +889,7 @@ const summary = summarize(report);
 
 The `report` argument is a scored report. The `summary` constant is an object. The module can further dispose of `summary` as needed.
 
-##### By a user
+##### Summarization invocation by a user
 
 A user can invoke `summarize()` in either of these two ways:
 
@@ -810,6 +899,7 @@ node call summarize 'company divisions' 2411
 ```
 
 When a user invokes `summarize` in this example, the `call` module:
+
 - gets all the reports in the `scored` subdirectory of the `REPORTDIR` directory, or (if the third argument is present) all those whose file names begin with `2411`.
 - creates a summary of each report.
 - combines the summaries into an array.
@@ -821,6 +911,7 @@ When a user invokes `summarize` in this example, the `call` module:
 If you use Testilo to perform a battery of tests on multiple targets, you may want a single report that compares the total scores received by the targets. Testilo can produce such a _comparison_.
 
 The `compare` module compares the scores in a summary report. The `compare()` function of the `compare` module takes two arguments:
+
 - a comparison function
 - a summary report
 
@@ -828,11 +919,11 @@ The comparison function defines the rules for generating an HTML file comparing 
 
 The built-in comparison functions compare all of the scores in the summary report. Thus, if the summary report contains multiple scores for the same target, based on tests performed at various times, those scores will all appear in the comparison, labeled identically with the `what` description of the target. If you want only one score per target to appear, you can create a new summary report that includes only one summary per target in its `summaries` array.
 
-#### Invocation
+#### Comparison invocation
 
 There are two ways to use the `compare` module.
 
-##### By a module
+##### Comparison invocation by a module
 
 A module can invoke `compare()` in this way:
 
@@ -847,7 +938,7 @@ compare(id, comparer, summaryReport)
 
 The first argument to `compare()` is an ID that will be named in the comparison. The second argument is a comparison function. In this example, it been obtained from a file in the Testilo package, but it could be custom-made. The third argument is a summary report. The `compare()` function returns a comparison. The invoking module can further dispose of the comparison as needed.
 
-##### By a user
+##### Comparison invocation by a user
 
 A user can invoke `compare()` in this way:
 
@@ -856,6 +947,7 @@ node call compare 'state legislators' tcp99 240813
 ```
 
 When a user invokes `compare` in this example, the `call` module:
+
 - gets the comparison module from subdirectory `tcp99` of the subdirectory `compare` in the `FUNCTIONDIR` directory.
 - gets the last summary report whose file name begins with `'240813'` from the `summarized` subdirectory of the `REPORTDIR` directory.
 - creates an ID for the comparison.
@@ -864,7 +956,7 @@ When a user invokes `compare` in this example, the `call` module:
 
 The comparative report created by `compare` is an HTML file, and it expects a `style.css` file to exist in its directory. The `reports/comparative/style.css` file in Testilo is an appropriate stylesheet to be copied into the directory where comparative reports are written.
 
-#### Validation
+#### Comparison validation
 
 To test the `compare` module, in the project directory you can execute the statement `node validation/compare/validate`. If `compare` is valid, all logging statements will begin with “Success” and none will begin with “ERROR”.
 
@@ -874,9 +966,9 @@ The `track` module of Testilo selects, organizes, and presents data from summari
 
 A typical use case for tracking is monitoring, i.e. periodic auditing of one or more web pages.
 
-#### Invocation
+#### Tracking invocation
 
-##### By a module
+##### Tracking invocation by a module
 
 A module can invoke `track()` in this way:
 
@@ -890,7 +982,7 @@ const [reportID, 'main competitors', trackReport] = track(tracker, summaryReport
 
 The `track()` function returns, as an array, an ID and an HTML tracking report that shows data for all of the results in the summary report and identifies “main competitors” as its subject. The invoking module can further dispose of the tracking report as needed.
 
-##### By a user
+##### Tracking invocation by a user
 
 A user can invoke `track()` in one of these ways:
 
@@ -902,6 +994,7 @@ node call track ttp99a 'main competitors' 241016 'ABC Foundation'
 ```
 
 When a user invokes `track()` in this example, the `call` module:
+
 - gets the summary report from the last file in the `summarized` subdirectory of the `REPORTDIR` directory, or if the third argument to `call()` exists and is not empty the last one whose name begins with `'241016'`.
 - selects the summarized data for all results in the summary report, or if the fourth argument to `call()` exists from all results whose `target.what` property has the value `'ABC Foundation'`.
 - uses tracker `ttp99a` to create a tracking report that identifies “main competitors” as its subject.
@@ -919,18 +1012,19 @@ If you use Testaro to perform all the tests of all the tools on multiple targets
 The `credit` module tabulates the contribution of each tool to the discovery of issue instances in a collection of scored reports. Its `credit()` function takes two arguments: a report description and an array of `score` properties of scored reports.
 
 The function produces a credit report containing four sections:
+
 - `counts`: for each issue, how many instances each tool reported
 - `onlies`: for each issue of which only 1 tool reported instances, which tool it was
 - `mosts`: for each issue of which at least 2 tools reported instances, which tool(s) reported the maximum instance count
 - `tools`: for each tool, two sections:
-    - `onlies`: a list of the issues that only the tool reported instances of
-    - `mosts`: a list of the issues for which the instance count of the tool was not surpassed by that of any other tool
+  - `onlies`: a list of the issues that only the tool reported instances of
+  - `mosts`: a list of the issues for which the instance count of the tool was not surpassed by that of any other tool
 
-##### Invocation
+##### Tool crediting invocation
 
 There are two ways to use the `credit` module.
 
-###### By a module
+###### Tool crediting by a module
 
 A module can invoke `credit()` in this way:
 
@@ -942,7 +1036,7 @@ const creditReport = credit('June 2025', reportScores);
 
 The first argument to `credit()` is a description to be included in the credit report. The second argument is an array of `score` properties of scored report objects. The `credit()` function returns a credit report. The invoking module can further dispose of the credit report as needed.
 
-###### By a user
+###### Tool crediting by a user
 
 A user can invoke `credit()` in one of these ways:
 
@@ -952,6 +1046,7 @@ node call credit legislators 241106
 ```
 
 When a user invokes `credit` in this example, the `call` module:
+
 - gets all reports, or if the third argument to `call()` exists all reports whose file names begin with `'241106'`, in the `scored` subdirectory of the `REPORTDIR` directory.
 - gets the `score` properties of those reports.
 - creates an ID for the credit report.
@@ -963,11 +1058,11 @@ The `issues` module tabulates total issue scores. Its `issues()` function takes 
 
 The function produces an issue report, an object with issue properties, whose values are the totals of the scores of the respective issues.
 
-##### Invocation
+##### Issue scoring invocation
 
 There are two ways to use the `credit` module.
 
-###### By a module
+###### Issue scoring by a module
 
 A module can invoke `issues()` in this way:
 
@@ -979,7 +1074,7 @@ const issuesReport = issues('legislators', reportScores);
 
 The arguments to `issues()` are a report description and an array of `score` properties of scored report objects. The `issues()` function returns an issues report. The invoking module can further dispose of the issues report as needed.
 
-###### By a user
+###### Issue scoring by a user
 
 A user can invoke `issues()` in one of these ways:
 
@@ -989,6 +1084,7 @@ node call issues legislators 241106
 ```
 
 When a user invokes `issues` in this example, the `call` module:
+
 - gets all reports, or if the third argument to `call()` exists all reports whose file names begin with `'241106'`, in the `scored` subdirectory of the `REPORTDIR` directory.
 - gets the `score` properties of those reports.
 - creates an ID for the issues report.
