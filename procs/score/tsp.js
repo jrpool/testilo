@@ -24,7 +24,7 @@
   tsp
   Testilo score proc
 
-  Computes target score data and adds them to a Testaro report.
+  Computes score data and adds them to a Testaro report.
 */
 
 // IMPORTS
@@ -41,6 +41,7 @@ const scoreProcID = 'tsp';
 // How much is added to the page score by each component.
 
 // 1. Issue
+
 // Each issue.
 const issueCountWeight = 10;
 /*
@@ -52,10 +53,8 @@ const issueCountWeight = 10;
 const maxWeight = 30;
 
 // 2. Tool
-/*
-  Severity: amount added to each raw tool score by each violation of a rule with ordinal severity 0
-  through 3.
-*/
+
+// Severity: amount the ordinal severity of each violation adds to the raw tool score.
 const severityWeights = [1, 2, 3, 4];
 // Final: multiplier of the raw tool score to obtain the final tool score.
 const toolWeight = 0.1;
@@ -91,21 +90,21 @@ const latencyWeight = 2;
 
 // Initialize a directory of issue-classified tool rules.
 const issueIndex = {};
-// Initialize an array of variably named tool rules.
-const issueMatcher = [];
-// For each issue:
+// Initialize an array of variable rule IDs.
+const variableRuleIDs = [];
+// For each classified issue:
 Object.keys(issues).forEach(issueID => {
   // For each tool with rules belonging to that issue:
-  Object.keys(issues[issueID].tools).forEach(toolName => {
+  Object.keys(issues[issueID].tools).forEach(toolID => {
     // For each of those rules:
-    Object.keys(issues[issueID].tools[toolName]).forEach(ruleID => {
-      issueIndex[toolName] ??= {};
-      // Add it to the directory of tool rules.
-      issueIndex[toolName][ruleID] = issueID;
-      // If it is variably named:
-      if (issues[issueID].tools[toolName][ruleID].variable) {
-        // Add it to the array of variably named tool rules.
-        issueMatcher.push(ruleID);
+    Object.keys(issues[issueID].tools[toolID]).forEach(ruleID => {
+      issueIndex[toolID] ??= {};
+      // Add its ID to the directory of tool rule IDs.
+      issueIndex[toolID][ruleID] = issueID;
+      // If it has a variable ID:
+      if (issues[issueID].tools[toolID][ruleID].variable) {
+        // Add its ID to the array of variable rule IDs.
+        variableRuleIDs.push(ruleID);
       }
     })
   });
@@ -115,8 +114,8 @@ Object.keys(issues).forEach(issueID => {
 
 // Scores a report.
 exports.scorer = report => {
-  // If there are any acts in the report:
   const {acts} = report;
+  // If there are any acts in the report:
   if (Array.isArray(acts) && acts.length) {
     const testActs = acts.filter(act => act.type === 'test');
     const testTools = new Set(testActs.map(act => act.which));
@@ -159,7 +158,7 @@ exports.scorer = report => {
           element: {}
         }
       };
-      // Initialize the global and issue-specific sets of path-identified elements.
+      // Initialize the job and issue-specific sets of path-identified elements.
       const pathIDs = new Set();
       const issuePaths = {};
       const {summary, details} = score;
@@ -195,15 +194,15 @@ exports.scorer = report => {
             const {ordinalSeverity, pathID, ruleID, what} = instance;
             const count = instance.count || 1;
             let canonicalRuleID = ruleID;
-            // If the rule ID is issue-classified:
+            // If the rule is not classified:
             if (! issueIndex[which][ruleID]) {
-              // Convert it to the variably named tool rule that it matches, if any.
-              canonicalRuleID = issueMatcher.find(pattern => {
+              // Convert its ID to the variable rule ID that it matches, if any.
+              canonicalRuleID = variableRuleIDs.find(pattern => {
                 const patternRE = new RegExp(pattern);
                 return patternRE.test(ruleID);
               });
             }
-            // If the rule or a matching variably named rule is issue-classified:
+            // If the rule is classified:
             if (canonicalRuleID) {
               // Get the issue of the rule.
               const issueID = issueIndex[which][canonicalRuleID];
@@ -226,63 +225,49 @@ exports.scorer = report => {
                 }
                 issueDetails.tools[which] ??= {};
                 issueDetails.instanceCounts[which] ??= 0;
-                // Add data from the instance to the issue details.
+                // Add the instance count to the tool instance count.
                 issueDetails.instanceCounts[which] += count;
-                if (! issueDetails.tools[which][canonicalRuleID]) {
-                  const ruleData = issues[issueID].tools[which][canonicalRuleID];
-                  issueDetails.tools[which][canonicalRuleID] = {
-                    quality: ruleData.quality,
-                    what: ruleData.what,
-                    complaints: {
-                      countTotal: 0,
-                      texts: []
-                    }
-                  };
-                }
-                details
-                .issue[issueID]
-                .tools[which][canonicalRuleID]
-                .complaints
+                const ruleData = issues[issueID].tools[which][canonicalRuleID];
+                // Initialize the the issue details for the rule if necessary.
+                issueDetails.tools[which][canonicalRuleID] ??= {
+                  quality: ruleData.quality,
+                  what: ruleData.what,
+                  violations: {
+                    countTotal: 0,
+                    descriptions: new Set()
+                  }
+                };
+                const ruleDetails = issueDetails.tools[which][canonicalRuleID];
+                // Add the instance count to the rule instance count.
+                ruleDetails
+                .violations
                 .countTotal += count || 1;
-                if (
-                  ! details
-                  .issue[issueID]
-                  .tools[which][canonicalRuleID]
-                  .complaints
-                  .texts
-                  .includes(what)
-                ) {
-                  details
-                  .issue[issueID]
-                  .tools[which][canonicalRuleID]
-                  .complaints
-                  .texts
-                  .push(what);
-                }
-                issuePaths[issueID] ??= {};
+                // Ensure that the violation description is among the violation descriptions.
+                ruleDetails
+                .violations
+                .descriptions
+                .add(what);
                 // If the element has a path ID:
                 if (pathID) {
+                  issuePaths[issueID] ??= {};
                   issuePaths[issueID][pathID] ??= new Set();
-                  // Ensure that the tool is among the tools reporting the issue for the element.
+                  // Ensure that the tool is among those reporting the issue for the element.
                   issuePaths[issueID][pathID].add(which);
                 }
               }
             }
-            // Otherwise, i.e. if the rule is not issue-classified:
+            // Otherwise, i.e. if the rule is not classified:
             else {
               // Add the instance to the solo details of the score data.
-              if (! details.solo[which]) {
-                details.solo[which] = {};
-              }
-              if (! details.solo[which][ruleID]) {
-                details.solo[which][ruleID] = 0;
-              }
+              details.solo[which] ??= {};
+              details.solo[which][ruleID] ??= 0;
               details.solo[which][ruleID] += (count || 1) * (ordinalSeverity + 1);
               // Report this.
-              console.log(`ERROR: ${ruleID} of ${which} not found in issues`);
+              console.log(`ERROR: Unclassified rule of ${which}: ${ruleID}`);
             }
-            // Ensure that the element XPath, if known, is in the set of XPaths.
+            // If the element has a path ID:
             if (pathID) {
+              // Ensure it is among the job path IDs.
               pathIDs.add(pathID);
             }
           });
@@ -295,29 +280,28 @@ exports.scorer = report => {
       });
       // For each non-ignorable issue with any instances:
       Object.keys(details.issue).forEach(issueID => {
-        const issueData = details.issue[issueID];
+        const issueDetails = details.issue[issueID];
         // For each tool with any instances in the issue:
-        Object.keys(issueData.tools).forEach(toolID => {
+        Object.keys(issueDetails.tools).forEach(toolID => {
           // Get the sum of the quality-weighted counts of its issue rules.
           let weightedCount = 0;
-          Object.values(issueData.tools[toolID]).forEach(ruleData => {
-            weightedCount += ruleData.quality * ruleData.complaints.countTotal;
+          Object.values(issueDetails.tools[toolID]).forEach(ruleData => {
+            weightedCount += ruleData.quality * ruleData.violations.countTotal;
           });
-          // If the sum exceeds the existing maximum weighted count for the issue:
-          if (weightedCount > issueData.maxCount) {
-            // Change the maximum count for the issue to the sum.
-            issueData.maxCount = weightedCount;
-          }
+          // Update the maximum count for the issue if necessary.
+          issueDetails.maxCount = Math.max(issueDetails.maxCount, weightedCount);
         });
         // Get the score for the issue, including any addition for the instance count limit.
-        const maxAddition = issueData.countLimit ? maxWeight / issueData.countLimit : 0;
-        issueData.score = Math.round(issueData.weight * issueData.maxCount * (1 + maxAddition));
+        const maxAddition = issueDetails.countLimit ? maxWeight / issueDetails.countLimit : 0;
+        issueDetails.score = Math.round(
+          issueDetails.weight * issueDetails.maxCount * (1 + maxAddition)
+        );
         // For each tool that has any rule in the issue:
-        Object.keys(issues[issueID].tools).forEach(toolName => {
+        Object.keys(issues[issueID].tools).forEach(toolID => {
           // If the tool was in the job and has no instances of the issue:
-          if (testTools.has(toolName) && ! issueData.instanceCounts[toolName]) {
+          if (testTools.has(toolID) && ! issueDetails.instanceCounts[toolID]) {
             // Report its instance count as 0.
-            issueData.instanceCounts[toolName] = 0;
+            issueDetails.instanceCounts[toolID] = 0;
           }
         });
       });
@@ -360,7 +344,6 @@ exports.scorer = report => {
           };
         });
         // Add the element data to the score details.
-        details.element ??= {};
         details.element[issueID] = {};
         toolLists.forEach(toolList => {
           details.element[issueID][toolList] = elementData[issueID][toolList];
