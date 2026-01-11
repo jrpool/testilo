@@ -609,7 +609,7 @@ The scorer module contains a `scorer` function. The function takes a report as i
 Testilo provides a scorer module with a `scorer` function in `procs/score/tsp.js`. If you wish, you may reference that function when you call the `score` function. If you do, the `score` property added to the report will have this structure:
 
 ```javascript
-{
+score: {
   scoreProcID: 'tsp',
   weights: { // Weights determining the contributions of facts to the total score.
     severities: [1, 2, 3, 4],
@@ -654,7 +654,7 @@ Testilo provides a scorer module with a `scorer` function in `procs/score/tsp.js
     issue: {
       issueA: { // Details on violations of rules classified as belonging to issue A.
         summary: 'Summary of issue A',
-        wcag: 'WCAG 1.1.1',
+        wcag: '1.1.1',
         score: 0,
         maxCount: 0, // Count of violations after discounting for inferred duplication.
         weight: 4,
@@ -681,7 +681,7 @@ Testilo provides a scorer module with a `scorer` function in `procs/score/tsp.js
     },
     solo: { // Rules violated but not classified as belonging to any issue.
       toolA: {
-        ruleA0: 1
+        ruleA0: 1 // Rule and count of violations.
       }
     },
     tool: { // Subscores due to tools reporting violations of their rules.
