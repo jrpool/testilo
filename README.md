@@ -604,16 +604,14 @@ When a user invokes `score()` in this example, the `call` module:
 
 #### Scorer output
 
-The `score` module uses a `scorer` function to add a `score` property to a report.
+The scorer module contains a `scorer` function. The function takes a report as its only argument and modifies the report in place by adding a `score` property to it. You can create any `scorer` function and use it to create a `score` property that can have any structure that your intended subsequent analysis will require.
 
-The `scorer` function takes the report as its only argument and modifies it in place.
-
-The `scorer` function in `procs/score/tsp.js` produces a `score` property with this structure:
+Testilo provides a scorer module with a `scorer` function in `procs/score/tsp.js`. If you wish, you may reference that function when you call the `score` function. If you do, the `score` property added to the report will have this structure:
 
 ```javascript
 {
-  scoreProcID: 'abcde',
-  weights: {
+  scoreProcID: 'tsp',
+  weights: { // Weights determining the contributions of facts to the total score.
     severities: [1, 2, 3, 4],
     tool: 0.1,
     element: 2,
@@ -632,7 +630,7 @@ The `scorer` function in `procs/score/tsp.js` produces a `score` property with t
   },
   normalLatency: 22,
   summary: {
-    total: 0,
+    total: 0, // Total score, the sum of the following subscores.
     issueCount: 0,
     issue: 0,
     solo: 0,
@@ -643,38 +641,63 @@ The `scorer` function in `procs/score/tsp.js` produces a `score` property with t
     latency: 0
   },
   details: {
-    severity: {
+    severity: { // Counts of violations by the severities assigned by their tools.
       total: [0, 0, 0, 0],
       byTool: {
-        toolA: [0, 0, 0, 0],
-        toolB: [0, 0, 0, 0],
-        testaro: [0, 0, 0, 0]
+        toolA: [0, 0, 0, 0]
       }
     },
-    prevention: {
+    prevention: { // Subscores due to pages preventing tools from performing tests.
       toolB: 300,
       testaro: 90
     },
     issue: {
-      issueA: {
+      issueA: { // Details on violations of rules classified as belonging to issue A.
         summary: 'Summary of issue A',
         wcag: 'WCAG 1.1.1',
         score: 0,
-        maxCount: 0,
+        maxCount: 0, // Count of violations after discounting for inferred duplication.
         weight: 4,
-        countLimit: 30,
-        instanceCounts: {},
-        tools: {}
+        countLimit: 30, // Adjuster if the count of violations per page is inherently limited.
+        instanceCounts: {
+          toolC: 0
+        },
+        tools: {
+          toolC: {
+            ruleC0: {
+              quality: 1, // Estimated quality of the test for the rule (0 to 1).
+              what: 'Description of rule C0',
+              violations: {
+                countTotal: 0,
+                descriptions: [
+                  'Description 0 of violation',
+                  'Description 1 of violation'
+                ]
+              }
+            }
+          }
+        }
       }
     },
-    solo: {},
-    tool: {},
-    element: {}
+    solo: { // Rules violated but not classified as belonging to any issue.
+      toolA: {
+        ruleA0: 1
+      }
+    },
+    tool: { // Subscores due to tools reporting violations of their rules.
+      toolA: 0
+    },
+    element: { // Xpaths of elements reported by sets of tools as violating rules in issues.
+      issueA: {
+        'toolA + toolB': [
+          '/html/body/div[2]',
+          '/html/body/div[2]/p[1]'
+        ]
+      }
+    }
   }
-};
+}
 ```
-
-This can be found in `testilo/procs/score/tsp99.js`.
 
 #### Score validation
 

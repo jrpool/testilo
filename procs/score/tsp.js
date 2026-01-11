@@ -290,6 +290,12 @@ exports.scorer = report => {
           });
           // Update the maximum count for the issue if necessary.
           issueDetails.maxCount = Math.max(issueDetails.maxCount, weightedCount);
+          // Convert the set of violation descriptions to an array.
+          Object.keys(issueDetails.tools[toolID]).forEach(ruleID => {
+            issueDetails.tools[toolID][ruleID].violations.descriptions = Array
+              .from(issueDetails.tools[toolID][ruleID].violations.descriptions)
+              .sort();
+          });
         });
         // Get the score for the issue, including any addition for the instance count limit.
         const maxAddition = issueDetails.countLimit ? maxWeight / issueDetails.countLimit : 0;
@@ -314,25 +320,25 @@ exports.scorer = report => {
         });
         return severityTotals;
       }, details.severity.total);
-      const elementData = {};
+      const elementDetails = details.element;
       // For each issue:
       Object.keys(issuePaths).forEach(issueID => {
+        elementDetails[issueID] ??= {};
+        const issueElementDetails = elementDetails[issueID];
         // For each element reported as exhibiting it:
         Object.keys(issuePaths[issueID]).forEach(pathID => {
-          const toolList = issuePaths[issueID][pathID].sort().join(' + ');
-          elementData[issueID] ??= {};
-          elementData[issueID][toolList] ??= [];
-          // Classify the element by the set of tools reporting it for the issue.
-          elementData[issueID][toolList].push(pathID);
+          // Convert the set of tools reporting it to a string.
+          const toolList = Array.from(issuePaths[issueID][pathID]).sort().join(' + ');
+          issueElementDetails[toolList] ??= new Set();
+          // Classify the XPath by the set of tools reporting its element for the issue.
+          issueElementDetails[toolList].add(pathID);
         });
-        // Sort the XPaths reported by each tool list.
-        Object.keys(elementData).forEach(issueID => {
-          Object.keys(elementData[issueID]).forEach(toolList => {
-            elementData[issueID][toolList].sort();
-          });
+        // Convert the set of XPaths to an array.
+        Object.keys(issueElementDetails).forEach(toolList => {
+          issueElementDetails[toolList] = Array.from(elementDetails[issueID][toolList]).sort();
         });
-        // Sort the tool lists by their tool counts and alphabetically.
-        const toolLists = Object.keys(elementData[issueID]);
+        // Sort the tool lists by their tool counts and then alphabetically.
+        const toolLists = Object.keys(elementDetails[issueID]);
         toolLists.sort((a, b) => {
           const aToolCount = a.replace(/[^+]/g, '').length;
           const bToolCount = b.replace(/[^+]/g, '').length;
@@ -342,11 +348,6 @@ exports.scorer = report => {
           else {
             return bToolCount - aToolCount;
           };
-        });
-        // Add the element data to the score details.
-        details.element[issueID] = {};
-        toolLists.forEach(toolList => {
-          details.element[issueID][toolList] = elementData[issueID][toolList];
         });
       });
       // Add the summary issue-count total to the score.
