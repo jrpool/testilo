@@ -8358,7 +8358,7 @@ exports.issues = {
       }
     }
   },
-  tabFocusability: {
+  unfocusability: {
     summary: 'element not focusable',
     why: 'Keyboard-only user cannot choose an item to operate',
     wcag: '2.1.1',
@@ -8377,7 +8377,15 @@ exports.issues = {
           quality: 1,
           what: 'iframe with negative tabindex has interactive elements'
         }
-      },
+      }
+    }
+  },
+  focusDiscrepancy: {
+    summary: 'Tab-focusable elements wrong',
+    why: 'Item selections by a keyboard-only user are useless or impossible',
+    wcag: '2.1.1',
+    weight: 4,
+    tools: {
       testaro: {
         focAll: {
           variable: false,
