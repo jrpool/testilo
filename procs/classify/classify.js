@@ -61,8 +61,29 @@ const getIssueDirectory = exports.getIssueDirectory = () => {
     variableRuleIDs
   };
 };
+// Returns the issue ID of a standard instance.
+const getIssueID = (toolID, instance, issueDirectory) => {
+  const {issueIndex, variableRuleIDs} = issueDirectory;
+  const {ruleID} = instance;
+  let canonicalRuleID = ruleID;
+  // If the rule is not in the issue index:
+  if (! issueIndex[toolID][ruleID]) {
+    // Convert its ID to the variable rule ID that it matches, if any.
+    canonicalRuleID = variableRuleIDs.find(pattern => {
+      const patternRE = new RegExp(pattern);
+      return patternRE.test(ruleID);
+    });
+  }
+  // If the rule or a variable match is in the issue index:
+  if (canonicalRuleID) {
+    // Return the issue ID of the rule.
+    return issueIndex[which][canonicalRuleID];
+  }
+  // Otherwise, i.e. if neither the rule nor a variable match is in the issue index, report this.
+  console.log(`ERROR: Unclassified rule of ${which}: ${ruleID}`);
+};
 // Adds an issue ID to each standard instance in a report.
-exports.classify = report => {
+exports.issueAnnotate = report => {
   const {acts} = report;
   // If there are any acts in the report:
   if (Array.isArray(acts) && acts.length) {
@@ -71,7 +92,7 @@ exports.classify = report => {
     // If there are any:
     if (testActs.length) {
       // Get an issue index and an array of variable rule IDs.
-      const {issueIndex, variableRuleIDs} = getIssueDirectory();
+      const issueDirectory = getIssueDirectory();
       // For each test act:
       testActs.forEach(act => {
         const {which, standardResult} = act;
@@ -85,30 +106,12 @@ exports.classify = report => {
         ) {
           // For each instance of the tool:
           standardResult.instances.forEach(instance => {
-            const {ruleID} = instance;
-            let canonicalRuleID = ruleID;
-            // If the rule is not in the issue index:
-            if (! issueIndex[which][ruleID]) {
-              // Convert its ID to the variable rule ID that it matches, if any.
-              canonicalRuleID = variableRuleIDs.find(pattern => {
-                const patternRE = new RegExp(pattern);
-                return patternRE.test(ruleID);
-              });
-            }
-            // If the rule or a variable match is in the issue index:
-            if (canonicalRuleID) {
-              // Get the issue of the rule.
-              const issueID = issueIndex[which][canonicalRuleID];
-              // If the issue is non-ignorable:
-              if (issueID !== 'ignorable') {
-                // Add the issue ID to the instance.
-                instance.issueID = issueID;
-              }
-            }
-            // Otherwise, i.e. if neither the rule nor a variable match is in the issue index:
-            else {
-              // Report this.
-              console.log(`ERROR: Unclassified rule of ${which}: ${ruleID}`);
+            // Get the issue ID, if any, of the rule.
+            const issueID = getIssueID(which, instance, issueDirectory);
+            // If the issue ID exists and the issue is non-ignorable:
+            if (issueID && issueID !== 'ignorable') {
+              // Add the issue ID to the instance.
+              instance.issueID = issueID;
             }
           });
         }
