@@ -55,11 +55,11 @@ exports.collateExcerpts = report => {
           standardResult.instances.forEach(instance => {
             // Get the excerpt and path ID, if any, of the element.
             const {excerpt, pathID} = instance;
-            // If both exist and the directory contains no excerpt for the path ID and tool:
-            if (excerpt && pathID && ! excerpts[pathID][which]) {
-              // Add the excerpt to the directory.
-              excerpts[pathID] ??= {};
-              excerpts[pathID][which] = excerpt;
+            excerpts[pathID] ??= {};
+            // If both exist:
+            if (excerpt && pathID) {
+              // Add the excerpt to the directory unless one already exists.
+              excerpts[pathID][which] ??= excerpt;
             }
           });
         }
