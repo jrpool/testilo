@@ -77,10 +77,10 @@ const getIssueID = (toolID, instance, issueDirectory) => {
   // If the rule or a variable match is in the issue index:
   if (canonicalRuleID) {
     // Return the issue ID of the rule.
-    return issueIndex[which][canonicalRuleID];
+    return issueIndex[toolID][canonicalRuleID];
   }
   // Otherwise, i.e. if neither the rule nor a variable match is in the issue index, report this.
-  console.log(`ERROR: Unclassified rule of ${which}: ${ruleID}`);
+  console.log(`ERROR: Unclassified rule of ${toolID}: ${ruleID}`);
 };
 // Adds an issue ID to each standard instance in a report.
 exports.issueAnnotate = report => {
@@ -108,8 +108,8 @@ exports.issueAnnotate = report => {
           standardResult.instances.forEach(instance => {
             // Get the issue ID, if any, of the rule.
             const issueID = getIssueID(which, instance, issueDirectory);
-            // If the issue ID exists and the issue is non-ignorable:
-            if (issueID && issueID !== 'ignorable') {
+            // If the issue ID exists:
+            if (issueID) {
               // Add the issue ID to the instance.
               instance.issueID = issueID;
             }
