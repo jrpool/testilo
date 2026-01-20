@@ -29,7 +29,7 @@
 
 // FUNCTIONS
 
-// Adds a directory of element excerpts and texts to a Testaro report.
+// Adds directories of element excerpts and texts to a Testaro report.
 exports.collateExcerpts = report => {
   const {acts} = report;
   // If there are any acts in the report:
@@ -38,7 +38,7 @@ exports.collateExcerpts = report => {
     const testActs = acts.filter(act => act.type === 'test');
     // If there are any:
     if (testActs.length) {
-      // Initialize an excerpt directory in the report in place.
+      // Initialize excerpt and text directories in the report in place.
       const excerpts = report.excerpts = {};
       const texts = report.texts = {};
       // For each test act:
@@ -68,6 +68,37 @@ exports.collateExcerpts = report => {
           });
         }
       });
+      // If the text directory is non-empty:
+      if (Object.keys(texts).length) {
+        // For each path ID in it:
+        Object.keys(texts).forEach(pathID => {
+          const toolNames = Object.keys(texts[pathID]);
+          // If the element has only 1 text:
+          if (toolNames.length === 1) {
+            // Change the key to unanimous.
+            texts[pathID].unanimous = texts[pathID][toolNames[0]];
+            delete texts[pathID][toolNames[0]];
+          }
+          // Otherwise, i.e. if the element has more than 1 text:
+          else {
+            // If all the texts are identical:
+            if (
+              Object
+              .values(texts[pathID])
+              .slice(1)
+              .every(text => text === texts[pathID][toolNames[0]])
+            ) {
+              // Consolidate the texts to 1 unanimous text.
+              texts[pathID].unanimous = texts[pathID][toolNames[0]];
+              toolNames.forEach(toolName => {
+                if (toolName !== toolNames[0]) {
+                  delete texts[pathID][toolName];
+                }
+              });
+            }
+          }
+        });
+      }
     }
   }
 };
