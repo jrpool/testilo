@@ -22,14 +22,14 @@
 
 /*
   excerpts
-  Excerpt collation proc
+  Excerpt and text collation proc
 
-  Adds a directory of element excerpts to a Testaro report.
+  Adds directories of element excerpts and texts to a Testaro report.
 */
 
 // FUNCTIONS
 
-// Adds a directory of element excerpts to a Testaro report.
+// Adds a directory of element excerpts and texts to a Testaro report.
 exports.collateExcerpts = report => {
   const {acts} = report;
   // If there are any acts in the report:
@@ -40,6 +40,7 @@ exports.collateExcerpts = report => {
     if (testActs.length) {
       // Initialize an excerpt directory in the report in place.
       const excerpts = report.excerpts = {};
+      const texts = report.texts = {};
       // For each test act:
       testActs.forEach(act => {
         const {which, standardResult} = act;
@@ -53,13 +54,16 @@ exports.collateExcerpts = report => {
         ) {
           // For each instance of the tool:
           standardResult.instances.forEach(instance => {
-            // Get the excerpt and path ID, if any, of the element.
-            const {excerpt, pathID} = instance;
+            // Get the excerpt, path ID, and text, if any, of the element.
+            const {excerpt, pathID, text} = instance;
             excerpts[pathID] ??= {};
-            // If both exist:
-            if (excerpt && pathID) {
-              // Add the excerpt to the directory unless one already exists.
+            texts[pathID] ??= {};
+            // If a path ID exists:
+            if (pathID) {
+              // Add the excerpt to the excerpt directory unless one already exists.
               excerpts[pathID][which] ??= excerpt;
+              // Add the text to the text directory unless one already exists.
+              texts[pathID][which] ??= text;
             }
           });
         }
