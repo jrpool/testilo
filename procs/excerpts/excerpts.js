@@ -72,10 +72,17 @@ exports.collateExcerpts = report => {
       if (Object.keys(texts).length) {
         // For each path ID in it:
         Object.keys(texts).forEach(pathID => {
-          const toolNames = Object.keys(texts[pathID]);
-          // If the element has only 1 text:
+          let toolNames = Object.keys(texts[pathID]);
+          // Delete all empty texts.
+          toolNames.forEach(toolName => {
+            if (! texts[pathID][toolName]) {
+              delete texts[pathID][toolName];
+            }
+          });
+          toolNames = Object.keys(texts[pathID]);
+          // If the element has only 1 remaining text:
           if (toolNames.length === 1) {
-            // Change the key to unanimous.
+            // Change its key to unanimous.
             texts[pathID].unanimous = texts[pathID][toolNames[0]];
             delete texts[pathID][toolNames[0]];
           }
@@ -91,7 +98,7 @@ exports.collateExcerpts = report => {
               // Consolidate the texts to 1 unanimous text.
               texts[pathID].unanimous = texts[pathID][toolNames[0]];
               toolNames.forEach(toolName => {
-                if (toolName !== toolNames[0]) {
+                if (toolName !== 'unanimous') {
                   delete texts[pathID][toolName];
                 }
               });
