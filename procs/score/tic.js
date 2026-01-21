@@ -2463,7 +2463,7 @@ exports.issues = {
     }
   },
   imageLinkNoText: {
-    summary: 'link not named',
+    summary: 'image link not named',
     why: 'User cannot get help understanding what a link points to',
     wcag: '2.4.4',
     weight: 4,
