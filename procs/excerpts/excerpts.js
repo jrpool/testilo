@@ -75,6 +75,13 @@ exports.collateExcerpts = report => {
         // For each path ID in it:
         Object.keys(texts).forEach(pathID => {
           const toolNames = Object.keys(texts[pathID]);
+          // XXX This will be needed only temporarily!
+          // Ensure that all of its texts are arrays.
+          Object.keys(texts[pathID]).forEach(toolName => {
+            if (typeof texts[pathID][toolName] === 'string') {
+              texts[pathID][toolName] = [texts[pathID][toolName]];
+            }
+          });
           // If the element has only 1 text:
           if (toolNames.length === 1) {
             // Change its key to unanimous.
