@@ -62,8 +62,10 @@ exports.collateExcerpts = report => {
             if (pathID) {
               // Add the excerpt to the excerpt directory unless one already exists.
               excerpts[pathID][which] ??= excerpt;
-              // Add the text to the text directory unless one already exists.
-              texts[pathID][which] ??= text;
+              // Add the text, if non-empty, to the text directory unless one already exists.
+              if (text.length) {
+                texts[pathID][which] ??= text;
+              }
             }
           });
         }
@@ -72,15 +74,8 @@ exports.collateExcerpts = report => {
       if (Object.keys(texts).length) {
         // For each path ID in it:
         Object.keys(texts).forEach(pathID => {
-          let toolNames = Object.keys(texts[pathID]);
-          // Delete all empty texts.
-          toolNames.forEach(toolName => {
-            if (! texts[pathID][toolName]) {
-              delete texts[pathID][toolName];
-            }
-          });
-          toolNames = Object.keys(texts[pathID]);
-          // If the element has only 1 remaining text:
+          const toolNames = Object.keys(texts[pathID]);
+          // If the element has only 1 text:
           if (toolNames.length === 1) {
             // Change its key to unanimous.
             texts[pathID].unanimous = texts[pathID][toolNames[0]];
@@ -93,7 +88,9 @@ exports.collateExcerpts = report => {
               Object
               .values(texts[pathID])
               .slice(1)
-              .every(text => text === texts[pathID][toolNames[0]])
+              .every(
+                text => text.every((value, index) => value === texts[pathID][toolNames[0]][index])
+              )
             ) {
               // Consolidate the texts to 1 unanimous text.
               texts[pathID].unanimous = texts[pathID][toolNames[0]];
