@@ -263,11 +263,12 @@ exports.scorer = report => {
                   .texts
                   .push(what);
                 }
-                issuePaths[issueName] ??= new Set();
+                issuePaths[issueName] ??= {};
                 // If the element has a path ID:
                 if (pathID) {
-                  // Ensure that it is in the issue-specific set of paths.
-                  issuePaths[issueName].add(pathID);
+                  // Ensure that it is in the issue-specific map of paths to tools.
+                  issuePaths[issueName][pathID] ??= new Set();
+                  issuePaths[issueName][pathID].add(which);
                 }
               }
             }
@@ -323,6 +324,10 @@ exports.scorer = report => {
             issueData.instanceCounts[toolName] = 0;
           }
         });
+        // Add the count of unique path-identified elements for the issue.
+        if (issuePaths[issueName]) {
+          issueData.uniqueElementCount = Object.keys(issuePaths[issueName]).length;
+        }
       });
       // Add the severity detail totals to the score.
       details.severity.total = Object
@@ -333,9 +338,22 @@ exports.scorer = report => {
         });
         return severityTotals;
       }, details.severity.total);
-      // Add the element details to the score.
+      // Add the element details to the score, grouped by detecting tools.
       Object.keys(issuePaths).forEach(issueID => {
-        details.element[issueID] = Array.from(issuePaths[issueID]);
+        details.element[issueID] = {};
+        const issueElementDetails = details.element[issueID];
+        // For each element reported as exhibiting the issue:
+        Object.keys(issuePaths[issueID]).forEach(pathID => {
+          // Convert the set of tools reporting it to a string.
+          const toolList = Array.from(issuePaths[issueID][pathID]).sort().join(' + ');
+          issueElementDetails[toolList] ??= [];
+          // Classify the path by the set of tools reporting its element for the issue.
+          issueElementDetails[toolList].push(pathID);
+        });
+        // Sort the paths within each tool list.
+        Object.keys(issueElementDetails).forEach(toolList => {
+          issueElementDetails[toolList].sort();
+        });
       });
       // Add the summary issue-count total to the score.
       summary.issueCount = Object.keys(details.issue).length * issueCountWeight;
