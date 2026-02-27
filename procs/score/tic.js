@@ -48,7 +48,7 @@ exports.issues = {
     summary: 'ignorable',
     why: 'No known impact, because the test is unreliable or invalid',
     wcag: '',
-    weight: 0,
+    weight: 1,
     tools: {
       alfa: {
         r73: {
@@ -9351,7 +9351,7 @@ exports.issues = {
     summary: 'false aria-hidden value risky',
     why: 'User may be misled by erroneously hidden or revealed document content',
     wcag: '2.4.6',
-    weight: 0,
+    weight: 1,
     tools: {
       aslint: {
         aria_hidden: {
