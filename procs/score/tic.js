@@ -6642,11 +6642,6 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'E-AAA.1_3_1.H49.AlignAttr': {
-          variable: false,
-          quality: 1,
-          what: 'Special text is aligned nonsemantically'
-        },
         'E-AAA.1_3_1.H49.B': {
           variable: false,
           quality: 1,
@@ -6671,16 +6666,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Special text is underlined nonsemantically'
-        },
-        'E-AAA.1_3_1.H49.Center': {
-          variable: false,
-          quality: 1,
-          what: 'Special text is centered nonsemantically'
-        },
-        'E-AAA.1_3_1.H49.Font': {
-          variable: false,
-          quality: 1,
-          what: 'Special text is designated nonsemantically with a (deprecated) font element'
         }
       },
       wax: {
