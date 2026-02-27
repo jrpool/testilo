@@ -527,7 +527,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_1.F77': {
+        'E-AAA.4_1_1.F77': {
           variable: false,
           quality: 1,
           what: 'Duplicate id attribute value'
@@ -685,12 +685,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.Input.Name': {
+        'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
           quality: 1,
           what: 'Text input has no accessible name'
         },
-        '^AAA\.4_1_2\.H91\.Input[-a-zA-Z]+\.Name$': {
+        'E-^AAA\.4_1_2\.H91\.Input[-a-zA-Z]+\.Name$': {
           variable: true,
           quality: 1,
           what: 'input element has no accessible name'
@@ -756,12 +756,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'H36': {
+        'E-H36': {
           variable: false,
           quality: 1,
           what: 'Image submit button has no alt attribute'
         },
-        'AAA.1_1_1.H36': {
+        'E-AAA.1_1_1.H36': {
           variable: false,
           quality: 1,
           what: 'Image submit button has no alt attribute'
@@ -809,7 +809,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.InputImage.Name': {
+        'E-AAA.4_1_2.H91.InputImage.Name': {
           variable: false,
           quality: 1,
           what: 'Element is an image input but has no accessible name'
@@ -872,7 +872,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_1_1.H37': {
+        'E-AAA.1_1_1.H37': {
           variable: false,
           quality: 1,
           what: 'img element has no alt attribute'
@@ -959,7 +959,7 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.4_1_2.H91.Svg.Name': {
+        'E-AAA.4_1_2.H91.Svg.Name': {
           variable: false,
           quality: 1,
           what: 'Element is svg but has no accessible name'
@@ -1350,7 +1350,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_1_1.H67.2': {
+        'W-AAA.1_1_1.H67.2': {
           variable: false,
           quality: 1,
           what: 'Image marked as decorative is informative?'
@@ -1443,7 +1443,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.3_1_1.H57.2': {
+        'E-AAA.3_1_1.H57.2': {
           variable: false,
           quality: 1,
           what: 'html element has no lang or xml:lang attribute'
@@ -1530,7 +1530,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.3_1_1.H57.3.Lang': {
+        'E-AAA.3_1_1.H57.3.Lang': {
           variable: false,
           quality: 1,
           what: 'Language specified in the lang attribute of the document does not appear to be well-formed'
@@ -1571,7 +1571,7 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.3_1_2.H58.1.Lang': {
+        'E-AAA.3_1_2.H58.1.Lang': {
           variable: false,
           quality: 1,
           what: 'Language specified in the lang attribute of the element does not appear to be well-formed'
@@ -1628,7 +1628,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'WCAG2AAA.Principle3.Guideline3_1.3_1_2.H58': {
+        'E-WCAG2AAA.Principle3.Guideline3_1.3_1_2.H58': {
           variable: false,
           quality: 1,
           what: 'Change in language is not marked'
@@ -1691,12 +1691,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'ARIA6+H53': {
+        'E-ARIA6+H53': {
           variable: false,
           quality: 1,
           what: 'object element contains no text alternative'
         },
-        'AAA.1_1_1.H53,ARIA6': {
+        'E-AAA.1_1_1.H53,ARIA6': {
           variable: false,
           quality: 1,
           what: 'object element contains no text alternative after all other alternatives are exhausted'
@@ -1818,7 +1818,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_1_1.H24': {
+        'E-AAA.1_1_1.H24': {
           variable: false,
           quality: 1,
           what: 'Element is an area in an image map but has no alt attribute'
@@ -1862,7 +1862,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.2_1_2.F10': {
+        'W-AAA.2_1_2.F10': {
           variable: false,
           quality: 1,
           what: 'Applet or plugin fails to enable moving the focus away with the keyboard?'
@@ -1877,27 +1877,27 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.2_1_1.G90': {
+        'W-AAA.2_1_1.G90': {
           variable: false,
           quality: 1,
           what: 'Event handler functionality is not available by keyboard?'
         },
-        'AAA.2_1_1.SCR20.MouseOut': {
+        'W-AAA.2_1_1.SCR20.MouseOut': {
           variable: false,
           quality: 1,
           what: 'Mousing-out functionality is not available by keyboard?'
         },
-        'AAA.2_1_1.SCR20.MouseOver': {
+        'W-AAA.2_1_1.SCR20.MouseOver': {
           variable: false,
           quality: 1,
           what: 'Mousing-over functionality is not available by keyboard?'
         },
-        'AAA.2_1_1.SCR20.MouseDown': {
+        'W-AAA.2_1_1.SCR20.MouseDown': {
           variable: false,
           quality: 1,
           what: 'Mousing-down functionality is not available by keyboard?'
         },
-        'AAA.2_1_1.SCR20.MouseUp': {
+        'W-AAA.2_1_1.SCR20.MouseUp': {
           variable: false,
           quality: 1,
           what: 'Mousing-up functionality is not available by keyboard?'
@@ -1947,7 +1947,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.2_4_1.G1,G123,G124.NoSuchID': {
+        'E-AAA.2_4_1.G1,G123,G124.NoSuchID': {
           variable: false,
           quality: 1,
           what: 'Internal link references a nonexistent destination'
@@ -1983,7 +1983,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H44.NotFormControl': {
+        'E-AAA.1_3_1.H44.NotFormControl': {
           variable: false,
           quality: 1,
           what: 'Referent of the for attribute of the label is not a form control, so is wrong?'
@@ -2247,17 +2247,17 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H44.NonExistentFragment': {
+        'E-AAA.1_3_1.H44.NonExistentFragment': {
           variable: false,
           quality: 1,
           what: 'Label for attribute references a nonexistent element'
         },
-        'AAA.1_3_1.ARIA16,ARIA9': {
+        'E-AAA.1_3_1.ARIA16,ARIA9': {
           variable: false,
           quality: 1,
           what: 'aria-labelledby attribute references a nonexistent element'
         },
-        'AAA.4_1_2.ARIA16,ARIA9': {
+        'E-AAA.4_1_2.ARIA16,ARIA9': {
           variable: false,
           quality: 1,
           what: 'aria-labelledby attribute references a nonexistent element'
@@ -2396,22 +2396,22 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.A.Empty': {
+        'E-AAA.4_1_2.H91.A.Empty': {
           variable: false,
           quality: 1,
           what: 'a element has an id attribute but no href attribute or text'
         },
-        'AAA.4_1_2.H91.A.EmptyNoId': {
+        'E-AAA.4_1_2.H91.A.EmptyNoId': {
           variable: false,
           quality: 1,
           what: 'Link has no name or id attribute or value'
         },
-        'AAA.4_1_2.H91.A.EmptyWithName': {
+        'E-AAA.4_1_2.H91.A.EmptyWithName': {
           variable: false,
           quality: 1,
           what: 'Link has a name attribute but no href attribute or text'
         },
-        'AAA.4_1_2.H91.A.NoContent': {
+        'E-AAA.4_1_2.H91.A.NoContent': {
           variable: false,
           quality: 1,
           what: 'Link has an href attribute but not named'
@@ -2483,7 +2483,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_1_1.H30.2': {
+        'E-AAA.1_1_1.H30.2': {
           variable: false,
           quality: 1,
           what: 'img element is the only link content but has no text alternative'
@@ -2539,7 +2539,7 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'AAA.4_1_2.H91.A.Placeholder': {
+        'E-AAA.4_1_2.H91.A.Placeholder': {
           variable: false,
           quality: 1,
           what: 'Link has text but no href, id, or name attribute'
@@ -2561,7 +2561,7 @@ exports.issues = {
     weight: 3,
     tools: {
       htmlcs: {
-        'AAA.2_4_8.H59.2b': {
+        'E-AAA.2_4_8.H59.2b': {
           variable: false,
           quality: 1,
           what: 'link element is missing a non-empty href for the linked resource'
@@ -2656,7 +2656,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.A.NoHref': {
+        'E-AAA.4_1_2.H91.A.NoHref': {
           variable: false,
           quality: 1,
           what: 'Link is misused as a link destination'
@@ -2744,7 +2744,7 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.4_1_2.H91.Textarea.Name': {
+        'E-AAA.4_1_2.H91.Textarea.Name': {
           variable: false,
           quality: 1,
           what: 'textarea element has no accessible name'
@@ -2766,7 +2766,7 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'AAA.1_1_1.H2.EG3': {
+        'E-AAA.1_1_1.H2.EG3': {
           variable: false,
           quality: 1,
           what: 'alt value of the link img element duplicates the text of a link beside it'
@@ -2867,7 +2867,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_1_1.H2.EG4': {
+        'W-AAA.1_1_1.H2.EG4': {
           variable: false,
           quality: 1,
           what: 'Adjacent links, one with text and the other with a textless image, merit combination?'
@@ -2935,12 +2935,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3': {
+        'W-WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3': {
           variable: false,
           quality: 1,
           what: 'Link opens in a new window without notice?'
         },
-        'AAA.3_2_5.H83.3': {
+        'W-AAA.3_2_5.H83.3': {
           variable: false,
           quality: 1,
           what: 'Link text fails to indicate that the link will open in a new window?'
@@ -3105,32 +3105,32 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.A.Name': {
+        'E-AAA.4_1_2.H91.A.Name': {
           variable: false,
           quality: 1,
           what: 'Link with button role has no accessible name'
         },
-        'AAA.4_1_2.H91.Div.Name': {
+        'E-AAA.4_1_2.H91.Div.Name': {
           variable: false,
           quality: 1,
           what: 'div element with button role has no accessible name'
         },
-        'AAA.4_1_2.H91.Button.Name': {
+        'E-AAA.4_1_2.H91.Button.Name': {
           variable: false,
           quality: 1,
           what: 'button element has no accessible name'
         },
-        'AAA.4_1_2.H91.Img.Name': {
+        'E-AAA.4_1_2.H91.Img.Name': {
           variable: false,
           quality: 1,
           what: 'img element with button role has no accessible name'
         },
-        'AAA.4_1_2.H91.InputButton.Name': {
+        'E-AAA.4_1_2.H91.InputButton.Name': {
           variable: false,
           quality: 1,
           what: 'Button input element has no accessible name'
         },
-        'AAA.4_1_2.H91.Span.Name': {
+        'E-AAA.4_1_2.H91.Span.Name': {
           variable: false,
           quality: 1,
           what: 'Element with button role has no accessible name'
@@ -3347,7 +3347,7 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.F92,ARIA4': {
+        'E-AAA.1_3_1.F92,ARIA4': {
           variable: false,
           quality: 1,
           what: 'Element has presentation role but semantic child'
@@ -3813,7 +3813,7 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.2_4_8.H59.1': {
+        'E-AAA.2_4_8.H59.1': {
           variable: false,
           quality: 1,
           what: 'Element is not in the document head'
@@ -3849,12 +3849,12 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.2_4_8.H59.2a': {
+        'E-AAA.2_4_8.H59.2a': {
           variable: false,
           quality: 1,
           what: 'Element has no nonempty rel attribute for the type'
         },
-        'A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload or the value prefetch.': {
+        'E-A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload or the value prefetch.': {
           variable: false,
           quality: 1,
           what: 'Element with an as attribute has no rel attribute with preload, modulepreload, or prefetch as its value'
@@ -4188,7 +4188,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.2_4_1.H64.1': {
+        'E-AAA.2_4_1.H64.1': {
           variable: false,
           quality: 1,
           what: 'iframe element has no non-empty title attribute'
@@ -5276,7 +5276,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_5.H98': {
+        'E-AAA.1_3_5.H98': {
           variable: false,
           quality: 1,
           what: 'autocomplete attribute and the input type are mismatched'
@@ -5351,7 +5351,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_3_5.H98': {
+        'W-AAA.1_3_5.H98': {
           variable: false,
           quality: 1,
           what: 'Element contains a potentially faulty value in its autocomplete attribute'
@@ -5434,17 +5434,17 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_4_3.G145.Fail': {
+        'E-AAA.1_4_3.G145.Fail': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 3:1'
         },
-        'AAA.1_4_3.G18.Fail': {
+        'E-AAA.1_4_3.G18.Fail': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 4.5:1'
         },
-        'AAA.1_4_6.G18.Fail': {
+        'E-AAA.1_4_6.G18.Fail': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 4.5:1'
@@ -5511,12 +5511,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'WCAG2AAA.Principle1.Guideline1_4.1_4_3.G18': {
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_3.G18': {
           variable: false,
           quality: 1,
           what: 'Insufficient contrast'
         },
-        'AAA.1_4_6.G17.Fail': {
+        'W-AAA.1_4_6.G17.Fail': {
           variable: false,
           quality: 1,
           what: 'Text has insufficient contrast'
@@ -5569,62 +5569,62 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_4_3_F24.F24.BGColour': {
+        'W-AAA.1_4_3_F24.F24.BGColour': {
           variable: false,
           quality: 1,
           what: 'Inline background color lacks a complementary foreground color?'
         },
-        'AAA.1_4_6.G18.BgImage': {
+        'W-AAA.1_4_6.G18.BgImage': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and the background image is less than 4.5:1?'
         },
-        'AAA.1_4_3_F24.F24.FGColour': {
+        'W-AAA.1_4_3_F24.F24.FGColour': {
           variable: false,
           quality: 1,
           what: 'Inline foreground color lacks a complementary background color?'
         },
-        'AAA.1_4_3.G18.Abs': {
+        'W-AAA.1_4_3.G18.Abs': {
           variable: false,
           quality: 1,
           what: 'Contrast between the absolutely positioned text and its background is inadequate?'
         },
-        'AAA.1_4_6.G18.Abs': {
+        'W-AAA.1_4_6.G18.Abs': {
           variable: false,
           quality: 1,
           what: 'Contrast between the absolutely positioned text and its background is less than 4.5:1?'
         },
-        'AAA.1_4_3.G18.Alpha': {
+        'W-AAA.1_4_3.G18.Alpha': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 4.5:1, given the transparency?'
         },
-        'AAA.1_4_3.G145.Abs': {
+        'W-AAA.1_4_3.G145.Abs': {
           variable: false,
           quality: 1,
           what: 'Contrast between the absolutely positioned large text and its background is less than 3:1?'
         },
-        'AAA.1_4_3.G145.Alpha': {
+        'W-AAA.1_4_3.G145.Alpha': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 3:1, given the transparency?'
         },
-        'AAA.1_4_3.G145.BgImage': {
+        'W-AAA.1_4_3.G145.BgImage': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background image is less than 3:1?'
         },
-        'AAA.1_4_3.G18.BgImage': {
+        'W-AAA.1_4_3.G18.BgImage': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background image is less than 4.5:1?',
         },
-        'AAA.1_4_6.G17.Abs': {
+        'W-AAA.1_4_6.G17.Abs': {
           variable: false,
           quality: 1,
           what: 'Contrast between the absolutely positioned text and its background is less than 7:1?'
         },
-        'AAA.1_4_6.G17.BgImage': {
+        'W-AAA.1_4_6.G17.BgImage': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background image is less than 7:1?'
@@ -5795,7 +5795,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H42.2': {
+        'E-AAA.1_3_1.H42.2': {
           variable: false,
           quality: 1,
           what: 'Heading is empty'
@@ -5964,7 +5964,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_1_1.H67.1': {
+        'W-AAA.1_1_1.H67.1': {
           variable: false,
           quality: 1,
           what: 'Element has an empty alt attribute but has a nonempty title attribute'
@@ -6037,12 +6037,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H65': {
+        'W-AAA.1_3_1.H65': {
           variable: false,
           quality: 0.5,
           what: 'title attribute of the form control is empty or only whitespace'
         },
-        'AAA.4_1_2.H65': {
+        'W-AAA.4_1_2.H65': {
           variable: false,
           quality: 0.5,
           what: 'title attribute of the form control is empty or only whitespace'
@@ -6209,12 +6209,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.2_4_2.H25.1.NoTitleEl': {
+        'E-AAA.2_4_2.H25.1.NoTitleEl': {
           variable: false,
           quality: 1,
           what: 'Document head element contains no title element'
         },
-        'AAA.2_4_2.H25.1.EmptyTitle': {
+        'E-AAA.2_4_2.H25.1.EmptyTitle': {
           variable: false,
           quality: 1,
           what: 'Document head element contains an empty title element'
@@ -6332,7 +6332,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1_AAA.G141': {
+        'E-AAA.1_3_1_AAA.G141': {
           variable: false,
           quality: 1,
           what: 'Heading level is incorrect'
@@ -6642,42 +6642,42 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H49.AlignAttr': {
+        'E-AAA.1_3_1.H49.AlignAttr': {
           variable: false,
           quality: 1,
           what: 'Special text is aligned nonsemantically'
         },
-        'AAA.1_3_1.H49.B': {
+        'E-AAA.1_3_1.H49.B': {
           variable: false,
           quality: 1,
           what: 'Special text is bolded nonsemantically'
         },
-        'AAA.1_3_1.H49.I': {
+        'E-AAA.1_3_1.H49.I': {
           variable: false,
           quality: 1,
           what: 'Special text is italicized nonsemantically'
         },
-        'AAA.1_3_1.H49.Big': {
+        'E-AAA.1_3_1.H49.Big': {
           variable: false,
           quality: 1,
           what: 'Special text is enlarged nonsemantically'
         },
-        'AAA.1_3_1.H49.Small': {
+        'E-AAA.1_3_1.H49.Small': {
           variable: false,
           quality: 1,
           what: 'Special text is made small nonsemantically'
         },
-        'AAA.1_3_1.H49.U': {
+        'E-AAA.1_3_1.H49.U': {
           variable: false,
           quality: 1,
           what: 'Special text is underlined nonsemantically'
         },
-        'AAA.1_3_1.H49.Center': {
+        'E-AAA.1_3_1.H49.Center': {
           variable: false,
           quality: 1,
           what: 'Special text is centered nonsemantically'
         },
-        'AAA.1_3_1.H49.Font': {
+        'E-AAA.1_3_1.H49.Font': {
           variable: false,
           quality: 1,
           what: 'Special text is designated nonsemantically with a (deprecated) font element'
@@ -6772,7 +6772,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H42': {
+        'W-AAA.1_3_1.H42': {
           variable: false,
           quality: 1,
           what: 'Heading coding is not used but the element is intended as a heading?'
@@ -6963,7 +6963,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H48.1': {
+        'W-AAA.1_3_1.H48.1': {
           variable: false,
           quality: 1,
           what: 'Content simulates an unordered list without a ul?'
@@ -6992,7 +6992,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H48.2': {
+        'W-AAA.1_3_1.H48.2': {
           variable: false,
           quality: 1,
           what: 'Ordered list fails to be coded as such?'
@@ -7007,7 +7007,7 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H48': {
+        'E-AAA.1_3_1.H48': {
           variable: false,
           quality: 1,
           what: 'Navigation links are not coded as a list'
@@ -7059,12 +7059,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.Select.Name': {
+        'E-AAA.4_1_2.H91.Select.Name': {
           variable: false,
           quality: 1,
           what: 'Select element has no accessible name'
         },
-        'AAA.4_1_2.H91.Select.Value': {
+        'E-AAA.4_1_2.H91.Select.Value': {
           variable: false,
           quality: 1,
           what: 'Select element value has no accessible name'
@@ -7120,7 +7120,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H85.2': {
+        'W-AAA.1_3_1.H85.2': {
           variable: false,
           quality: 1,
           what: 'Selection list contains groups of related options not grouped with optgroup?'
@@ -7222,7 +7222,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H71.SameName': {
+        'W-AAA.1_3_1.H71.SameName': {
           variable: false,
           quality: 1,
           what: 'Radio buttons or check boxes require a fieldset element?'
@@ -7266,7 +7266,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H71.NoLegend': {
+        'E-AAA.1_3_1.H71.NoLegend': {
           variable: false,
           quality: 1,
           what: 'Element has no legend element'
@@ -7316,7 +7316,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.4_1_2.H91.Fieldset.Name': {
+        'E-AAA.4_1_2.H91.Fieldset.Name': {
           variable: false,
           quality: 1,
           what: 'fieldset element has no accessible name'
@@ -7467,7 +7467,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H39.3.NoCaption': {
+        'W-AAA.1_3_1.H39.3.NoCaption': {
           variable: false,
           quality: 1,
           what: 'Element contains no caption element'
@@ -7581,12 +7581,12 @@ exports.issues = {
     weight: 4,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H43.HeadersRequired': {
+        'E-AAA.1_3_1.H43.HeadersRequired': {
           variable: false,
           quality: 1,
           what: 'Complex table is missing headers attributes of cells'
         },
-        'AAA.1_3_1.H43,H63': {
+        'E-AAA.1_3_1.H43,H63': {
           variable: false,
           quality: 1,
           what: 'Relationship among td and th elements of the table is not defined'
@@ -7623,7 +7623,7 @@ exports.issues = {
     weight: 2,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H43.ScopeAmbiguous': {
+        'E-AAA.1_3_1.H43.ScopeAmbiguous': {
           variable: false,
           quality: 1,
           what: 'Complex table requires headers attributes of cells instead of header scopes'
@@ -7735,7 +7735,7 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.H63.1': {
+        'W-AAA.1_3_1.H63.1': {
           variable: false,
           quality: 1,
           what: 'Not all th elements in the table have a scope attribute, so an inferred scope may be incorrect'
@@ -7919,7 +7919,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.F68': {
+        'E-AAA.1_3_1.F68': {
           variable: false,
           quality: 1,
           what: 'Form control has no label'
@@ -8045,7 +8045,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.2_5_3.F96': {
+        'E-AAA.2_5_3.F96': {
           variable: false,
           quality: 1,
           what: 'Visible label is not in the accessible name'
@@ -9326,12 +9326,12 @@ exports.issues = {
     weight: 1,
     tools: {
       htmlcs: {
-        'AAA.1_3_1.F68.Hidden': {
+        'W-AAA.1_3_1.F68.Hidden': {
           variable: false,
           quality: 1,
           what: 'Hidden form field is needlessly labeled'
         },
-        'AAA.1_3_1.F68.HiddenAttr': {
+        'W-AAA.1_3_1.F68.HiddenAttr': {
           variable: false,
           quality: 1,
           what: 'Form field with a hidden attribute is needlessly labeled'
@@ -9544,12 +9544,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.ARIA6': {
+        'E-AAA.1_3_1.ARIA6': {
           variable: false,
           quality: 1,
           what: 'Value of the aria-label attribute of the form control is empty or only whitespace'
         },
-        'AAA.4_1_2.ARIA6': {
+        'E-AAA.4_1_2.ARIA6': {
           variable: false,
           quality: 1,
           what: 'Value of the aria-label attribute of the form control is empty or only whitespace'
@@ -10336,7 +10336,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_4_10.C32,C31,C33,C38,SCR34,G206': {
+        'W-AAA.1_4_10.C32,C31,C33,C38,SCR34,G206': {
           variable: false,
           quality: 1,
           what: 'Fixed-position element forces bidirectional scrolling?'
@@ -10467,7 +10467,7 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.3_2_2.H32.2': {
+        'E-AAA.3_2_2.H32.2': {
           variable: false,
           quality: 1,
           what: 'Form has no submit button'
@@ -10593,12 +10593,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H49.AlignAttr': {
+        'E-AAA.1_3_1.H49.AlignAttr': {
           variable: false,
           quality: 1,
           what: 'align attribute is obsolete'
         },
-        'AAA.1_3_1.H63.2': {
+        'E-AAA.1_3_1.H63.2': {
           variable: false,
           quality: 1,
           what: 'scope attribute on a td element, instead of a th element, is obsolete'
@@ -10717,12 +10717,12 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'AAA.1_3_1.H49.Center': {
+        'E-AAA.1_3_1.H49.Center': {
           variable: false,
           quality: 1,
           what: 'center element is obsolete'
         },
-        'AAA.1_3_1.H49.Font': {
+        'E-AAA.1_3_1.H49.Font': {
           variable: false,
           quality: 1,
           what: 'font element is obsolete'
