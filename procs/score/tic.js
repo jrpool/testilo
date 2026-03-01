@@ -1354,6 +1354,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Image marked as decorative is informative?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_1.1_1_1.H67.2': {
+          variable: false,
+          quality: 1,
+          what: 'img element is mismarked so that it is ignored by assistive technology?'
         }
       }
     }
@@ -2415,6 +2420,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Link has an href attribute but not named'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent': {
+          variable: false,
+          quality: 1,
+          what: 'Anchor element has a valid href attribute, but no link content'
         }
       },
       ibm: {
@@ -5448,6 +5458,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and its background is less than 4.5:1'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G18.Fail': {
+          variable: false,
+          quality: 1,
+          what: 'Element has insufficient contrast at conformance level AA; expected a contrast ratio of at least 4.5:1'
         }
       },
       ibm: {
@@ -5520,6 +5535,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Text has insufficient contrast'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail': {
+          variable: false,
+          quality: 1,
+          what: 'Element has insufficient contrast at conformance level AAA; expected a contrast ratio of at least 7:1'
         }
       },
       qualWeb: {
@@ -5584,6 +5604,11 @@ exports.issues = {
           quality: 1,
           what: 'Inline foreground color lacks a complementary background color?'
         },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_3_F24.F24.FGColour': {
+          variable: false,
+          quality: 1,
+          what: 'Inline foreground color lacks a complementary inherited background color or image?'
+        },
         'W-AAA.1_4_3.G18.Abs': {
           variable: false,
           quality: 1,
@@ -5619,10 +5644,20 @@ exports.issues = {
           quality: 1,
           what: 'Contrast between the text and its background image is less than 4.5:1?',
         },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G18.Abs': {
+          variable: false,
+          quality: 1,
+          what: 'Background color of the absolutely positioned element can not be determined; the contrast ratio between the text and all covered parts of the background is not at least 4.5:1?'
+        },
         'W-AAA.1_4_6.G17.Abs': {
           variable: false,
           quality: 1,
           what: 'Contrast between the absolutely positioned text and its background is less than 7:1?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Abs': {
+          variable: false,
+          quality: 1,
+          what: 'Background color of the absolutely positioned element can not be determined; the contrast ratio between the text and all covered parts of the background is not at least 7:1?'
         },
         'W-AAA.1_4_6.G17.BgImage': {
           variable: false,
@@ -5954,7 +5989,7 @@ exports.issues = {
     summary: 'decorative element has title',
     why: 'Hovering-produced information is denied to a keyboard-only user',
     wcag: '1.3.1',
-    weight: 1,
+    weight: 2,
     tools: {
       aslint: {
         img_empty_alt_with_empty_title: {
@@ -5964,10 +5999,15 @@ exports.issues = {
         }
       },
       htmlcs: {
-        'W-AAA.1_1_1.H67.1': {
+        'E-AAA.1_1_1.H67.1': {
           variable: false,
           quality: 1,
           what: 'Element has an empty alt attribute but has a nonempty title attribute'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_1.1_1_1.H67.1': {
+          variable: false,
+          quality: 1,
+          what: 'img element with empty alt attribute must have absent or empty title attribute'
         }
       },
       wave: {
@@ -7000,6 +7040,21 @@ exports.issues = {
       }
     }
   },
+  pseudoNavListRisk: {
+    summary: 'nav links better as list?',
+    why: 'User cannot get help recognizing a list of navigation links',
+    wcag: '1.3.1',
+    weight: 0,
+    tools: {
+      htmlcs: {
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48': {
+          variable: false,
+          quality: 1,
+          what: 'If element contains a navigation section, it is recommended that it be marked up as a list'
+        }
+      }
+    }
+  },
   pseudoQuoteRisk: {
     summary: 'quotation miscoded?',
     why: 'User may be unable to get help identifying a quotation',
@@ -7211,6 +7266,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Radio buttons or check boxes require a fieldset element?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H71.SameName': {
+          variable: false,
+          quality: 1,
+          what: 'If radio buttons or check boxes require a further group-level description, they should be contained within a fieldset element'
         }
       },
       wax: {
@@ -8034,6 +8094,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Visible label is not in the accessible name'
+        },
+        'W-WCAG2AAA.Principle2.Guideline2_5.2_5_3.F96': {
+          variable: false,
+          quality: 1,
+          what: 'Accessible name of the element does not contain the visible label text'
         }
       },
       ibm: {
@@ -10325,6 +10390,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Fixed-position element forces bidirectional scrolling?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206': {
+          variable: false,
+          quality: 1,
+          what: 'Fixed-position element requires scrolling in two dimensions?'
         }
       },
       wax: {
