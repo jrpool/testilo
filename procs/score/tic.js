@@ -7044,7 +7044,7 @@ exports.issues = {
     summary: 'nav links better as list?',
     why: 'User cannot get help recognizing a list of navigation links',
     wcag: '1.3.1',
-    weight: 0,
+    weight: 1,
     tools: {
       htmlcs: {
         'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48': {
