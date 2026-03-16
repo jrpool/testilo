@@ -2445,7 +2445,7 @@ exports.issues = {
         link_empty: {
           variable: false,
           quality: 1,
-          what: 'Link contains not named'
+          what: 'Link contents not named'
         }
       },
       wax: {
