@@ -685,6 +685,11 @@ exports.issues = {
         }
       },
       htmlcs: {
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name': {
+          variable: false,
+          quality: 1,
+          what: 'email input element has no label element or title, aria-label, or aria-labelledby attribute'
+        },
         'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
           quality: 1,
@@ -4198,6 +4203,11 @@ exports.issues = {
         }
       },
       htmlcs: {
+        'E-WCAG2AAA.Principle2.Guideline2_4.2_4_1.H64.1': {
+          variable: false,
+          quality: 1,
+          what: 'iframe element is missing a non-empty title attribute that identifies the frame'
+        },
         'E-AAA.2_4_1.H64.1': {
           variable: false,
           quality: 1,
@@ -5594,10 +5604,15 @@ exports.issues = {
           quality: 1,
           what: 'Inline background color lacks a complementary foreground color?'
         },
-        'W-AAA.1_4_6.G18.BgImage': {
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G18.BgImage': {
           variable: false,
           quality: 1,
           what: 'Contrast between the text and the background image is less than 4.5:1?'
+        },
+        'W-AAA.1_4_6.G18.BgImage': {
+          variable: false,
+          quality: 1,
+          what: 'Contrast between the text and some part of its background image is less than 4.5:1?'
         },
         'W-AAA.1_4_3_F24.F24.FGColour': {
           variable: false,
@@ -5658,6 +5673,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Background color of the absolutely positioned element can not be determined; the contrast ratio between the text and all covered parts of the background is not at least 7:1?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.BgImage': {
+          variable: false,
+          quality: 1,
+          what: 'Contrast between the text and some part of its background image is less than 7:1?'
         },
         'W-AAA.1_4_6.G17.BgImage': {
           variable: false,
