@@ -531,6 +531,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Duplicate id attribute value'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77': {
+          variable: false,
+          quality: 1,
+          what: 'Duplicate id attribute value'
         }
       },
       ibm: {
@@ -688,7 +693,12 @@ exports.issues = {
         'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name': {
           variable: false,
           quality: 1,
-          what: 'email input element has no label element or title, aria-label, or aria-labelledby attribute'
+          what: 'email input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name': {
+          variable: false,
+          quality: 1,
+          what: 'Text input has no label element or title, aria-label, or aria-labelledby attribute'
         },
         'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
@@ -3135,6 +3145,11 @@ exports.issues = {
           quality: 1,
           what: 'button element has no accessible name'
         },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Button.Name': {
+          variable: false,
+          quality: 1,
+          what: 'button element has no title attribute, element content, aria-label attribute, or aria-labelledby attribute'
+        },
         'E-AAA.4_1_2.H91.Img.Name': {
           variable: false,
           quality: 1,
@@ -3832,6 +3847,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not in the document head'
+        },
+        'E-WCAG2AAA.Principle2.Guideline2_4.2_4_8.H59.1': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a link element but is not located in the head of the document'
         }
       },
       nuVal: {
@@ -5604,6 +5624,11 @@ exports.issues = {
           quality: 1,
           what: 'Inline background color lacks a complementary foreground color?'
         },
+        'W-WCAG2AAA.Principle1.Guideline1_4.1_4_3_F24.F24.BGColour': {
+          variable: false,
+          quality: 1,
+          what: 'Element has no inherited foreground color?'
+        },
         'W-WCAG2AAA.Principle1.Guideline1_4.1_4_6.G18.BgImage': {
           variable: false,
           quality: 1,
@@ -6357,6 +6382,20 @@ exports.issues = {
           what: 'Heading level is more than 1 greater than that of the previous heading'
         }
       },
+      nuVal: {
+        '^The heading h. \(with computed level .\) follows the heading h. \(with computed level .\), skipping . heading level.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Heading level is more than 1 level inferior to the previous heading'
+        }
+      },
+      nuVnu: {
+        '^The heading h. \(with computed level .\) follows the heading h. \(with computed level .\), skipping . heading level.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Heading level is more than 1 level inferior to the previous heading'
+        }
+      },
       wave: {
         heading_skipped: {
           variable: false,
@@ -6396,6 +6435,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Heading level is incorrect'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1_AAA.G141': {
+          variable: false,
+          quality: 1,
+          what: 'Heading structure is not logically nested'
         }
       },
       testaro: {
@@ -7988,6 +8032,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Form control has no label'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.F68': {
+          variable: false,
+          quality: 1,
+          what: 'Form field is not labeled'
         }
       },
       ibm: {
@@ -10141,6 +10190,28 @@ exports.issues = {
           variable: true,
           quality: 1,
           what: 'Element has an implicit tabIndex value 0, but also has a tabindex attribute'
+        }
+      }
+    }
+  },
+  presentationTabIndexed: {
+    summary: 'tabindex attribute nullifies presentation role',
+    why: 'User encounters content intended to be hidden',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      nuVal: {
+        'The presentation role does not affect elements that have a tabindex attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a presentation role but also a tabindex attribute that nullifies the role'
+        }
+      },
+      nuVnu: {
+        'The presentation role does not affect elements that have a tabindex attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a presentation role but also a tabindex attribute that nullifies the role'
         }
       }
     }
