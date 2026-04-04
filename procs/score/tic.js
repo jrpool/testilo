@@ -6383,7 +6383,7 @@ exports.issues = {
         }
       },
       nuVal: {
-        '^The heading h. \(with computed level .\) follows the heading h. \(with computed level .\), skipping . heading level.+$': {
+        '^The heading h. [(]with computed level .[)] follows the heading h. [(]with computed level .[)], skipping . heading level.+$': {
           variable: true,
           quality: 1,
           what: 'Heading level is more than 1 level inferior to the previous heading'
