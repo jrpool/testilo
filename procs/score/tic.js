@@ -826,6 +826,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element has no alt attribute'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37': {
+          variable: false,
+          quality: 1,
+          what: 'img element has no alt attribute'
         }
       },
       ibm: {
@@ -1373,6 +1378,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'html element has no lang or xml:lang attribute'
+        },
+        'E-WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2': {
+          variable: false,
+          quality: 1,
+          what: 'html element has no lang or xml:lang attribute'
         }
       },
       nuVal: {
@@ -1777,6 +1787,11 @@ exports.issues = {
           quality: 1,
           what: 'Event handler functionality is not available by keyboard?'
         },
+        'W-WCAG2AAA.Principle2.Guideline2_1.2_1_1.G90': {
+          variable: false,
+          quality: 1,
+          what: 'Event handler functionality is not available by keyboard?'
+        },
         'W-AAA.2_1_1.SCR20.MouseOut': {
           variable: false,
           quality: 1,
@@ -1836,6 +1851,11 @@ exports.issues = {
       },
       htmlcs: {
         'E-AAA.2_4_1.G1,G123,G124.NoSuchID': {
+          variable: false,
+          quality: 1,
+          what: 'Internal link references a nonexistent destination'
+        },
+        'E-WCAG2AAA.Principle2.Guideline2_4.2_4_1.G1,G123,G124.NoSuchID': {
           variable: false,
           quality: 1,
           what: 'Internal link references a nonexistent destination'
@@ -2268,6 +2288,11 @@ exports.issues = {
           quality: 1,
           what: 'Link has no name or id attribute or value'
         },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.A.EmptyNoId': {
+          variable: false,
+          quality: 1,
+          what: 'Link has no name or id attribute or value'
+        },
         'E-AAA.4_1_2.H91.A.EmptyWithName': {
           variable: false,
           quality: 1,
@@ -2332,6 +2357,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element is the only link content but has no text alternative'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_1.1_1_1.H30.2': {
+          variable: false,
+          quality: 1,
+          what: 'img element is the only link content but has no text alternative'
         }
       },
       qualWeb: {
@@ -2388,6 +2418,11 @@ exports.issues = {
     tools: {
       htmlcs: {
         'E-AAA.2_4_8.H59.2b': {
+          variable: false,
+          quality: 1,
+          what: 'link element is missing a non-empty href for the linked resource'
+        },
+        'E-WCAG2AAA.Principle2.Guideline2_4.2_4_8.H59.2b': {
           variable: false,
           quality: 1,
           what: 'link element is missing a non-empty href for the linked resource'
@@ -3099,6 +3134,11 @@ exports.issues = {
     tools: {
       htmlcs: {
         'E-AAA.1_3_1.F92,ARIA4': {
+          variable: false,
+          quality: 1,
+          what: 'Element has presentation role but semantic child'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.F92,ARIA4': {
           variable: false,
           quality: 1,
           what: 'Element has presentation role but semantic child'
@@ -4948,6 +4988,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'autocomplete attribute and the input type are mismatched'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_5.H98': {
+          variable: false,
+          quality: 1,
+          what: 'autocomplete attribute and the input type are mismatched'
         }
       },
       ibm: {
@@ -5466,6 +5511,11 @@ exports.issues = {
       },
       htmlcs: {
         'E-AAA.1_3_1.H42.2': {
+          variable: false,
+          quality: 1,
+          what: 'Heading is empty'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H42.2': {
           variable: false,
           quality: 1,
           what: 'Heading is empty'
@@ -6381,6 +6431,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Heading coding is not used but the element is intended as a heading?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H42': {
+          variable: false,
+          quality: 1,
+          what: 'Heading coding is not used but the element is intended as a heading?'
         }
       },
       ibm: {
@@ -6548,6 +6603,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Content simulates an unordered list without a ul?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48.1': {
+          variable: false,
+          quality: 1,
+          what: 'Content simulates an unordered list without a ul?'
         }
       },
       ibm: {
@@ -6574,6 +6634,11 @@ exports.issues = {
     tools: {
       htmlcs: {
         'W-AAA.1_3_1.H48.2': {
+          variable: false,
+          quality: 1,
+          what: 'Ordered list fails to be coded as such?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48.2': {
           variable: false,
           quality: 1,
           what: 'Ordered list fails to be coded as such?'
@@ -6705,6 +6770,11 @@ exports.issues = {
     tools: {
       htmlcs: {
         'W-AAA.1_3_1.H85.2': {
+          variable: false,
+          quality: 1,
+          what: 'Selection list contains groups of related options not grouped with optgroup?'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H85.2': {
           variable: false,
           quality: 1,
           what: 'Selection list contains groups of related options not grouped with optgroup?'
@@ -6845,6 +6915,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element has no legend element'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H71.NoLegend': {
+          variable: false,
+          quality: 1,
+          what: 'Element has no legend element'
         }
       },
       ibm: {
@@ -6885,6 +6960,11 @@ exports.issues = {
       },
       htmlcs: {
         'E-AAA.4_1_2.H91.Fieldset.Name': {
+          variable: false,
+          quality: 1,
+          what: 'fieldset element has no accessible name'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Fieldset.Name': {
           variable: false,
           quality: 1,
           what: 'fieldset element has no accessible name'
@@ -9905,6 +9985,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Form has no submit button'
+        },
+        'E-WCAG2AAA.Principle3.Guideline3_2.3_2_2.H32.2': {
+          variable: false,
+          quality: 1,
+          what: 'Form has no submit button'
         }
       },
       qualWeb: {
@@ -10150,6 +10235,11 @@ exports.issues = {
           what: 'center element is obsolete'
         },
         'E-AAA.1_3_1.H49.Font': {
+          variable: false,
+          quality: 1,
+          what: 'font element is obsolete'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.Font': {
           variable: false,
           quality: 1,
           what: 'font element is obsolete'
