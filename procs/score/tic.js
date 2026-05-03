@@ -1952,14 +1952,14 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
-        '^The aria-label attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
+        '^The aria-label.* attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
           variable: true,
           quality: 1,
           what: 'Element with a non-labelable role has an aria-label attribute'
         }
       },
       nuVnu: {
-        '^The aria-label attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
+        '^The aria-label.* attribute must not be specified on any .* element unless the element has a role value other than caption, code, deletion, emphasis, generic, insertion, paragraph, presentation, strong, subscript, or superscript.*$': {
           variable: true,
           quality: 1,
           what: 'Element with a non-labelable role has an aria-label attribute'
@@ -2075,11 +2075,21 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'aria-describedby attribute references an element not in the document'
+        },
+        '^The aria-describedby attribute references .+, which is not the ID of any element in this document.+$': {
+          variable: true,
+          quality: 1,
+          what: 'aria-describedby attribute references an element not in the document'
         }
       },
       nuVnu: {
         'The aria-describedby attribute must point to an element in the same document.': {
           variable: false,
+          quality: 1,
+          what: 'aria-describedby attribute references an element not in the document'
+        },
+        '^The aria-describedby attribute references .+, which is not the ID of any element in this document.+$': {
+          variable: true,
           quality: 1,
           what: 'aria-describedby attribute references an element not in the document'
         }
@@ -2187,6 +2197,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'aria-labelledby attribute references an element not in the document'
+        },
+        '^The aria-labelledby attribute references .+, which is not the ID of any element in this document.+$': {
+          variable: true,
+          quality: 1,
+          what: 'aria-labelledby attribute references an element not in the document'
         }
       },
       nuVnu: {
@@ -2197,6 +2212,11 @@ exports.issues = {
         },
         'The aria-labelledby attribute must point to an element in the same document.': {
           variable: false,
+          quality: 1,
+          what: 'aria-labelledby attribute references an element not in the document'
+        },
+        '^The aria-labelledby attribute references .+, which is not the ID of any element in this document.+$': {
+          variable: true,
           quality: 1,
           what: 'aria-labelledby attribute references an element not in the document'
         }
@@ -3851,6 +3871,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not eligible for an async attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a src attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a src attribute but has one'
         }
       },
       nuVnu: {
@@ -3878,6 +3903,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not eligible for an async attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a src attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a src attribute but has one'
         }
       }
     }
@@ -3893,6 +3923,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script with type=speculationrules but its href_matches value is not a string'
+        },
+        'Each rule in the prefetch array must only contain the properties source, urls, where, and eagerness.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but its prefetch array has invalid property names'
         }
       },
       nuVnu: {
@@ -3900,6 +3935,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script with type=speculationrules but its href_matches value is not a string'
+        },
+        'Each rule in the prefetch array must only contain the properties source, urls, where, and eagerness.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but its prefetch array has invalid property names'
         }
       }
     }
@@ -4178,6 +4218,11 @@ exports.issues = {
           variable: true,
           quality: 1,
           what: 'Table cell has a role attribute'
+        },
+        'An li element that is a descendant of a ul, ol, or menu element with no explicit role value, or a descendant of a role=list element, must not have any role value other than listitem.': {
+          variable: false,
+          quality: 1,
+          what: 'element is li in a list but has no listitem role'
         }
       },
       nuVnu: {
@@ -4190,6 +4235,11 @@ exports.issues = {
           variable: true,
           quality: 1,
           what: 'Table cell has a role attribute'
+        },
+        'An li element that is a descendant of a ul, ol, or menu element with no explicit role value, or a descendant of a role=list element, must not have any role value other than listitem.': {
+          variable: false,
+          quality: 1,
+          what: 'element is li in a list but has no listitem role'
         }
       }
     }
@@ -4938,6 +4988,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element has the max attribute but also the aria-valuemax attribute'
+        },
+        'The aria-valuemin attribute must not be used on an element which has a min attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has the min attribute but also the aria-valuemin attribute'
         }
       },
       nuVnu: {
@@ -4950,6 +5005,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element has the max attribute but also the aria-valuemax attribute'
+        },
+        'The aria-valuemin attribute must not be used on an element which has a min attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has the min attribute but also the aria-valuemin attribute'
         }
       }
     }
@@ -9383,6 +9443,20 @@ exports.issues = {
           what: 'Element, blink, is deprecated'
         }
       },
+      nuVal: {
+        'The blink element is obsolete. Use CSS instead.': {
+          variable: false,
+          quality: 1,
+          what: 'Element, blink, is obsolete'
+        }
+      },
+      nuVnu: {
+        'The blink element is obsolete. Use CSS instead.': {
+          variable: false,
+          quality: 1,
+          what: 'Element, blink, is obsolete'
+        }
+      },
       qualWeb: {
         'QW-WCAG-T13': {
           variable: false,
@@ -10267,6 +10341,28 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'longdesc attribute is obsolete'
+        }
+      }
+    }
+  },
+  nonElement: {
+    summary: 'element unknown',
+    why: 'Document includes an unknown element that the browser cannot process',
+    wcag: '4.1',
+    weight: 4,
+    tools: {
+      nuVal: {
+        '^The .+ element is a completely-unknown element that is not allowed anywhere in any HTML content.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is unknown'
+        }
+      },
+      nuVnu: {
+        '^The .+ element is a completely-unknown element that is not allowed anywhere in any HTML content.+$': {
+          variable: true,
+          quality: 1,
+          what: 'Element is unknown'
         }
       }
     }
@@ -11407,8 +11503,8 @@ exports.issues = {
           quality: 1,
           what: 'Encoding declaration names an unsupported character encoding'
         },
-        'Text run is not in Unicode Normalization Form C.': {
-          variable: false,
+        '^Text run is not in Unicode Normalization Form C.+$': {
+          variable: true,
           quality: 1,
           what: 'Text run is not in Unicode Normalization Form C'
         },
@@ -11429,8 +11525,8 @@ exports.issues = {
           quality: 1,
           what: 'Encoding declaration names an unsupported character encoding'
         },
-        'Text run is not in Unicode Normalization Form C.': {
-          variable: false,
+        '^Text run is not in Unicode Normalization Form C.+$': {
+          variable: true,
           quality: 1,
           what: 'Text run is not in Unicode Normalization Form C'
         },
