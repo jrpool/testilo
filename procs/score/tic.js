@@ -527,6 +527,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'id attribute value is not unique'
+        },
+        'QW-BP30': {
+          variable: false,
+          quality: 1,
+          what: 'id attribute value is shared with another element'
         }
       }
     }
@@ -632,6 +637,11 @@ exports.issues = {
         }
       },
       htmlcs: {
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputCheckbox.Name': {
+          variable: false,
+          quality: 1,
+          what: 'checkbox input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
         'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name': {
           variable: false,
           quality: 1,
@@ -2146,7 +2156,17 @@ exports.issues = {
           quality: 1,
           what: 'Label for attribute references a nonexistent element'
         },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H44.NonExistentFragment': {
+          variable: false,
+          quality: 1,
+          what: 'Label for attribute references an element missing from the document fragment'
+        },
         'E-AAA.1_3_1.ARIA16,ARIA9': {
+          variable: false,
+          quality: 1,
+          what: 'aria-labelledby attribute references a nonexistent element'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.ARIA16,ARIA9': {
           variable: false,
           quality: 1,
           what: 'aria-labelledby attribute references a nonexistent element'
@@ -2283,6 +2303,11 @@ exports.issues = {
           quality: 1,
           what: 'a element has an id attribute but no href attribute or text'
         },
+        'W-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.A.Empty': {
+          variable: false,
+          quality: 1,
+          what: 'a element has an id attribute but no href attribute or text'
+        },
         'E-AAA.4_1_2.H91.A.EmptyNoId': {
           variable: false,
           quality: 1,
@@ -2406,6 +2431,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Link has text but no href, id, or name attribute'
+        },
+        'W-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder': {
+          variable: false,
+          quality: 1,
+          what: 'Link has text but no href, id, or name attribute'
         }
       }
     }
@@ -2514,6 +2544,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Link is misused as a link destination'
+        },
+        'W-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.A.NoHref': {
+          variable: false,
+          quality: 1,
+          what: 'Link is misused as an in-page link destination'
         }
       },
       nuVal: {
@@ -6729,6 +6764,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Select element value has no accessible name'
+        },
+        'W-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Select.Value': {
+          variable: false,
+          quality: 1,
+          what: 'Select element value has no accessible name'
         }
       },
       wave: {
@@ -9322,6 +9362,27 @@ exports.issues = {
           what: 'Element is blink'
         }
       },
+      axe: {
+        blink: {
+          variable: false,
+          quality: 1,
+          what: 'Element, blink, is deprecated'
+        }
+      },
+      htmlcs: {
+        'E-WCAG2AAA.Principle2.Guideline2_2.2_2_2.F47': {
+          variable: false,
+          quality: 1,
+          what: 'Element is blink, so cannot be stopped within five seconds'
+        }
+      },
+      ibm: {
+        blink_elem_deprecated: {
+          variable: false,
+          quality: 1,
+          what: 'Element, blink, is deprecated'
+        }
+      },
       qualWeb: {
         'QW-WCAG-T13': {
           variable: false,
@@ -9332,6 +9393,13 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'text-decoration:blink is used without a mechanism to stop it in less than five seconds'
+        }
+      },
+      wave: {
+        blink: {
+          variable: false,
+          quality: 1,
+          what: 'Element, blink, is deprecated'
         }
       }
     }
