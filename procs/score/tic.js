@@ -3928,6 +3928,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script with type=speculationrules but its prefetch array has invalid property names'
+        },
+        'A script element with a type attribute whose value is speculationrules must contain a JSON object with at least one of the properties prefetch or prerender.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but has no JSON object with a prefetch or prerender property'
         }
       },
       nuVnu: {
@@ -3940,6 +3945,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script with type=speculationrules but its prefetch array has invalid property names'
+        },
+        'A script element with a type attribute whose value is speculationrules must contain a JSON object with at least one of the properties prefetch or prerender.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script with type=speculationrules but has no JSON object with a prefetch or prerender property'
         }
       }
     }
