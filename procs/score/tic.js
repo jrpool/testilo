@@ -55,6 +55,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Text line height is not at least 1.5 [invalid]'
+        },
+        r87: {
+          variable: false,
+          quality: 0.5,
+          what: 'First focusable element is not a link to the main content [invalid]'
         }
       },
       aslint: {
@@ -10096,13 +10101,6 @@ exports.issues = {
     weight: 1,
     max: 2,
     tools: {
-      alfa: {
-        'r87': {
-          variable: false,
-          quality: 0.5,
-          what: 'First focusable element is not a link to the main content'
-        }
-      },
       ibm: {
         html_skipnav_exists: {
           variable: false,
