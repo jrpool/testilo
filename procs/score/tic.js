@@ -203,6 +203,13 @@ exports.issues = {
           what: 'Element is a visualization, so may lack a nonvisual equivalent [speculative]'
         }
       },
+      htmlcs: {
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48': {
+          variable: false,
+          quality: 1,
+          what: 'If element contains a navigation section, it is recommended that it be marked up as a list [speculative]'
+        }
+      },
       ibm: {
         aria_child_valid: {
           variable: false,
@@ -6767,21 +6774,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Navigation links are not coded as a list'
-        }
-      }
-    }
-  },
-  pseudoNavListRisk: {
-    summary: 'nav links better as list?',
-    why: 'User cannot get help recognizing a list of navigation links',
-    wcag: '1.3.1',
-    weight: 1,
-    tools: {
-      htmlcs: {
-        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48': {
-          variable: false,
-          quality: 1,
-          what: 'If element contains a navigation section, it is recommended that it be marked up as a list'
         }
       }
     }
