@@ -662,7 +662,12 @@ exports.issues = {
         'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name': {
           variable: false,
           quality: 1,
-          what: 'Text input has no label element or title, aria-label, or aria-labelledby attribute'
+          what: 'text input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputSearch.Name': {
+          variable: false,
+          quality: 1,
+          what: 'search input has no label element or title, aria-label, or aria-labelledby attribute'
         },
         'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
@@ -877,6 +882,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element has no alt attribute'
+        },
+        'An img element with a role attribute must also have an accessible name (e.g., an alt attribute).': {
+          variable: false,
+          quality: 1,
+          what: 'img element with a role attribute has no alt attribute'
         }
       },
       nuVnu: {
@@ -884,6 +894,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'img element has no alt attribute'
+        },
+        'An img element with a role attribute must also have an accessible name (e.g., an alt attribute).': {
+          variable: false,
+          quality: 1,
+          what: 'img element with a role attribute has no alt attribute'
         }
       },
       qualWeb: {
@@ -4245,6 +4260,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'element is li in a list but has no listitem role'
+        },
+        'An li element that is a descendant of a role=listbox element or role=list element must not have any role value other than group or option.': {
+          variable: false,
+          quality: 1,
+          what: 'element is li in a listbox or list but has no group or option role'
         }
       },
       nuVnu: {
@@ -4262,6 +4282,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'element is li in a list but has no listitem role'
+        },
+        'An li element that is a descendant of a role=listbox element or role=list element must not have any role value other than group or option.': {
+          variable: false,
+          quality: 1,
+          what: 'element is li in a listbox or list but has no group or option role'
         }
       }
     }
@@ -4422,6 +4447,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'hidden-type input element has an ARIA attribute'
+        },
+        'The name attribute is never allowed on the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'element is a but has a name attribute'
         }
       },
       nuVnu: {
@@ -4464,6 +4494,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'hidden-type input element has an ARIA attribute'
+        },
+        'The name attribute is never allowed on the a element.': {
+          variable: false,
+          quality: 1,
+          what: 'element is a but has a name attribute'
         }
       }
     }
@@ -6446,12 +6481,22 @@ exports.issues = {
           quality: 1,
           what: 'Special text is italicized nonsemantically'
         },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.I': {
+          variable: false,
+          quality: 1,
+          what: 'Special text is italicized nonsemantically'
+        },
         'E-AAA.1_3_1.H49.Big': {
           variable: false,
           quality: 1,
           what: 'Special text is enlarged nonsemantically'
         },
         'E-AAA.1_3_1.H49.Small': {
+          variable: false,
+          quality: 1,
+          what: 'Special text is made small nonsemantically'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.Small': {
           variable: false,
           quality: 1,
           what: 'Special text is made small nonsemantically'
@@ -10248,6 +10293,11 @@ exports.issues = {
       },
       htmlcs: {
         'E-AAA.1_3_1.H49.AlignAttr': {
+          variable: false,
+          quality: 1,
+          what: 'align attribute is obsolete'
+        },
+        'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.AlignAttr': {
           variable: false,
           quality: 1,
           what: 'align attribute is obsolete'
