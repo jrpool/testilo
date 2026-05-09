@@ -10757,7 +10757,7 @@ exports.issues = {
           quality: 0.5,
           what: 'CSS perspective property has a nonpositive value'
         },
-        '^CSS: .+: Lexical error at line .+, column .+ Encountered: .+$': {
+        '^CSS: .*Lexical error at line .+, column .+ Encountered: .+$': {
           variable: true,
           quality: 1,
           what: 'CSS property has a value with a lexical error'
