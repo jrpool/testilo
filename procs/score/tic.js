@@ -7863,13 +7863,6 @@ exports.issues = {
           quality: 1,
           what: 'Target size is suboptimal'
         }
-      },
-      testaro: {
-        targetSmall: {
-          variable: false,
-          quality: 1,
-          what: 'Label, button, input, or link has substandard distance from another'
-        }
       }
     }
   },
@@ -7899,6 +7892,13 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Small targets are not far enough apart'
+        }
+      },
+      testaro: {
+        targetsNear: {
+          variable: false,
+          quality: 1,
+          what: 'Label, button, input, or link has substandard distance from another'
         }
       }
     }
