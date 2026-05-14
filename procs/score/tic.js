@@ -3655,6 +3655,28 @@ exports.issues = {
       }
     }
   },
+  baseElementMissing: {
+    summary: 'base element missing where required',
+    why: 'Browser cannot find a needed external resource',
+    wcag: '1.3.1',
+    weight: 4,
+    tools: {
+      nuVal: {
+        'The base element must come before any link or script elements in the document.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a link or script element requiring a preceding base element but has none'
+        }
+      },
+      nuVnu: {
+        'The base element must come before any link or script elements in the document.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a link or script element requiring a preceding base element but has none'
+        }
+      }
+    }
+  },
   linkElementMisplaced: {
     summary: 'link element invalid',
     why: 'Document fails to get a needed external resource',
@@ -4265,6 +4287,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'element is li in a listbox or list but has no group or option role'
+        },
+        'An element with role=group must not be a descendant of an element with role=list.': {
+          variable: false,
+          quality: 1,
+          what: 'element has a group role but has an ancestor with a list role'
         }
       },
       nuVnu: {
@@ -4287,6 +4314,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'element is li in a listbox or list but has no group or option role'
+        },
+        'An element with role=group must not be a descendant of an element with role=list.': {
+          variable: false,
+          quality: 1,
+          what: 'element has a group role but has an ancestor with a list role'
         }
       }
     }
