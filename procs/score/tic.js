@@ -3889,8 +3889,8 @@ exports.issues = {
       }
     }
   },
-  scriptElementBad: {
-    summary: 'script element invalid',
+  scriptNotDeferrable: {
+    summary: 'script element invalidly deferred',
     why: 'Browser processes the document improperly',
     wcag: '1.3.1',
     weight: 4,
@@ -3901,6 +3901,43 @@ exports.issues = {
           quality: 1,
           what: 'Element is script and has a defer attribute but no src attribute'
         },
+        'An inline script element (i.e., a script element without a src attribute and with a type attribute that is either unspecified, empty, or a JavaScript MIME type) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        }
+      },
+      nuVnu: {
+        'Element script must not have attribute defer unless attribute src is also specified.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is script and has a defer attribute but no src attribute'
+        },
+        'An inline script element (i.e., a script element without a src attribute and with a type attribute that is either unspecified, empty, or a JavaScript MIME type) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is not eligible for a defer attribute but has one'
+        }
+      }
+    }
+  },
+  scriptElementBad: {
+    summary: 'script element invalid',
+    why: 'Browser processes the document improperly',
+    wcag: '1.3.1',
+    weight: 4,
+    tools: {
+      nuVal: {
         'Element script should not have attribute fetchpriority unless attribute src is also specified.': {
           variable: false,
           quality: 1,
@@ -3910,11 +3947,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
-        },
-        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
-          variable: false,
-          quality: 1,
-          what: 'Element is not eligible for a defer attribute but has one'
         },
         'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have an async attribute.': {
           variable: false,
@@ -3928,11 +3960,6 @@ exports.issues = {
         }
       },
       nuVnu: {
-        'Element script must not have attribute defer unless attribute src is also specified.': {
-          variable: false,
-          quality: 1,
-          what: 'Element is script and has a defer attribute but no src attribute'
-        },
         'Element script should not have attribute fetchpriority unless attribute src is also specified.': {
           variable: false,
           quality: 1,
@@ -3942,11 +3969,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is script and has a src attribute but its type is not empty, a JS MIME type, or module'
-        },
-        'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have a defer attribute.': {
-          variable: false,
-          quality: 1,
-          what: 'Element is not eligible for a defer attribute but has one'
         },
         'A script element with a type attribute whose value is neither a JavaScript MIME type, module, importmap, nor speculationrules (i.e., a data block) must not have an async attribute.': {
           variable: false,
@@ -9174,6 +9196,20 @@ exports.issues = {
     wcag: '1.3.1',
     weight: 2,
     tools: {
+      nuVal: {
+        'The aria-label attribute must not be used on any label element that is associated with a labelable element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a label but has a label'
+        }
+      },
+      nuVnu: {
+        'The aria-label attribute must not be used on any label element that is associated with a labelable element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a label but has a label'
+        }
+      },
       testaro: {
         labClash: {
           variable: false,
