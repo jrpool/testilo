@@ -6444,7 +6444,7 @@ exports.issues = {
     weight: 1,
     tools: {
       ed11y: {
-        blockQuoteIsShort: {
+        blockquoteIsShort: {
           variable: false,
           quality: 1,
           what: 'Block quote is shorter than 25 characters'
@@ -6895,31 +6895,36 @@ exports.issues = {
         'select-name': {
           variable: false,
           quality: 1,
-          what: 'select element has no accessible name'
+          what: 'Element is select but has no accessible name'
         }
       },
       htmlcs: {
         'E-AAA.4_1_2.H91.Select.Name': {
           variable: false,
           quality: 1,
-          what: 'Select element has no accessible name'
+          what: 'Element is select but has no accessible name'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Select.Name': {
+          variable: false,
+          quality: 1,
+          what: 'select element has no accessible name'
         },
         'E-AAA.4_1_2.H91.Select.Value': {
           variable: false,
           quality: 1,
-          what: 'Select element value has no accessible name'
+          what: 'Element is select but its value has no accessible name'
         },
         'W-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Select.Value': {
           variable: false,
           quality: 1,
-          what: 'Select element value has no accessible name'
+          what: 'Element is select but its value has no accessible name'
         }
       },
       wave: {
         select_missing_label: {
           variable: false,
           quality: 1,
-          what: 'Select element has no label'
+          what: 'Element is select but has no label'
         }
       }
     }
@@ -6934,14 +6939,14 @@ exports.issues = {
         'Element option without attribute label must not be empty.': {
           variable: false,
           quality: 1,
-          what: 'option element is empty but has no label attribute'
+          what: 'Element is option with no label attribute but is empty'
         }
       },
       nuVnu: {
         'Element option without attribute label must not be empty.': {
           variable: false,
           quality: 1,
-          what: 'option element is empty but has no label attribute'
+          what: 'Element is option with no label attribute but is empty'
         }
       }
     }
@@ -8918,11 +8923,6 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'ARIA hidden element is focusable or contains a focusable element'
-        },
-        'presentation-role-conflict': {
-          variable: false,
-          quality: 1,
-          what: 'Element has a none/presentation role but is focusable or has a global ARIA state or property'
         }
       },
       ibm: {
@@ -9798,6 +9798,35 @@ exports.issues = {
           variable: true,
           quality: 1,
           what: 'Element has an implicit tabIndex value 0, but also has a tabindex attribute'
+        }
+      }
+    }
+  },
+  presentationGlobal: {
+    summary: 'global ARIA attribute nullifies presentation role',
+    why: 'User encounters content intended to be hidden',
+    wcag: '1.3.1',
+    weight: 1,
+    tools: {
+      axe: {
+        'presentation-role-conflict': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a none/presentation role but is focusable or has a global ARIA state or property'
+        }
+      },
+      nuVal: {
+        'The presentation role does not affect elements that have global ARIA attributes.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a presentation role but also a global ARIA attribute that nullifies the role'
+        }
+      },
+      nuVnu: {
+        'The presentation role does not affect elements that have global ARIA attributes.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a presentation role but also a global ARIA attribute that nullifies the role'
         }
       }
     }
