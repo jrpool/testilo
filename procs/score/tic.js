@@ -7922,6 +7922,13 @@ exports.issues = {
           quality: 1,
           what: 'Target size is suboptimal'
         }
+      },
+      testaro: {
+        targetSmall: {
+          variable: false,
+          quality: 1,
+          what: 'Target is not inline but is smaller than 44px by 44px [retired 2026-04]'
+        }
       }
     }
   },
