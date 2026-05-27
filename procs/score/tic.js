@@ -7753,7 +7753,7 @@ exports.issues = {
   controlNoText: {
     summary: 'control not named',
     why: 'User cannot get help on how to operate a form item',
-    wcag: '4.1.2',
+    wcag: '1.3.1',
     weight: 4,
     tools: {
       alfa: {
