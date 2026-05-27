@@ -8228,7 +8228,7 @@ exports.issues = {
       }
     }
   },
-  focusIndication: {
+  focusIndicationBad: {
     summary: 'focus indication poor',
     why: 'Keyboard-only user cannot choose an item to operate',
     wcag: '2.4.7',
@@ -8247,18 +8247,26 @@ exports.issues = {
           quality: 1,
           what: 'Element may get invisibly focused because its outline has no thickness'
         }
-      },
+      }
+    }
+  },
+  focusIndicationImprovable: {
+    summary: 'focus indication improvable',
+    why: 'Keyboard-only user cannot easily choose an item to operate',
+    wcag: '2.4.7',
+    weight: 2,
+    tools: {
       testaro: {
         focInd: {
           variable: false,
           quality: 1,
-          what: 'Focused element displays a nonstandard or no focus indicator'
+          what: 'Outline identification of when the element is focused is improvable'
         }
       }
     }
   },
   focusIndicationRisk: {
-    summary: 'focus indication poor',
+    summary: 'focus indication poor?',
     why: 'Keyboard-only user cannot choose an item to operate',
     wcag: '2.4.7',
     weight: 1,
