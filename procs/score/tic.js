@@ -3180,14 +3180,14 @@ exports.issues = {
         }
       },
       nuVal: {
-        '^An element with role=.+ must be contained in, or owned by, an element with .*role=.+$': {
+        '^An element with role=.+ must be contained in, or owned by, an element with .*role.+$': {
           variable: true,
           quality: 1,
           what: 'Element has no required container or owner'
         }
       },
       nuVnu: {
-        '^An element with role=.+ must be contained in, or owned by, an element with .*role=.+$': {
+        '^An element with role=.+ must be contained in, or owned by, an element with .*role.+$': {
           variable: true,
           quality: 1,
           what: 'Element has no required container or owner'
@@ -4320,7 +4320,7 @@ exports.issues = {
           quality: 1,
           what: 'img element has a role attribute but no alt attribute'
         },
-        '^Discarding unrecognized token .+ from value of attribute role. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
+        '^Discarding unrecognized token .+ from value of attribute role\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
           variable: true,
           quality: 1,
           what: 'Invalid role'
@@ -4337,7 +4337,7 @@ exports.issues = {
           quality: 1,
           what: 'img element has a role attribute but no alt attribute'
         },
-        '^Discarding unrecognized token .+ from value of attribute role. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
+        '^Discarding unrecognized token .+ from value of attribute role\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
           variable: true,
           quality: 1,
           what: 'Invalid role'
@@ -6269,7 +6269,7 @@ exports.issues = {
         }
       },
       nuVal: {
-        '^The heading h. [(]with computed level .[)] follows the heading h. [(]with computed level .[)], skipping . heading level.+$': {
+        '^The heading h. \(with computed level .\) follows the heading h. \(with computed level .\), skipping . heading level.+$': {
           variable: true,
           quality: 1,
           what: 'Heading level is more than 1 level inferior to the previous heading'
@@ -11482,10 +11482,10 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
-        '^End tag .+ did not match the name of the current open element (.+).*$': {
+        '^End tag .+ did not match the name of the current open element .*$': {
           variable: true,
           quality: 1,
-          what: 'End tag clippath conflicts with the current open element.'
+          what: 'End tag conflicts with the current open element.'
         },
         '^Self-closing syntax .+ used on a non-void HTML element.*$': {
           variable: true,
@@ -11594,10 +11594,10 @@ exports.issues = {
         }
       },
       nuVnu: {
-        '^End tag .+ did not match the name of the current open element (.+).*$': {
+        '^End tag .+ did not match the name of the current open element .*$': {
           variable: true,
           quality: 1,
-          what: 'End tag clippath conflicts with the current open element.'
+          what: 'End tag conflicts with the current open element.'
         },
         '^Self-closing syntax .+ used on a non-void HTML element.*$': {
           variable: true,
