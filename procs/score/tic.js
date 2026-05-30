@@ -669,6 +669,11 @@ exports.issues = {
           quality: 1,
           what: 'search input has no label element or title, aria-label, or aria-labelledby attribute'
         },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name': {
+          variable: false,
+          quality: 1,
+          what: 'file input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
         'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
           quality: 1,
@@ -1276,6 +1281,28 @@ exports.issues = {
       }
     }
   },
+  imageBanned: {
+    summary: 'image prohibited',
+    why: 'Browser fails to display an image',
+    wcag: '1.4',
+    weight: 3,
+    tools: {
+      nuVal: {
+        '^Resource violates Content Security Policy (meta tag): image .+ blocked by img-src directive.*$': {
+          variable: true,
+          quality: 1,
+          what: 'img-src content attribute blocks an image'
+        }
+      },
+      nuVnu: {
+        '^Resource violates Content Security Policy (meta tag): image .+ blocked by img-src directive.*$': {
+          variable: true,
+          quality: 1,
+          what: 'img-src content attribute blocks an image'
+        }
+      }
+    }
+  },
   titleLong: {
     summary: 'title long',
     why: 'Hovering makes an overly verbose explanation pop up',
@@ -1834,7 +1861,17 @@ exports.issues = {
           quality: 1,
           what: 'Mousing-out functionality is not available by keyboard?'
         },
+        'W-WCAG2AAA.Principle2.Guideline2_1.2_1_1.SCR20.MouseOut': {
+          variable: false,
+          quality: 1,
+          what: 'Mousing-out functionality is not available by keyboard?'
+        },
         'W-AAA.2_1_1.SCR20.MouseOver': {
+          variable: false,
+          quality: 1,
+          what: 'Mousing-over functionality is not available by keyboard?'
+        },
+        'W-WCAG2AAA.Principle2.Guideline2_1.2_1_1.SCR20.MouseOver': {
           variable: false,
           quality: 1,
           what: 'Mousing-over functionality is not available by keyboard?'
@@ -3143,14 +3180,14 @@ exports.issues = {
         }
       },
       nuVal: {
-        '^An element with role=.+ must be contained in, or owned by, an element with role=.+$': {
+        '^An element with role=.+ must be contained in, or owned by, an element with .*role=.+$': {
           variable: true,
           quality: 1,
           what: 'Element has no required container or owner'
         }
       },
       nuVnu: {
-        '^An element with role=.+ must be contained in, or owned by, an element with role=.+$': {
+        '^An element with role=.+ must be contained in, or owned by, an element with .*role=.+$': {
           variable: true,
           quality: 1,
           what: 'Element has no required container or owner'
@@ -3889,6 +3926,28 @@ exports.issues = {
       }
     }
   },
+  stylesheetBanned: {
+    summary: 'stylesheet prohibited',
+    why: 'Browser displays the document improperly',
+    wcag: '1.4',
+    weight: 3,
+    tools: {
+      nuVal: {
+        '^Resource violates Content Security Policy (meta tag): external stylesheet .+ blocked by style-src directive.*$': {
+          variable: true,
+          quality: 1,
+          what: 'style-src content attribute blocks an external stylesheet'
+        }
+      },
+      nuVnu: {
+        '^Resource violates Content Security Policy (meta tag): external stylesheet .+ blocked by style-src directive.*$': {
+          variable: true,
+          quality: 1,
+          what: 'style-src content attribute blocks an external stylesheet'
+        }
+      }
+    }
+  },
   scriptNotDeferrable: {
     summary: 'script element invalidly deferred',
     why: 'Browser processes the document improperly',
@@ -3927,6 +3986,28 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not eligible for a defer attribute but has one'
+        }
+      }
+    }
+  },
+  scriptBanned: {
+    summary: 'script prohibited',
+    why: 'Browser processes the document improperly',
+    wcag: '4.1',
+    weight: 3,
+    tools: {
+      nuVal: {
+        '^Resource violates Content Security Policy (meta tag): external script .+ blocked by script-src directive.': {
+          variable: true,
+          quality: 1,
+          what: 'script-src content attribute blocks a script'
+        }
+      },
+      nuVnu: {
+        '^Resource violates Content Security Policy (meta tag): external script .+ blocked by script-src directive.': {
+          variable: true,
+          quality: 1,
+          what: 'script-src content attribute blocks a script'
         }
       }
     }
@@ -6333,6 +6414,11 @@ exports.issues = {
         }
       },
       nuVal: {
+        'This document has heading elements but none of them has a computed heading level of 1.': {
+          variable: false,
+          quality: 1,
+          what: 'Page contains no h1 element'
+        },
         'Consider using the h1 element as a top-level heading only (all h1 elements are treated as top-level headings by many screen readers and other tools).': {
           variable: false,
           quality: 1,
@@ -6345,6 +6431,11 @@ exports.issues = {
         }
       },
       nuVnu: {
+        'This document has heading elements but none of them has a computed heading level of 1.': {
+          variable: false,
+          quality: 1,
+          what: 'Page contains no h1 element'
+        },
         'Consider using the h1 element as a top-level heading only (all h1 elements are treated as top-level headings by many screen readers and other tools).': {
           variable: false,
           quality: 1,
