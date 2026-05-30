@@ -1288,14 +1288,14 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
-        '^Resource violates Content Security Policy (meta tag): image .+ blocked by img-src directive.*$': {
+        '^Resource violates Content Security Policy \(meta tag\): image .+ blocked by img-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'img-src content attribute blocks an image'
         }
       },
       nuVnu: {
-        '^Resource violates Content Security Policy (meta tag): image .+ blocked by img-src directive.*$': {
+        '^Resource violates Content Security Policy \(meta tag\): image .+ blocked by img-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'img-src content attribute blocks an image'
@@ -3933,14 +3933,14 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
-        '^Resource violates Content Security Policy (meta tag): external stylesheet .+ blocked by style-src directive.*$': {
+        '^Resource violates Content Security Policy \(meta tag\): external stylesheet .+ blocked by style-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'style-src content attribute blocks an external stylesheet'
         }
       },
       nuVnu: {
-        '^Resource violates Content Security Policy (meta tag): external stylesheet .+ blocked by style-src directive.*$': {
+        '^Resource violates Content Security Policy \(meta tag\): external stylesheet .+ blocked by style-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'style-src content attribute blocks an external stylesheet'
@@ -3997,14 +3997,14 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
-        '^Resource violates Content Security Policy (meta tag): external script .+ blocked by script-src directive.': {
+        '^Resource violates Content Security Policy \(meta tag\): external script .+ blocked by script-src directive.': {
           variable: true,
           quality: 1,
           what: 'script-src content attribute blocks a script'
         }
       },
       nuVnu: {
-        '^Resource violates Content Security Policy (meta tag): external script .+ blocked by script-src directive.': {
+        '^Resource violates Content Security Policy \(meta tag\): external script .+ blocked by script-src directive.': {
           variable: true,
           quality: 1,
           what: 'script-src content attribute blocks a script'
