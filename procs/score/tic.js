@@ -340,7 +340,7 @@ exports.issues = {
         'QW-BP2': {
           variable: false,
           quality: 1,
-          what: 'Image text alternative is not concise'
+          what: 'Image text alternative is not concise [invalid]'
         },
         'QW-BP17': {
           variable: false,
@@ -1017,6 +1017,16 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Image text alternative is a URL instead'
+        },
+        altMeaningless: {
+          variable: false,
+          quality: 1,
+          what: 'Image text alternative is a common placeholder'
+        },
+        altMeaninglessLinked: {
+          variable: false,
+          quality: 1,
+          what: 'Image text alternative may describe the image but not the destination of its containing link'
         }
       },
       testaro: {
@@ -2733,6 +2743,11 @@ exports.issues = {
     tools: {
       htmlcs: {
         'E-AAA.1_1_1.H2.EG3': {
+          variable: false,
+          quality: 1,
+          what: 'alt value of the link img element duplicates the text of a link beside it'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_1.1_1_1.H2.EG3': {
           variable: false,
           quality: 1,
           what: 'alt value of the link img element duplicates the text of a link beside it'
@@ -10501,6 +10516,11 @@ exports.issues = {
           what: 'align attribute is obsolete'
         },
         'W-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.AlignAttr': {
+          variable: false,
+          quality: 1,
+          what: 'align attribute is obsolete'
+        },
+        'E-WCAG2AAA.Principle1.Guideline1_3.1_3_1.H49.AlignAttr': {
           variable: false,
           quality: 1,
           what: 'align attribute is obsolete'
