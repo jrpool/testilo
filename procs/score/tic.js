@@ -3096,6 +3096,11 @@ exports.issues = {
           quality: 1,
           what: 'div element with button role has no accessible name'
         },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Div.Name': {
+          variable: false,
+          quality: 1,
+          what: 'div element with button role has no accessible name'
+        },
         'E-AAA.4_1_2.H91.Button.Name': {
           variable: false,
           quality: 1,
@@ -9322,6 +9327,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is a label but has a label'
+        },
+        'The aria-labelledby attribute must not be used on any label element that is an ancestor of a labelable element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a label with a labelable descendant but has is an aria-labelledby attribute'
         }
       },
       nuVnu: {
@@ -9329,6 +9339,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is a label but has a label'
+        },
+        'The aria-labelledby attribute must not be used on any label element that is an ancestor of a labelable element.': {
+          variable: false,
+          quality: 1,
+          what: 'Element is a label with a labelable descendant but has is an aria-labelledby attribute'
         }
       },
       testaro: {
