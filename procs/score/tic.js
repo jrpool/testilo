@@ -3780,6 +3780,11 @@ exports.issues = {
           quality: 1,
           what: 'Element has no nonempty rel attribute for the type'
         },
+        'E-WCAG2AAA.Principle2.Guideline2_4.2_4_8.H59.2a': {
+          variable: false,
+          quality: 1,
+          what: 'Element has no nonempty rel attribute for the type'
+        },
         'E-A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload or the value prefetch.': {
           variable: false,
           quality: 1,
