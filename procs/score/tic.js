@@ -3994,6 +3994,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with type=module must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a module type but has a defer attribute'
         }
       },
       nuVnu: {
@@ -4011,6 +4016,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element is not eligible for a defer attribute but has one'
+        },
+        'A script element with type=module must not have a defer attribute.': {
+          variable: false,
+          quality: 1,
+          what: 'Element has a module type but has a defer attribute'
         }
       }
     }
@@ -5080,6 +5090,11 @@ exports.issues = {
           quality: 1,
           what: 'input element with type="radio" has an aria-checked attribute'
         },
+        'The aria-checked attribute must not be used on an input element which has a type attribute whose value is radio.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type="radio" has an aria-checked attribute'
+        },
         '^Bad value  for attribute .+ on element .+: Must be non-empty.*$': {
           variable: true,
           quality: 1,
@@ -5123,6 +5138,11 @@ exports.issues = {
           what: 'noscript element has an aria-hidden attribute'
         },
         'The aria-checked attribute should not be used on an input element which has a type attribute whose value is radio.': {
+          variable: false,
+          quality: 1,
+          what: 'input element with type="radio" has an aria-checked attribute'
+        },
+        'The aria-checked attribute must not be used on an input element which has a type attribute whose value is radio.': {
           variable: false,
           quality: 1,
           what: 'input element with type="radio" has an aria-checked attribute'

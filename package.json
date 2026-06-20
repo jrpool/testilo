@@ -1,6 +1,6 @@
 {
   "name": "testilo",
-  "version": "52.1.11",
+  "version": "52.1.12",
   "description": "Prepares Testaro jobs and processes Testaro reports",
   "main": "call.js",
   "scripts": {
