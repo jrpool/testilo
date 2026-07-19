@@ -2731,6 +2731,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'textarea element has no accessible name'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Textarea.Name': {
+          variable: false,
+          quality: 1,
+          what: 'textarea element has no accessible name'
         }
       }
     }
