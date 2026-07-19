@@ -659,20 +659,30 @@ exports.issues = {
           quality: 1,
           what: 'email input has no label element or title, aria-label, or aria-labelledby attribute'
         },
-        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name': {
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name': {
           variable: false,
           quality: 1,
-          what: 'text input has no label element or title, aria-label, or aria-labelledby attribute'
+          what: 'file input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputRange.Name': {
+          variable: false,
+          quality: 1,
+          what: 'range input has no label element or title, aria-label, or aria-labelledby attribute'
         },
         'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputSearch.Name': {
           variable: false,
           quality: 1,
           what: 'search input has no label element or title, aria-label, or aria-labelledby attribute'
         },
-        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name': {
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputTel.Name': {
           variable: false,
           quality: 1,
-          what: 'file input has no label element or title, aria-label, or aria-labelledby attribute'
+          what: 'tel input has no label element or title, aria-label, or aria-labelledby attribute'
+        },
+        'E-WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name': {
+          variable: false,
+          quality: 1,
+          what: 'text input has no label element or title, aria-label, or aria-labelledby attribute'
         },
         'E-AAA.4_1_2.H91.Input.Name': {
           variable: false,
@@ -8190,6 +8200,11 @@ exports.issues = {
           quality: 1,
           what: 'select element is a descendant of an element with a button role'
         },
+        'The element input must not appear as a descendant of an element with the attribute role=progressbar.': {
+          variable: false,
+          quality: 1,
+          what: 'input element is a descendant of an element with a progressbar role'
+        },
         'An element with the attribute tabindex must not appear as a descendant of the a element.': {
           variable: false,
           quality: 1,
@@ -8281,6 +8296,11 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'select element is a descendant of an element with a button role'
+        },
+        'The element input must not appear as a descendant of an element with the attribute role=progressbar.': {
+          variable: false,
+          quality: 1,
+          what: 'input element is a descendant of an element with a progressbar role'
         },
         'An element with the attribute tabindex must not appear as a descendant of the a element.': {
           variable: false,
