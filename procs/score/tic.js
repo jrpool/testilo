@@ -6992,7 +6992,7 @@ exports.issues = {
     }
   },
   pseudoOrderedListRisk: {
-    summary: 'list unordered type dubious',
+    summary: 'ordered list not coded as such?',
     why: 'User may be unable to get help on whether a list is ordered',
     wcag: '1.3.1',
     weight: 1,
