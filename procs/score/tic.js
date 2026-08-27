@@ -4563,7 +4563,7 @@ exports.issues = {
     tools: {
       aslint: {
         invalid_attribute_dir_value: {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'Element has a dir attribute with a value other than rtl, ltr, or auto'
         }
