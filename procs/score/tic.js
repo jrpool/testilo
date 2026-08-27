@@ -4052,14 +4052,14 @@ exports.issues = {
     weight: 3,
     tools: {
       nuVal: {
-        '^Resource violates Content Security Policy \\(meta tag\\): external script .+ blocked by script-src directive.': {
+        '^Resource violates Content Security Policy \\(meta tag\\): external script .+ blocked by script-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'script-src content attribute blocks a script'
         }
       },
       nuVnu: {
-        '^Resource violates Content Security Policy \\(meta tag\\): external script .+ blocked by script-src directive.': {
+        '^Resource violates Content Security Policy \\(meta tag\\): external script .+ blocked by script-src directive.*$': {
           variable: true,
           quality: 1,
           what: 'script-src content attribute blocks a script'
@@ -9910,7 +9910,7 @@ exports.issues = {
     tools: {
       ibm: {
         aria_parent_required: {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'Element is not contained in or owned by an element with a required role'
         }
@@ -10020,7 +10020,7 @@ exports.issues = {
     tools: {
       aslint: {
         accessible_svgT: {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'Element has a non-integer tabindex attribute'
         }
@@ -10035,7 +10035,7 @@ exports.issues = {
     tools: {
       aslint: {
         misused_tabindex_attribute: {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'Element has an implicit tabIndex value 0, but also has a tabindex attribute'
         }
@@ -11596,7 +11596,7 @@ exports.issues = {
           what: 'Self-closing syntax used on a non-void element'
         },
         'No space between attributes.': {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'No space between attributes'
         },
@@ -11708,7 +11708,7 @@ exports.issues = {
           what: 'Self-closing syntax used on a non-void element'
         },
         'No space between attributes.': {
-          variable: true,
+          variable: false,
           quality: 1,
           what: 'No space between attributes'
         },
