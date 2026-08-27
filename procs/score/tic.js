@@ -8242,6 +8242,16 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element with a menu role is a descendant of an element with a button role'
+        },
+        'The element a should not appear as a descendant of an element with the attribute role=menuitem.': {
+          variable: false,
+          quality: 1,
+          what: 'a element is a descendant of an element with a menuitem role'
+        },
+        'The element a with the attribute href should not appear as a descendant of an element with the attribute role=menuitem.': {
+          variable: false,
+          quality: 1,
+          what: 'a element with an href attribute is a descendant of an element with a menuitem role'
         }
       },
       nuVnu: {
@@ -8339,6 +8349,16 @@ exports.issues = {
           variable: false,
           quality: 1,
           what: 'Element with a menu role is a descendant of an element with a button role'
+        },
+        'The element a should not appear as a descendant of an element with the attribute role=menuitem.': {
+          variable: false,
+          quality: 1,
+          what: 'a element is a descendant of an element with a menuitem role'
+        },
+        'The element a with the attribute href should not appear as a descendant of an element with the attribute role=menuitem.': {
+          variable: false,
+          quality: 1,
+          what: 'a element with an href attribute is a descendant of an element with a menuitem role'
         }
       },
       testaro: {
