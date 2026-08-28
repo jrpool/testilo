@@ -26,6 +26,14 @@
     "playwright": "*"
   },
   "devDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "@eslint/js": "*",
+    "globals": "*",
+    "@typescript-eslint/parser": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "typescript": ">=4.8.4 <6.1.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.2": true
   }
 }

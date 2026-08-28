@@ -3,6 +3,7 @@
   This script reads the issues data from procs/score/tic.js and writes a generator. Executing the generator will create a new generatedTIC.ts file containing TypeScript code that can be used for creation of TIC data in a symmetric format:
   - issuesData: Contains the issue data with summary, why, wcag, weight, and max properties.
   - rulesData: Contains the rule data with issueID, quality, and what properties.
+  After executing the generator, execute npx eslint --fix generatedTIC.ts to correct the quotation format.
 */
 
 //  IMPORTS
