@@ -18,22 +18,29 @@ const errors = [];
 
 // EXECUTION
 
-Object.entries(toolRules).forEach(([ruleID, ruleData]) => {
-  const {variable, quality, what} = ruleData;
-  const bucket = variable ? 'variable' : 'invariant';
-  let key = ruleID;
-  if (variable) {
-    if (key.startsWith('^')) {
-      key = key.slice(1);
-    }
-    if (key.endsWith('$')) {
-      key = key.slice(0, -1);
-    }
-  }
-  if (rules[toolID][bucket][key]) {
-    errors.push(`Duplicate rule ${toolID}:${key} (${bucket})`);
-  }
-  rules[toolID][bucket][key] = {issueID, quality, what};
+Object.entries(oldIssues).forEach(([issueID, issueData]) => {
+  const {summary, why, wcag, weight, max, tools} = issueData;
+  newIssues[issueID] = {summary, why, wcag, weight, ...(max !== undefined && {max})};
+  Object.entries(tools).forEach(([toolID, toolRules]) => {
+    rules[toolID] ??= {invariant: {}, variable: {}};
+    Object.entries(toolRules).forEach(([ruleID, ruleData]) => {
+      const {variable, quality, what} = ruleData;
+      const bucket = variable ? 'variable' : 'invariant';
+      let key = ruleID;
+      if (variable) {
+        if (key.startsWith('^')) {
+          key = key.slice(1);
+        }
+        if (key.endsWith('$')) {
+          key = key.slice(0, -1);
+        }
+      }
+      if (rules[toolID][bucket][key]) {
+        errors.push(`Duplicate rule ${toolID}:${key} (${bucket})`);
+      }
+      rules[toolID][bucket][key] = {issueID, quality, what};
+    });
+  });
 });
 if (errors.length) {
   console.error(`Found ${errors.length} duplicate rule assignment(s):`);
