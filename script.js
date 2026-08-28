@@ -135,7 +135,7 @@ exports.script = (id, what, deviceID, options = {}) => {
       // Otherwise, i.e. if the option specification is invalid:
       else {
         // Report this and quit.
-        console.log(`ERROR: Options invalid`);
+        console.log('ERROR: Options invalid');
         return null;
       }
     }
@@ -171,7 +171,7 @@ exports.script = (id, what, deviceID, options = {}) => {
         mergeID: '',
         requester: ''
       },
-        acts: []
+      acts: []
     };
     // Add the window options to the script.
     scriptObj.device.windowOptions = getWindowOptions(deviceID);
@@ -246,7 +246,7 @@ exports.script = (id, what, deviceID, options = {}) => {
   // Otherwise, i.e. if the arguments are not valid:
   else {
     // Report this and quit.
-    console.log(`ERROR: Arguments invalid`);
+    console.log('ERROR: Arguments invalid');
     return null;
   }
-}
+};

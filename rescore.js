@@ -134,10 +134,10 @@ exports.rescore = (scorer, report, restrictionType, includedIDs) => {
     restrictionType,
     includedIDs,
     result
-  }
+  };
   // If rescoring was not aborted:
   if (result.success) {
     // Rescore the revised report.
     scorer(report);
   }
-}
+};

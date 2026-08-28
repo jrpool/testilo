@@ -29,9 +29,9 @@
 
 // CONSTANTS
 
-  // Newlines with indentations.
-  const joiner = '\n      ';
-  const innerJoiner = '\n        ';
+// Newlines with indentations.
+const joiner = '\n      ';
+const innerJoiner = '\n        ';
 
 // FUNCTIONS
 
@@ -103,7 +103,7 @@ exports.makeQuery = (report, query) => {
           suggestions.push([
             'nameInPage',
             'Make the page after a product search contain the full name of the product.'
-          ])
+          ]);
         }
         else if (score.nameInNode === 0) {
           suggestions.push([

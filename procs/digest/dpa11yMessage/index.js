@@ -29,8 +29,8 @@
 
 // CONSTANTS
 
-  // Newlines with indentations.
-  const innerJoiner = '\n        ';
+// Newlines with indentations.
+const innerJoiner = '\n        ';
 
 // FUNCTIONS
 
@@ -101,7 +101,7 @@ exports.makeQuery = (report, query) => {
         else if (score.a11yTitleGood === 0) {
           suggestions.push(
             ['a11yTitleGood', 'Include accessibility in the title of the accessibility page.']
-          )
+          );
         }
         if (score.a11yPageH1 === 0) {
           suggestions.push(['a11yPageH1', 'Give the accessibility page a single h1 heading.']);

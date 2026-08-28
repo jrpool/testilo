@@ -60,7 +60,7 @@ const getData = async () => {
   return {
     pageCount,
     bodyData
-  }
+  };
 };
 // Returns the maximum score.
 const getMaxScore = tableData => tableData.reduce((max, item) => Math.max(max, item.score), 0);

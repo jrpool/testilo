@@ -51,8 +51,8 @@ const getScoreRow = (componentName, score) => `<tr><th>${componentName}</th><td>
 const getWCAGTerm = wcag => {
   const wcagPhrase = wcagPhrases[wcag];
   const wcagTerm = wcagPhrase
-  ? `<a href="https://www.w3.org/WAI/WCAG22/Understanding/${wcagPhrase}.html">${wcag}</a>`
-  : wcag;
+    ? `<a href="https://www.w3.org/WAI/WCAG22/Understanding/${wcagPhrase}.html">${wcag}</a>`
+    : wcag;
   return wcagTerm;
 };
 // Gets a row of the issue-score-summary table.

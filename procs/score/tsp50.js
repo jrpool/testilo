@@ -108,7 +108,7 @@ Object.keys(issues).forEach(issueName => {
         // Add it to the array of variably named tool rules.
         issueMatcher.push(ruleID);
       }
-    })
+    });
   });
 });
 

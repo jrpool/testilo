@@ -106,7 +106,7 @@ Object.keys(issues).forEach(issueID => {
         // Add its ID to the array of variable rule IDs.
         variableRuleIDs.push(ruleID);
       }
-    })
+    });
   });
 });
 
@@ -293,8 +293,8 @@ exports.scorer = report => {
           // Convert the set of violation descriptions to an array.
           Object.keys(issueDetails.tools[toolID]).forEach(ruleID => {
             issueDetails.tools[toolID][ruleID].violations.descriptions = Array
-              .from(issueDetails.tools[toolID][ruleID].violations.descriptions)
-              .sort();
+            .from(issueDetails.tools[toolID][ruleID].violations.descriptions)
+            .sort();
           });
         });
         // Get the score for the issue, including any addition for the instance count limit.
@@ -343,7 +343,7 @@ exports.scorer = report => {
           const aToolCount = a.replace(/[^+]/g, '').length;
           const bToolCount = b.replace(/[^+]/g, '').length;
           if (aToolCount === bToolCount) {
-          return a.localeCompare(b);
+            return a.localeCompare(b);
           }
           else {
             return bToolCount - aToolCount;

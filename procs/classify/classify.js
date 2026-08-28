@@ -53,7 +53,7 @@ const getIssueDirectory = exports.getIssueDirectory = () => {
           // Add its ID to the array of variable rule IDs.
           variableRuleIDs.push(ruleID);
         }
-      })
+      });
     });
   });
   return {
