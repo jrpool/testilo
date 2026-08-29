@@ -694,7 +694,7 @@ exports.issues = {
           quality: 1,
           what: 'Text input has no accessible name'
         },
-        'E-^AAA\.4_1_2\.H91\.Input[-a-zA-Z]+\.Name$': {
+        '^E-AAA\\.4_1_2\\.H91\\.Input[-a-zA-Z]+\\.Name$': {
           variable: true,
           quality: 1,
           what: 'input element has no accessible name'
@@ -4375,7 +4375,7 @@ exports.issues = {
           quality: 1,
           what: 'img element has a role attribute but no alt attribute'
         },
-        '^Discarding unrecognized token .+ from value of attribute role\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
+        '^Discarding unrecognized token .+ from value of attribute role\\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
           variable: true,
           quality: 1,
           what: 'Invalid role'
@@ -4392,7 +4392,7 @@ exports.issues = {
           quality: 1,
           what: 'img element has a role attribute but no alt attribute'
         },
-        '^Discarding unrecognized token .+ from value of attribute role\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
+        '^Discarding unrecognized token .+ from value of attribute role\\. Browsers ignore any token that is not a defined ARIA non-abstract role.*$': {
           variable: true,
           quality: 1,
           what: 'Invalid role'
@@ -4841,14 +4841,14 @@ exports.issues = {
     weight: 1,
     tools: {
       nuVal: {
-        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\?.*$': {
+        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\\?.*$': {
           variable: true,
           quality: 1,
           what: 'Attribute value may be a typographical error'
         }
       },
       nuVnu: {
-        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\?.*$': {
+        '^Potentially bad value .+ for attribute .+ on element .+Typo for .+\\?.*$': {
           variable: true,
           quality: 1,
           what: 'Attribute value may be a typographical error'
@@ -11275,7 +11275,7 @@ exports.issues = {
           quality: 1,
           what: 'Invalid closing tag'
         },
-        '^End tag [a-z]+\.$': {
+        '^End tag [a-z]+\\.$': {
           variable: true,
           quality: 1,
           what: 'Closing tag of an ineligible element'
@@ -11327,7 +11327,7 @@ exports.issues = {
           quality: 1,
           what: 'Invalid closing tag'
         },
-        '^End tag [a-z]+\.$': {
+        '^End tag [a-z]+\\.$': {
           variable: true,
           quality: 1,
           what: 'Closing tag of an ineligible element'

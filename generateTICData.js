@@ -1,6 +1,6 @@
 /*
   makeTICGenerator.js
-  This script reads the issues data from procs/score/tic.js and writes a generator. Executing the generator will create a new generatedTIC.ts file containing TypeScript code that can be used for creation of TIC data in a symmetric format:
+  This script reads the issues data from procs/score/tic.js and writes a generator. Executing the generator will create a new generatedTIC.ts file containing TypeScript code that can be used for creation of TIC data in a two-object format:
   - issuesData: Contains the issue data with summary, why, wcag, weight, and max properties.
   - rulesData: Contains the rule data with issueID, quality, and what properties.
   After executing the generator, execute npx eslint --fix generatedTIC.ts to correct the quotation format.
@@ -48,8 +48,8 @@ if (errors.length) {
   errors.forEach(error => console.error(`  ${error}`));
 }
 fs.writeFileSync(
-  'generatedTIC.ts',
+  'ticData.ts',
   `const issuesData = ${JSON.stringify(newIssues, null, 2)} as const;\n\n`
   + `const rulesData = ${JSON.stringify(rules, null, 2)};\n`
 );
-console.log(`Wrote generatedTIC.ts (${Object.keys(newIssues).length} issues, ${Object.keys(rules).length} tools)`);
+console.log(`Wrote ticData.ts (${Object.keys(newIssues).length} issues, ${Object.keys(rules).length} tools)`);
