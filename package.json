@@ -27,11 +27,11 @@
     "testaro-issues": "*"
   },
   "devDependencies": {
-    "eslint": "*",
     "@eslint/js": "*",
-    "globals": "*",
-    "@typescript-eslint/parser": "*",
     "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "eslint": "*",
+    "globals": "*",
     "typescript": ">=4.8.4 <6.1.0"
   },
   "allowScripts": {
