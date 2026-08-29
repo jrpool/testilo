@@ -24,7 +24,7 @@
   tic
   Testilo issue classification
 
-  Classifies about 1000 rules of the tools of Testaro into about 310 issues.
+  Classifies about 1300 rules of the rule engines in the ensemble of Testaro into about 350 issues.
 
   Issue properties:
     summary: minimal description
@@ -32,16 +32,39 @@
     wcag: most relevant WCAG Principle, Guideline, Success Criterion, or Technique
     weight: weight of the issue in score computation
     max?: maximum possible count of instances if finite
-    tools: tools (including Testaro) defining rules for the issue
+    tools: rule engines (including Testaro) defining rules classified as belonging to the issue
 
-  Each property of tools is data about one of the tools that test for the issue. The key is the name
-  of the tool. The value is an object containing data about the rules of the tool that pertain to
-  the issue. Each property of that object is data about one of those rules. The key is the
-  identifier of the rule, and the value is an object with these properties:
-    variable: whether the key is a regular expression
-    quality: the estimated quality of the test for the rule (normally 1)
-    what: description of a rule violation
+  Each property of tools is data about one of the rule engines that test for the issue. The key is the name of the rule engine. The value is an object containing data about the rules of the rule engine that pertain to the issue. Each property of that object is data about one of those rules. The key is the identifier of the rule, and the value is an object with these properties:
+      variable: whether the key is a regular expression
+      quality: the estimated quality of the test for the rule (normally 1)
+      what: description of a rule violation
+
+  The issues object in this module is generated from data imported from the testaro-issues package.
 */
+
+// IMPORTS
+
+const {issues: issueData, rules: ruleData} = require('testaro-issues');
+
+// EXECUTION
+
+const issues = {};
+Object.entries(issueData).forEach(([issueID, issueProps]) => {
+  issues[issueID] = {...issueProps, tools: {}};
+});
+Object.entries(ruleData).forEach(([toolID, {invariant, variable}]) => {
+  Object.entries(invariant).forEach(([ruleID, {issueID, quality, what}]) => {
+    issues[issueID].tools[toolID] ??= {};
+    issues[issueID].tools[toolID][ruleID] = {variable: false, quality, what};
+  });
+  Object.entries(variable).forEach(([ruleID, {issueID, quality, what}]) => {
+    issues[issueID].tools[toolID] ??= {};
+    issues[issueID].tools[toolID][`^${ruleID}$`] = {variable: true, quality, what};
+  });
+});
+exports.issues = issues;
+
+
 
 exports.issues = {
   ignorable: {

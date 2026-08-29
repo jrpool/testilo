@@ -23,7 +23,8 @@
   "homepage": "https://github.com/jrpool/testilo",
   "dependencies": {
     "dotenv": "*",
-    "playwright": "*"
+    "playwright": "*",
+    "testaro-issues": "*"
   },
   "devDependencies": {
     "eslint": "*",
