@@ -50,6 +50,6 @@ if (errors.length) {
 fs.writeFileSync(
   'ticData.ts',
   `const issuesData = ${JSON.stringify(newIssues, null, 2)} as const;\n\n`
-  + `const rulesData = ${JSON.stringify(rules, null, 2)};\n`
+  + `const rulesData = ${JSON.stringify(rules, null, 2)} as const;\n`
 );
 console.log(`Wrote ticData.ts (${Object.keys(newIssues).length} issues, ${Object.keys(rules).length} tools)`);
