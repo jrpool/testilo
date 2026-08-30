@@ -62,13 +62,14 @@ You can create a job for Testaro directly, without using Testilo.
 Testilo can, however, make job preparation more efficient in these scenarios:
 
 - You want to perform a battery of tests on multiple targets.
-- You want to test targets only for particular issues, using whichever tools happen to have tests for those issues.
+- You want to test targets only for particular issues, using whichever rule engines happen to have tests for those issues.
 
 ### Target lists
 
 The simplest version of a list of targets is a _target list_. It is an array of arrays defining 1 or more targets.
 
 A target is defined by 2 items:
+
 - A description
 - A URL
 
@@ -258,7 +259,7 @@ A script has several properties that specify facts about the jobs to be created.
 - `what`: a description of the script.
 - `strict`: `true` if Testaro is to abort jobs when a target redirects a request to a URL differing substantially from the one specified. If `false` Testaro is to allow redirection. All differences are considered substantial unless the URLs differ only in the presence and absence of a trailing slash.
 - `isolate`: If `true`, Testilo, before creating a job, will isolate test acts, as needed, from effects of previous test acts, by inserting a copy of the latest placeholder after each target-modifying test act other than the final act. If `false`, placeholders will not be duplicated.
-- `standard`: When Testaro performs a job, every tool produces its own report. Testaro can convert the test results of each tool report to standard results. The `standard` property specifies how to handle standardization. If `also`, Testaro will include in its reports both the original results of the tests of tools and the Testaro-standardized results. If `only`, reports will include only the standardized test results. If `no`, reports will include only the original results, without standardization.
+- `standard`: When Testaro performs a job, every rule engine produces its own report. Testaro can convert the test results of each rule engine report to standard results. The `standard` property specifies how to handle standardization. If `also`, Testaro will include in its reports both the original results of the tests of rule engines and the Testaro-standardized results. If `only`, reports will include only the standardized test results. If `no`, reports will include only the original results, without standardization.
 - `observe`: Testaro jobs can allow granular observation. If `true`, the job will do so. If `false`, Testaro will not report job progress, but will send a report to the server only when the report is completed. It is generally user-friendly to allow granular observation, and for user applications to implement it, if they make users wait while jobs are assigned and performed, since that process typically takes a few minutes.
 - `timeLimit`: This specifies the maximum duration, in seconds, of a job. Testaro will abort jobs that are not completed within that time.
 - `device`: This specifies the ID of a device and properties that each new browser context (window) will have that correspond to that device. The permitted devices are those (about 125 in number) [recognized by Playwright](https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json), as well as `'default'`.
@@ -285,23 +286,23 @@ In its simplest form, `script()` requires 3 string arguments:
 1. A description of the script
 1. A device ID
 
-Called in this way, `script()` produces a script that tells Testaro to perform the tests for all of the evaluation rules defined by all of the tools integrated by Testaro. In this case, the script launches a new Chromium browser before performing the tests of each tool.
+Called in this way, `script()` produces a script that tells Testaro to perform the tests for all of the evaluation rules defined by all of the rule engines integrated by Testaro. In this case, the script launches a new Chromium browser before performing the tests of each rule engine.
 
 #### Script creation with options
 
 If you want a more focused script, you can add an additional option argument to `script()`. The option argument lets you restrict the rules to be tested for. You may choose between restrictions of two types:
 
-- Tools
+- Rule engines
 - Issues
 
 The option argument is an object. Its properties depend on the restriction type.
 
-For a tool restriction, it has this structure:
+For a rule engine restriction, it has this structure:
 
 ```javascript
 {
   type: 'tools',
-  specs: ['toolID0', 'toolID1', 'toolIDn']
+  specs: ['ruleEngineID0', 'ruleEngineID1', 'ruleEngineIDn']
 }
 ```
 
@@ -317,11 +318,11 @@ For an issue restriction, it has this structure:
 }
 ```
 
-If you specify tool options, the script will prescribe the tests for all evaluation rules of the tools that you specify.
+If you specify rule engine options, the script will prescribe the tests for all evaluation rules of the rule engines that you specify.
 
-If you specify issue options, the script will prescribe the tests for all evaluation rules that are classified into the issues whose IDs you specify. Any tools that do not have any of those rules will be omitted. The value of `specs.issues` is an issue classification object, with a structure like the one in `procs/score/tic43.js`. That one classifies about 1000 rules into about 300 issues.
+If you specify issue options, the script will prescribe the tests for all evaluation rules that are classified into the issues whose IDs you specify. Any rule engines that do not have any of those rules will be omitted. The value of `specs.issues` is an issue classification object, with a structure like the one in `procs/score/tic43.js`. That one classifies about 1000 rules into about 300 issues.
 
-For example, one issue in the `tic43.js` file is `mainNot1`. Four rules are classified as belonging to that issue: rule `main_element_only_one` of the `aslint` tool and 3 more rules defined by 3 other tools. You can also create custom classifications and save them in a `score` subdirectory of the `FUNCTIONDIR` directory.
+For example, one issue in the `tic43.js` file is `mainNot1`. Four rules are classified as belonging to that issue: rule `main_element_only_one` of the `aslint` rule engine and 3 more rules defined by 3 other rule engines. You can also create custom classifications and save them in a `score` subdirectory of the `FUNCTIONDIR` directory.
 
 #### Script invocation
 
@@ -352,13 +353,13 @@ A user can invoke `script()` by executing one of these statements in the Testilo
 
 ```javascript
 node call script id what deviceID
-node call script id what deviceID tools toolID0 toolID1 toolID2 …
+node call script id what deviceID ruleEngines ruleEngineID0 ruleEngineID1 ruleEngineID2 …
 node call script id what deviceID issues tic99 issueID0 issueID1 …
 ```
 
 The first form will create a script with no restrictions.
 
-The second form will create a script that prescribes tests for all the rules of the specified tools.
+The second form will create a script that prescribes tests for all the rules of the specified rule engines.
 
 The third form will create a script that prescribes tests for all the rules classified by the named issue-classification file into any of the specified issues.
 
@@ -379,7 +380,7 @@ When the `script` module creates a script for you, it does not ask you for all o
 - `device.windowOptions.reduce-motion`: `'no-preference'`
 - `browserID`: `'chromium'`
 - `lowMotion`: `false`
-- `timeLimit`: 50 plus 30 per tool
+- `timeLimit`: 50 plus 30 per rule engine
 - `sources.id`: script ID
 - `sources.requester`: `''`
 - test acts: `launch` = {}
@@ -502,7 +503,7 @@ Testilo can enhance such a report by:
 - summarizing reports
 - comparing scores
 - tracking score changes
-- crediting tools
+- crediting rule engines
 
 ### Scoring
 
@@ -521,9 +522,13 @@ The built-in scoring functions are named `scorer()` and are exported by files wh
 
 ##### Issues
 
-Those functions make use of `issues` objects defined in files whose names begin with `tic`. An `issues` object defines an issue classification: a body of data about rules of tools and the tool-agnostic issues that those rules are deemed to belong to.
+Those functions make use of `issues` objects defined in files whose names begin with `tic`.
 
-The properties of an `issues` object are issue objects: objects containing data about issues. Here is an example from `tic.js`:
+Until version 52.1.19, the `tic.js` files directly declared and initialized their exported `issues` objects. Starting with version 52.1.20, the `tic.js` file is no longer the source of truth for its `issues` object. Instead, the `tic` module imports `issues` and `rules` objects from the latest version of the `testaro-issues` package and generates the `issues` object from them. Developers and users discovering defects in the `issues` object are invited to contribute improvements to `testaro-issues`. Alternatively, custom statically defined `issues` objects can be created in alternate `tic…` modules, or `testaro-issues` can be forked and its data customized for importation into a fork of Testilo.
+
+The `issues` object defines an issue classification: a body of data about rules of rule engines and the rule-engine-agnostic issues that those rules are deemed to belong to.
+
+The properties of an `issues` object are issue objects: objects containing data about issues. Here is an example:
 
 ```javascript
 multipleLabelees: {
@@ -555,7 +560,7 @@ multipleLabelees: {
 },
 ```
 
-In this example, `multipleLabelees` is the issue ID. The `weight` property represents the severity of the issue and ranges from 1 to 4. The `tools` property is an object containing data about the tools that have rules deemed to belong to the issue. Here there are 2 such tools: `aslint` and `nuVal`. The tool properties are objects containing data about the relevant rules of those tools: 1 from the `aslint` tool and 2 from the `nuVal` tool.
+In this example, `multipleLabelees` is the issue ID. The `weight` property represents the severity of the issue and ranges from 1 to 4. The `tools` property is an object containing data about the rule engines that have rules deemed to belong to the issue. Here there are 2 such rule engines: `aslint` and `nuVal`. The rule-engine properties are objects containing data about the relevant rules of those rule engines: 1 from `aslint` and 2 from `nuVal`.
 
 The property for each rule has the rule ID as its name.
 
@@ -641,14 +646,14 @@ score: {
     latency: 0
   },
   details: {
-    severity: { // Counts of violations by the severities assigned by their tools.
+    severity: { // Counts of violations by the severities assigned by their rule engines.
       total: [0, 0, 0, 0],
       byTool: {
-        toolA: [0, 0, 0, 0]
+        ruleEngineA: [0, 0, 0, 0]
       }
     },
-    prevention: { // Subscores due to pages preventing tools from performing tests.
-      toolB: 300,
+    prevention: { // Subscores due to pages preventing rule engines from performing tests.
+      ruleEngineB: 300,
       testaro: 90
     },
     issue: {
@@ -660,10 +665,10 @@ score: {
         weight: 4,
         countLimit: 30, // Adjuster if the count of violations per page is inherently limited.
         instanceCounts: {
-          toolC: 0
+          ruleEngineC: 0
         },
         tools: {
-          toolC: {
+          ruleEngineC: {
             ruleC0: {
               quality: 1, // Estimated quality of the test for the rule (0 to 1).
               what: 'Description of rule C0',
@@ -680,16 +685,16 @@ score: {
       }
     },
     solo: { // Rules violated but not classified as belonging to any issue.
-      toolA: {
+      ruleEngineA: {
         ruleA0: 1 // Rule and count of violations.
       }
     },
-    tool: { // Subscores due to tools reporting violations of their rules.
-      toolA: 0
+    tool: { // Subscores due to rule engines reporting violations of their rules.
+      ruleEngineA: 0
     },
-    element: { // Xpaths of elements reported by sets of tools as violating rules in issues.
+    element: { // Xpaths of elements reported by sets of rule engines as violating rules in issues.
       issueA: {
-        'toolA + toolB': [
+        'ruleEngineA + ruleEngineB': [
           '/html/body/div[2]',
           '/html/body/div[2]/p[1]'
         ]
@@ -707,16 +712,16 @@ To test the `score` module, in the project directory you can execute the stateme
 
 The `rescore` module of Testilo creates a new report for a subset of the results in an existing report.
 
-Any scored report is based on a set of tests of a set of tools. Suppose you want to disregard some of those tests and get a revised report for only the remaining tests. The `rescore` module does this for you.
+Any scored report is based on a set of tests of a set of rule engines. Suppose you want to disregard some of those tests and get a revised report for only the remaining tests. The `rescore` module does this for you.
 
-A typical use case is your desire to examine results for only one or only some of the tools that were used for a report. All the needed information is in the report, so it is not necessary to create, perform, and await a new job and report. You want a new report whose standard results and score data are what a new job would have produced.
+A typical use case is your desire to examine results for only one or only some of the rule engines that were used for a report. All the needed information is in the report, so it is not necessary to create, perform, and await a new job and report. You want a new report whose standard results and score data are what a new job would have produced.
 
 The `rescore()` function of the `rescore` module takes four arguments:
 
 - a scoring function
 - a report object
 - a restriction type (`'tools'` or `'issues'`)
-- an array of IDs of the tools or issues to be included
+- an array of IDs of the rule engines or issues to be included
 
 Then the `rescore()` function copies the report, removes the no-longer-relevant acts, removes the no-longer-relevant instances from and revises the totals of the `standardResult` properties, replaces the `score` property with a new one, and returns the revised report.
 
@@ -724,7 +729,7 @@ The new report is not identical to the report that a new job would have produced
 
 - Any original (non-standardized) results and data that survive in the new report are not revised.
 - Any scores arising from causes other than test results, such as latency or browser warnings, are not revised.
-- The `score` property object now includes a `rescore` property that identifies the original report ID (in case it is later changed), the date and time of the rescoring, the restriction type, and an array of the tool or issue IDs included by the restriction.
+- The `score` property object now includes a `rescore` property that identifies the original report ID (in case it is later changed), the date and time of the rescoring, the restriction type, and an array of the rule engine or issue IDs included by the restriction.
 
 #### Invocation
 
@@ -834,6 +839,7 @@ The digests created by `digest()` are HTML files, and they expect a `style.css` 
 A _difgest_ is a digest that compares two reports. They can be reports of different targets, or reports of the same target from two different times or under two different conditions.
 
 The `difgest` module difgests two scored reports. Its `difgest()` function takes five arguments:
+
 - a difgest template
 - a difgesting function
 - a scored report object
@@ -1028,20 +1034,20 @@ The tracking reports created by `track()` are HTML files, and they expect a `sty
 
 ### Statistics
 
-If you use Testaro to perform all the tests of all the tools on multiple targets and score the reports with a score proc that maps tool rules onto tool-agnostic issues, you may want to get statistics on tools and issues, aggregated from the scored reports. Testilo has two procs for this purpose.
+If you use Testaro to perform all the tests of all the rule engines on multiple targets and score the reports with a score proc that maps rule engine rules onto rule-engine-agnostic issues, you may want to get statistics on rule engines and issues, aggregated from the scored reports. Testilo has two procs for this purpose.
 
 #### Tool crediting
 
-The `credit` module tabulates the contribution of each tool to the discovery of issue instances in a collection of scored reports. Its `credit()` function takes two arguments: a report description and an array of `score` properties of scored reports.
+The `credit` module tabulates the contribution of each rule engine to the discovery of issue instances in a collection of scored reports. Its `credit()` function takes two arguments: a report description and an array of `score` properties of scored reports.
 
 The function produces a credit report containing four sections:
 
-- `counts`: for each issue, how many instances each tool reported
-- `onlies`: for each issue of which only 1 tool reported instances, which tool it was
-- `mosts`: for each issue of which at least 2 tools reported instances, which tool(s) reported the maximum instance count
-- `tools`: for each tool, two sections:
-  - `onlies`: a list of the issues that only the tool reported instances of
-  - `mosts`: a list of the issues for which the instance count of the tool was not surpassed by that of any other tool
+- `counts`: for each issue, how many instances each rule engine reported
+- `onlies`: for each issue of which only 1 rule engine reported instances, which rule engine it was
+- `mosts`: for each issue of which at least 2 rule engines reported instances, which rule engine(s) reported the maximum instance count
+- `tools`: for each rule engine, two sections:
+  - `onlies`: a list of the issues that only the rule engine reported instances of
+  - `mosts`: a list of the issues for which the instance count of the rule engine was not surpassed by that of any other rule engine
 
 ##### Tool crediting invocation
 
@@ -1081,11 +1087,9 @@ The `issues` module tabulates total issue scores. Its `issues()` function takes 
 
 The function produces an issue report, an object with issue properties, whose values are the totals of the scores of the respective issues.
 
-##### Issue scoring invocation
-
 There are two ways to use the `credit` module.
 
-###### Issue scoring by a module
+#### Issue scoring by a module
 
 A module can invoke `issues()` in this way:
 
@@ -1097,7 +1101,7 @@ const issuesReport = issues('legislators', reportScores);
 
 The arguments to `issues()` are a report description and an array of `score` properties of scored report objects. The `issues()` function returns an issues report. The invoking module can further dispose of the issues report as needed.
 
-###### Issue scoring by a user
+#### Issue scoring by a user
 
 A user can invoke `issues()` in one of these ways:
 
